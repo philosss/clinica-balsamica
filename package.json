@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://polimi-hyp-2017-10173412@bitbucket.org/polimi-hyp-2017-10173412/polimi-hyp-2017-boilerplate.git",
   "author": "Vittorio Zaccaria <vittorio.zaccaria@polimi.it>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.15.2"
+  }
 }
