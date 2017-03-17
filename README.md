@@ -13,17 +13,17 @@ repo directly to your heroku account below.
 
 ## How do I get set up to test this locally?
 
--   To run this server locally you should have Nodejs (v7.5.0)
-    installed.
+-   To run this server locally you should have Nodejs
+    (v7.5.0) installed.
 
 -   To install the dependencies:
 
-    ``` shell
+    ``` {shell}
     npm install .
     ```
 
 -   To start the server (see property `scripts` in package.json)
 
-    ``` shell
+    ``` {shell}
     npm start
     ```
