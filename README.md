@@ -1,6 +1,8 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This repository is a starting point for your class project. It contains a Nodejs
+app that serves a static web page (showing a list of pets) and a single REST
+entry-point that is used to fetch that list.
 
 ### What is this repository for? ###
 
@@ -10,9 +12,14 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
+* To run this server locally you should have Nodejs (v7.5.0) installed.
+  
+* To install the dependencies:
+
+```
+npm install .
+```
+
 * Database configuration
 * How to run tests
 * Deployment instructions
