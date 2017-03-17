@@ -1,36 +1,29 @@
-# README #
+# README
 
-This repository is a starting point for your class project. It contains a Nodejs
-app that serves a static web page (showing a list of pets) and a single REST
-entry-point that is used to fetch that list.
+This repository is a starting point for your class project. It contains
+a Nodejs app that serves a static web page (showing a list of pets,
+after pressing a button) and a single REST entry-point that is used to
+fetch that list.
 
-### What is this repository for? ###
+## What is this repository for?
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Once you fork this repo, you can completely modify it at your own will
+to write your project. You will find the instructions to deploy this
+repo directly to your heroku account below.
 
-### How do I get set up? ###
+## How do I get set up to test this locally?
 
-* To run this server locally you should have Nodejs (v7.5.0) installed.
-  
-* To install the dependencies:
+-   To run this server locally you should have Nodejs (v7.5.0)
+    installed.
 
-```
-npm install .
-```
+-   To install the dependencies:
 
-* Database configuration
-* How to run tests
-* Deployment instructions
+    ``` shell
+    npm install .
+    ```
 
-### Contribution guidelines ###
+-   To start the server (see property `scripts` in package.json)
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+    ``` shell
+    npm start
+    ```
