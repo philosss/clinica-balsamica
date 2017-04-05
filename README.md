@@ -13,8 +13,8 @@ repo directly to your heroku account below.
 
 ## How do I get set up to test this locally?
 
--   To run this server locally you should have Nodejs (v7.5.0)
-    installed.
+-   To run this server locally you should have Nodejs
+    (v7.5.0) installed.
 
 -   To install the dependencies:
 
@@ -24,9 +24,12 @@ repo directly to your heroku account below.
 
         npm start
 
-    ## How do I deploy this to Heroku
+## How do I deploy this to Heroku
 
-Do this only if you are the team administrator. Once you have setup
-heroku according to the manual, just type:
+*Do this only if you are the team administrator*.
 
-    git push
+1.  Setup heroku and/or login according to the manual
+
+2.  just type:
+
+        git push heroku master
