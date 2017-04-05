@@ -1,9 +1,8 @@
 # README
 
-This repository is a starting point for your class project. It contains
-a Nodejs app that serves a static web page (showing a list of pets,
-after pressing a button) and a single REST entry-point that is used to
-fetch that list.
+This repository will be updated during our hands on lectures with a
+small app to manage pets. We suggest to use it as a starting point
+(fork) for your project once we finished.
 
 ## What is this repository for?
 
