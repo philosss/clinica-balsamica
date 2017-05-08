@@ -1,17 +1,19 @@
 {
-    "name": "polimi-hyp-2017-boilerplate",
-    "version": "1.0.0",
-    "main": "index.js",
-    "repository": "https://polimi-hyp-2017-10173412@bitbucket.org/polimi-hyp-2017-10173412/polimi-hyp-2017-project.git",
-    "author": "Vittorio Zaccaria <vittorio.zaccaria@polimi.it>",
-    "engines": {
-        "node": ">= 7.5.0"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "express": "4.15.2"
-    },
-    "scripts": {
-        "start": "node ./index.js"
-    }
+  "name": "polimi-hyp-2017-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://polimi-hyp-2017-10173412@bitbucket.org/polimi-hyp-2017-10173412/polimi-hyp-2017-project.git",
+  "author": "Vittorio Zaccaria <vittorio.zaccaria@polimi.it>",
+  "engines": {
+    "node": ">= 7.5.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "express": "4.15.2",
+    "lodash": "4.17.4"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  }
 }
