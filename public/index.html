@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Your first web app!</title>
-    </head>
-    <body>
-      <div id="app">
-        From the class Live!!
-        </div>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your first web app!</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Pets united!</h1>
+        <hr />
+        <p>Your pet list:</p>
+        <table id="mytable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Tag</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody id="myrows">
+                <!-- We are going to fill up this with dynamic data -->
+            </tbody>
+        </table>
+        <button id="addPetButton" onclick="clickAddPet()">Add Pet</button>
+        <button id="previousPage" onclick="previousPage()"> << </button>
+        <button id="nextPage" onclick="nextPage()"> >> </button>
+        <button id="ageasc" onclick="setSort('age')"> Sort (+) </button>
+        <button id="agedesc" onclick="setSort('-age')"> Sort (-) </button>
+    </div>
+    <div id="addPetFormDiv">
+        <h3>Insert your pet</h3>
+        <form id="addpetform">
+            <div>
+                <label>Name</label>
+                <input value="Your pet's name" type="text" name="name" />
+            </div>
+            <div>
+                <label>Tag</label>
+                <input value="You pet's tag" type="text" name="tag" />
+            </div>
+                    <div> 
+                        <label>Born</label> 
+                        <input value="You pet's birth year" type="text" name="year"/>
+                    </div>
+        </form>
+        <button onclick="clickSubmitPetData()">Submit Pet </button>
+        <button onclick="clickCancelPetSubmit()">Cancel</button>
+    </div>
+    <div id="responseDataOK"> 
+        <h1>OK!</h1>
+    </div>
+    <div id="responseDataKO">
+        <h1>Error!</h1>
+    </div>
+</body>
+<script type="text/javascript" src="script.js"></script>
+
 </html>
