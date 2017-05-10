@@ -15,9 +15,26 @@ function addRow(pet) {
        <td>${pet.name}</td>
        <td>${pet.tag}</td>
        <td>${age}</td>
+       <td><button onclick="deletePet(${pet.id})">X</button></td>
     </ tr>
 `
   );
+}
+
+function deletePet(id) {
+  let idn = parseInt(id);
+  fetch(`/pets/${idn}`, {
+    method: "DELETE"
+  })
+    .then(response => response.json())
+    .then(response => {
+      if (response.error === "400") {
+        showResponse("KO");
+      } else {
+        showResponse("OK");
+        updatePetsList();
+      }
+    });
 }
 
 function clickAddPet() {
