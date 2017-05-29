@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const pg = require('pg');
 
+console.log(process.env.DATABASE_URL);
+
 const pool = new pg.Pool(process.env.DATABASE_URL);
 pool.connect(function(err, client, done) {
     if (err) {
