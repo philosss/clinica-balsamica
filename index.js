@@ -3,12 +3,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const pg = require('pg');
 
-console.log(process.env.DATABASE_URL);
-
-const pool = new pg.Pool(process.env.DATABASE_URL);
-pool.connect(function(err, client, done) {
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect(function(err) {
     if (err) {
-        return console.error('error fetching client from pool', err);
+        return console.error('error fetching client from client', err);
     }
 });
 
