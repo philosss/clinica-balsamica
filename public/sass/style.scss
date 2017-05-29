@@ -13,7 +13,7 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         #0E6E43 !default; // #337ab7
+$brand-primary:         #0E6E43 !important;
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
@@ -37,6 +37,25 @@ $link-hover-color:      darken($link-color, 15%) !default;
 $link-hover-decoration: underline !default;
 
 
+//== Useful Mixins
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin transition($transition) {
+    -moz-transition: all $transition ease;
+    -o-transition: all $transition ease;
+    -webkit-transition: all $transition ease;
+    -ms-transition: all $transition ease;
+    transition: all $transition ease;
+}
+
+
+// MAIN NAV
+
 nav {
   &.main-nav {
     position: relative;
@@ -47,41 +66,174 @@ nav {
     border-bottom: 0.5px solid #D3D3D3;
 
 
-    .top-container {
-      width: 100%;
-      height: 80px;
+    .logo {
       display: block;
-      clear: both;
-
-      .logo {
-        display: block;
-
-        background: url("../img/logo.svg") no-repeat center center;
-        width: 43px;
-        height: 48px;
-
-        position: absolute;
-        margin: auto;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-      }
-
-      .right-list {
-        float: right;
-        margin-top:auto;
-        margin-bottom: auto;
-      }
+      margin: auto;
+      background: url("../img/logo.svg") no-repeat center center;
+      width: 43px;
+      height: 48px;
+      margin-top: 15px;
+      margin-bottom: 20px;
     }
 
-
-
-    ul {
-      display: inline-block;
-      float: left;
+    .nav-resp {
+      margin: 0;
+      margin-left: 5%;
+      margin-right: 5%;
+      margin-bottom: 10px;
+      display: block;
       width: 90%;
-      height: 50px;
+      text-align: center;
+
+
+      @media screen and(max-width: $screen-sm) {
+        display: none;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        @include transition(.3s);
+      }
+
+      &.open {
+        display: block;
+      }
+
+
+      ul {
+        padding: 0;
+        margin: 0;
+        li {
+          display: inline-block;
+          margin-right: 10px;
+
+          a {
+            margin: 0;
+            padding-top: 6px;
+            padding-bottom: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+
+            text-transform: uppercase;
+            color: $gray-darker;
+            @include border-radius(10px);
+            @include transition(.3s);
+
+            font-size: 10px;
+            letter-spacing: 1.71px;
+            line-height: 20px;
+            font-weight: 400;
+            text-decoration: none;
+
+            &.active, &:hover {
+              background-color: $brand-primary;
+              color: white !important;
+            }
+
+          }
+        }
+      }
     }
   }
+}
+
+
+
+
+// Hamburger Button
+
+#nav-icon4 {
+  display: none;
+
+  @media screen and (max-width: $screen-sm) {
+    display: block;
+  }
+
+  width: 30px;
+  height: 23px;
+  position: absolute;
+  right: 10px;
+  top:15px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon4 span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: $brand-primary;
+  border-radius: 2px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+
+
+
+/* Icon 4 */
+
+#nav-icon4 {
+}
+
+#nav-icon4 span:nth-child(1) {
+  top: 0px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+#nav-icon4 span:nth-child(2) {
+  top: 8px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+#nav-icon4 span:nth-child(3) {
+  top: 16px;
+  -webkit-transform-origin: left center;
+  -moz-transform-origin: left center;
+  -o-transform-origin: left center;
+  transform-origin: left center;
+}
+
+#nav-icon4.open span:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  left: 0px;
+  top: 0px;
+}
+
+#nav-icon4.open span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+#nav-icon4.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  left: 0px;
+  top: 20px;
 }
