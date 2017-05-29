@@ -1,65 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Your first web app!</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-</head>
+    <head>
+        <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<body>
-    <div>
-        <h1>Pets united!</h1>
-        <hr />
-        <p>Your pet list:</p>
-        <table id="mytable">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Tag</th>
-                    <th>Age</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="myrows">
-                <!-- We are going to fill up this with dynamic data -->
-            </tbody>
-        </table>
-        <button id="addPetButton" onclick="clickAddPet()">Add Pet</button>
-        <button id="previousPage" onclick="previousPage()"> << </button>
-        <button id="nextPage" onclick="nextPage()"> >> </button>
-        <button id="ageasc" onclick="setSort('age')"> Sort (+) </button>
-        <button id="agedesc" onclick="setSort('-age')"> Sort (-) </button>
-    </div>
-    <div id="addPetFormDiv">
-        <h3>Insert your pet</h3>
-        <form id="addpetform">
-            <div>
-                <label>Name</label>
-                <input value="Your pet's name" type="text" name="name" />
-            </div>
-            <div>
-                <label>Tag</label>
-                <input value="You pet's tag" type="text" name="tag" />
-            </div>
-                    <div> 
-                        <label>Born</label> 
-                        <input value="You pet's birth year" type="text" name="year"/>
-                    </div>
-        </form>
-        <button onclick="clickSubmitPetData()">Submit Pet </button>
-        <button onclick="clickCancelPetSubmit()">Cancel</button>
-    </div>
-    <div id="responseDataOK"> 
-        <h1>OK!</h1>
-    </div>
-    <div id="responseDataKO">
-        <h1>Error!</h1>
-    </div>
-</body>
-<script type="text/javascript" src="script.js"></script>
+	    <title>Clinica Balsamica</title>
+
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	    <meta name="author" content="FreeHTML5.co" />
+
+        <!-- Facebook and Twitter integration -->
+	    <meta property="og:title" content=""/>
+	    <meta property="og:image" content=""/>
+	    <meta property="og:url" content=""/>
+	    <meta property="og:site_name" content=""/>
+	    <meta property="og:description" content=""/>
+	    <meta name="twitter:title" content="" />
+	    <meta name="twitter:image" content="" />
+	    <meta name="twitter:url" content="" />
+	    <meta name="twitter:card" content="" />
+
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="assets/css/icomoon.css">
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
+        <!-- Theme style  -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- Modernizr JS -->
+        <script src="assets/js/modernizr-2.6.2.min.js"></script>
+        <!-- FOR IE9 below -->
+        <!--[if lt IE 9]>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    </head>
+
+    <body>
+
+
+        <!-- Main -->
+	    <script src="assets/js/main.js"></script>
+    </body>
 
 </html>
