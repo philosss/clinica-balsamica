@@ -1,19 +1,20 @@
 {
-    "name": "polimi-hyp-2017-project",
-    "version": "1.0.0",
-    "main": "index.js",
-    "repository": "https://polimi-hyp-2017-10173412@bitbucket.org/polimi-hyp-2017-10173412/polimi-hyp-2017-project.git",
-    "author": "Calzavara Filippo, Filaferro Giovanni, Nespoli Benedetto",
-    "engines": {
-        "node": ">= 7.5.0"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "body-parser": "1.17.1",
-        "express": "4.15.2",
-        "knex": "^0.13.0"
-    },
-    "scripts": {
-        "start": "node ./index.js"
-    }
+  "name": "polimi-hyp-2017-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://polimi-hyp-2017-10173412@bitbucket.org/polimi-hyp-2017-10173412/polimi-hyp-2017-project.git",
+  "author": "Calzavara Filippo, Filaferro Giovanni, Nespoli Benedetto",
+  "engines": {
+    "node": ">= 7.5.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "1.17.1",
+    "express": "4.15.2",
+    "knex": "^0.13.0",
+    "pg": "^6.2.3"
+  },
+  "scripts": {
+    "start": "node ./index.js"
+  }
 }

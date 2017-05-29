@@ -1,6 +1,14 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const pg = require('pg');
+
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect(function(err) {
+    if (err) {
+        return console.error('error fetching client from client', err);
+    }
+});
 
 let serverPort = process.env.PORT || 8080;
 

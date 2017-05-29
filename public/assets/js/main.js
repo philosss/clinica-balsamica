@@ -1,3 +1,4 @@
+
 console.log("Startup");
 
 var data = [
@@ -34,4 +35,9 @@ function formatDoctors(item,index) {
 
 
 
-
+$(document).ready(function(){
+	$('#nav-icon4').click(function(){
+		$('#nav-icon4').toggleClass('open');
+    $('.nav-resp').toggleClass('open');
+	});
+});
