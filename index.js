@@ -17,6 +17,27 @@ const knex = require('knex')({
     }
 });
 
+function initDB() {
+    var doctorsList = require("./doctors.json");
+    doctorLists.map(doc => {
+        knex("doctors").insert(doc);
+    });
+    var locationsList = require("./locations.json");
+    doctorsList.map(loc => {
+        knex("locations").insert(loc);
+    });
+    var areasList = require("./areas.json");
+    areasList.map(area => {
+        knex("areas").insert(area);
+    });
+    var servicesList = require("./services.json");
+    servicesList.map(serv => {
+        knex("services").insert(serv);
+    });
+}
+
+initDB();
+
 let serverPort = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + "/public"));
