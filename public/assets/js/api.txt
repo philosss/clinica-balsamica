@@ -1,4 +1,0 @@
-/locations
-/services
-/doctors
-/doctors/${location}
