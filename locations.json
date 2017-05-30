@@ -1,0 +1,25 @@
+[{
+    "id": 1,
+    "name": "Grado",
+    "address": "Piazza Duca D'Aosta, 10",
+    "phonenumber": "",
+    "image": "grado.jpg"
+}, {
+    "id": 2,
+    "name": "Milano",
+    "address": "Piazza del Duomo, 1",
+    "phonenumber": "",
+    "image": "milano.jpg"
+}, {
+    "id": 3,
+    "name": "Roma",
+    "address": "Castel Sant'Angelo, 1",
+    "phonenumber": "",
+    "image": "roma.jpg"
+}, {
+    "id": 4,
+    "name": "Verona",
+    "address": "Via Cappello, 23",
+    "phonenumber": "",
+    "image": "verona.jpg"
+}]
