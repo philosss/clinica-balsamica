@@ -23,11 +23,11 @@ function formatDoctors(item) {
 
 
 
-/* ----------------- OTHER JS -----------------*/
+/* ----------------- NAV JS -----------------*/
 
 $(document).ready(function(){
-	$('#nav-icon4').click(function(){
-		$('#nav-icon4').toggleClass('open');
+	$('#nav-menu').click(function(){
+		$('#nav-menu').toggleClass('open');
     $('.nav-resp').toggleClass('open');
 	});
 });
@@ -58,5 +58,5 @@ function show(what) {
 			console.log("NoSuchParameter");
 	}
     //});
-	
+
 }
