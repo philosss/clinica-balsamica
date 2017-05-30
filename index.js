@@ -19,7 +19,7 @@ const knex = require('knex')({
 
 function initDB() {
     var doctorsList = require("./doctors.json");
-    doctorLists.map(doc => {
+    doctorsList.map(doc => {
         knex("doctors").insert(doc);
     });
     var locationsList = require("./locations.json");
