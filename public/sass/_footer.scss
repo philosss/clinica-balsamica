@@ -1,0 +1,25 @@
+
+footer {
+  width: 100%;
+
+  a {
+    font-size: 12px;
+    color: #6C6C6C;
+    letter-spacing: 0.75px;
+  }
+
+  .logo {
+    display: block;
+    margin: auto;
+    background: url("../img/logo.svg") no-repeat center center;
+    width: 43px;
+    height: 48px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+
+  p.copy {
+    font-size: 14px;
+    font-style: italic;
+  }
+}
