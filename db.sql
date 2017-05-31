@@ -8,7 +8,8 @@ create table doctors
 	email varchar(200),
 	phonenumber varchar(50),
 	office integer default 5,
-	image varchar(255)
+	image varchar(255),
+	location integer
 )
 ;
 
@@ -18,60 +19,73 @@ create unique index doctors_email_uindex
 
 create table areas
 (
-	name varchar(255) not null
-		constraint areas_pkey
-			primary key,
+	name varchar(255) not null,
 	areaimage varchar(255),
 	phonenumber varchar(50),
 	responsabile integer
-		constraint areastoresp
+		constraint areas_doctors_id_fk
 			references doctors,
-	description varchar
+	description text,
+	id serial not null
+		constraint areas_id_pk
+			primary key
 )
 ;
 
 create table services
 (
 	name varchar(255) not null,
-	area varchar(255) not null
-		constraint services_areas_name_fk
+	areaid integer not null
+		constraint services_areas_id_fk
 			references areas,
 	description varchar,
-	constraint services_name_area_pk
-		primary key (name, area)
+	id serial not null
+		constraint services_id_pk
+			primary key
 )
 ;
 
-create table workserivce
+create table doctors_services
 (
-	service varchar(255) not null,
-	doctor integer not null
-		constraint workserivce_doctors_id_fk
+	serviceid integer not null
+		constraint doctors_services_services_id_fk
+			references services,
+	doctorid integer not null
+		constraint doctors_services_doctors_id_fk
 			references doctors,
-	constraint workserivce_service_doctor_pk
-		primary key (service, doctor)
+	constraint doctors_services_serviceid_doctorid_pk
+		primary key (serviceid, doctorid)
 )
 ;
 
 create table locations
 (
-	name varchar(50) not null
-		constraint location_pkey
-			primary key,
+	name varchar(50) not null,
 	address varchar(150) not null,
 	phonenumber varchar(50),
-	description varchar
+	id serial not null
+		constraint locations_id_pk
+			primary key,
+	image varchar(255)
 )
 ;
 
-create table serviceinlocations
+alter table doctors
+	add constraint doctors_locations_id_fk
+		foreign key (location) references locations
+			on update cascade
+;
+
+create table services_locations
 (
-	name varchar(255) not null
-		constraint serviceinlocations_locations_name_fk
+	serviceid integer not null
+		constraint services_locations_services_id_fk
+			references services,
+	locationid integer not null
+		constraint services_locations_locations_id_fk
 			references locations,
-	location varchar(50) not null,
-	constraint serviceinlocations_name_location_pk
-		primary key (name, location)
+	constraint services_locations_serviceid_locationid_pk
+		primary key (serviceid, locationid)
 )
 ;
 

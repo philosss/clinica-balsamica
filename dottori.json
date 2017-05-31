@@ -231,17 +231,7 @@
   },
     {
     "id": 24,
-    "name": "Teresa",
-    "surname": "May",
-    "email": "t.may@balsami.ca",
-    "phonenumber": "02 51728394",
-    "office": 14,
-    "location": 1,
-    "image": "dottori/t.may.jpg"
-  },
-    {
-    "id": 25,
-    "name": "Francesco",
+    "name": "Francesca",
     "surname": "Alicante",
     "email": "f.alicante@balsami.ca",
     "phonenumber": "02 37283932",
@@ -250,7 +240,7 @@
     "image": "dottori/f.alicante.jpg"
   },
     {
-    "id": 26,
+    "id": 25,
     "name": "Dario",
     "surname": "Lampa",
     "email": "d.lampa@balsami.ca",
