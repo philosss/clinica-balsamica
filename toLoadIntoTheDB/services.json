@@ -3,6 +3,7 @@
     "id": 1,
     "name": "Elettrocardiogramma",
     "image": "servizi/ecg.jpg",
+    "responsible": 1,
     "description": "
     <h3>CHE COS’È L’ELETTROCARDIOGRAMMA?</h3>
 	<p>L’elettrocardiogramma (ECG) è un esame utile a conoscere l’andamento del battito del cuore. È un esame diagnostico sicuro e indolore che può essere eseguito in laboratorio.</p>
@@ -18,6 +19,7 @@
     "id": 2,
     "name": "Visita oculistica",
     "image": "servizi/visitaOculistica.jpg",
+    "responsible": 5,
     "description": "<h3>A CHE COSA SERVE LA VISITA OCULISTICA?</h3>
 	<p>La visita oculistica serve a valutare lo stato di salute degli occhi e della vista nel suo complesso, oltre che a diagnosticare e curare eventuali malattie oculari.</p>
 	<p>L’oculista è il medico di riferimento per i difetti della vista più diffusi come miopia, ipermetropia, astigmatismo, presbiopia.</p>
@@ -37,6 +39,7 @@
     "id": 3,
     "name": "Igiene Dentale",
     "image": "servizi/igieneDentale.jpg",
+    "responsible": 10,
     "description": "
     <p>Le gengive possono essere affette da due tipi di disturbi: la semplice gengivite (infiammazione della parte della gengiva che circonda il dente), e la malattia parodontale, comunemente nota come piorrea, un’infezione batterica che attacca i tessuti  di sostegno del dente e che, nelle forme più gravi, può portare alla perdita del dente se non si interviene tempestivamente.</p>
 	<h3>I SINTOMI</h3>
@@ -55,6 +58,7 @@
     "id": 4,
     "name": "Visita pediatrica",
     "image": "servizi/visitaPediatrica.jpg",
+    "responsible": 15,
     "description": "
     <h3>CHE COS'È LA VISITA PEDIATRICA?</h3>
 	<p>Il pediatra è il medico specializzato nello sviluppo psicofisico del bambino e nella diagnosi e terapia delle malattie infantili.</p>
@@ -79,6 +83,7 @@
     "id": 5,
     "name": "Visita allergologica",
     "image": "servizi/visitaAllergologica.jpg",
+    "responsible": 20,
     "description": "
     <h3>QUANDO È INDICATA LA VISITA ALLERGOLOGICA?</h3>
 	<p>La visita allergologica serve per indagare con precisione la causa di sintomi come pruriti, difficoltà respiratorie, mal di testa, eczema. La visita allergologica fornisce al medico allergologo un quadro completo dei disturbi del paziente e gli permette di proporre la terapia adeguata. Dopo la diagnosi, la visita allergologica consente di controllare l’evolversi di un’allergia già diagnosticata.</p>

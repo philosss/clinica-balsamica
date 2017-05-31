@@ -1,0 +1,7 @@
+BY FILIPPO CALZAVARA
+
+Se c’è un dottore in una determinata location, allora significa che la sede di Clinica Balsamica offre i servizi che il dottore offre. Un dottore può cambiare location nell’arco della sua vita, ma difficilmente cambiano i servizi che offre.
+
+LOCATION (fissata) —> DOCTORS —> DOCTORS_SERVICES —> SERVICES FOR THAT LOCATION
+
+SELECT serviceid FORM doctors JOIN doctors_services ON doctors.id=doctors_services.doctorid WHERE doctor.location={$ID_THIS_LOCATION} GROUP BY serviceid

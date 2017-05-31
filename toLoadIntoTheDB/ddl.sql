@@ -17,31 +17,17 @@ create unique index doctors_email_uindex
 	on doctors (email)
 ;
 
-create table areas
-(
-	name varchar(255) not null,
-	areaimage varchar(255),
-	phonenumber varchar(50),
-	responsabile integer
-		constraint areas_doctors_id_fk
-			references doctors,
-	description text,
-	id serial not null
-		constraint areas_id_pk
-			primary key
-)
-;
-
 create table services
 (
 	name varchar(255) not null,
-	areaid integer not null
-		constraint services_areas_id_fk
-			references areas,
 	description varchar,
 	id serial not null
 		constraint services_id_pk
-			primary key
+			primary key,
+	image varchar(255),
+	responsible integer
+		constraint services_doctors_id_fk
+			references doctors
 )
 ;
 
@@ -74,18 +60,5 @@ alter table doctors
 	add constraint doctors_locations_id_fk
 		foreign key (location) references locations
 			on update cascade
-;
-
-create table services_locations
-(
-	serviceid integer not null
-		constraint services_locations_services_id_fk
-			references services,
-	locationid integer not null
-		constraint services_locations_locations_id_fk
-			references locations,
-	constraint services_locations_serviceid_locationid_pk
-		primary key (serviceid, locationid)
-)
 ;
 
