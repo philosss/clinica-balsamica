@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const url = require('url');
 
-const params = url.parse(process.env.DATABASE_URL || "postgres://localhost:5432/clinicabalsamica");
+const params = url.parse(process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/clinicabalsamica");
 const auth = params.auth.split(':');
 
 const knex = require('knex')({
@@ -16,6 +16,27 @@ const knex = require('knex')({
         database: params.pathname.split('/')[1]
     }
 });
+
+function initDB() {
+    var doctorsList = require("./doctors.json");
+    doctorsList.map(doc => {
+        knex("doctors").insert(doc);
+    });
+    var locationsList = require("./locations.json");
+    doctorsList.map(loc => {
+        knex("locations").insert(loc);
+    });
+    var areasList = require("./areas.json");
+    areasList.map(area => {
+        knex("areas").insert(area);
+    });
+    var servicesList = require("./services.json");
+    servicesList.map(serv => {
+        knex("services").insert(serv);
+    });
+}
+
+initDB();
 
 let serverPort = process.env.PORT || 8080;
 
@@ -34,6 +55,30 @@ app.get("/locations", function(req, res) {
     knex("locations").then(results =>  {
         res.json(results);
     });
+});
+
+app.get("/services", function(req, res) {
+    knex("services").then(results =>  {
+        res.json(results);
+    });
+});
+
+app.get("/doctors", function(req, res) {
+    knex("doctors").then(results =>  {
+        res.json(results);
+    });
+});
+
+app.get("/doctors/fromLocation/:locationID", function(req, res) {
+    knex
+        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.image")
+        .from("doctors")
+        .join("doctors_services", { "doctors.id": "doctors_services.doctorid" })
+        .join("services_locations", { "services_locations.serviceid": "doctors_services.serviceid" })
+        .where({ "services_locations.locationid": 1 })
+        .then(results =>  {
+            res.json(results);
+        });
 });
 
 app.set("port", serverPort);
