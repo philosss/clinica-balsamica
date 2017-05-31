@@ -1,14 +1,93 @@
 [ 
   {
-    "id": 1
-    "name": "Visita dentistica",
-    "area": 2010,
-    "description": "cat"
+    "id": 1,
+    "name": "Elettrocardiogramma",
+    "image": "servizi/ecg.jpg",
+    "description": "
+    <h3>CHE COS’È L’ELETTROCARDIOGRAMMA?</h3>
+	<p>L’elettrocardiogramma (ECG) è un esame utile a conoscere l’andamento del battito del cuore. È un esame diagnostico sicuro e indolore che può essere eseguito in laboratorio.</p>
+	<h3>COME SI SVOLGE?</h3>
+	<p>Vengono applicati degli elettrodi in alcuni punti del corpo del paziente. L’attività del cuore produce delle vere e proprie scariche elettriche che attraverso gli elettrodi vengono trasmesse a una macchina (elettrocardiografo). L’elettrocardiografo traduce questa attività in un grafico prodotto in tempo reale su un rotolo di carta in movimento.</p>
+	<p>L’elettrocardiogramma può essere svolto da fermi (a riposo) o mentre si svolge un’attività fisica (sotto sforzo). L’elettrocardiogramma sotto sforzo si effettua mentre il paziente cammina su un tapis roulant o mentre pedala su una cyclette.</p>
+	<h3>A CHE COSA SERVE?</h3>
+	<p>Grazie all’ecocardiogramma, il medico può visualizzare in un grafico l’attività di contrazione e rilascio del cuore, rilevare un'eventuale cardiopatia ischemica (scarso apporto di sangue e ossigeno al muscolo cardiaco) ed escludere la presenza di eventuali patologie. Nell’elettrocardiogramma a riposo il medico riesce a individuare eventuali irregolarità nel battito (aritmie) o l’aumento della dimensione delle camere cardiache. Durante l'elettrocardiogramma sotto sforzo invece, poiché il cuore lavora di più e viene messo alla prova, è possibile rivelare anche malattie del cuore nascoste.</p>
+	<h3>QUANTO DURA?</h3>
+	<p>L’elettrocardiogramma dura solitamente pochi minuti.</p>"
   },
     {
-    "id": 1
-    "name": "Visita dentistica",
-    "area": 2010,
-    "description": "cat"
+    "id": 2,
+    "name": "Visita oculistica",
+    "image": "servizi/visitaOculistica.jpg",
+    "description": "<h3>A CHE COSA SERVE LA VISITA OCULISTICA?</h3>
+	<p>La visita oculistica serve a valutare lo stato di salute degli occhi e della vista nel suo complesso, oltre che a diagnosticare e curare eventuali malattie oculari.</p>
+	<p>L’oculista è il medico di riferimento per i difetti della vista più diffusi come miopia, ipermetropia, astigmatismo, presbiopia.</p>
+	<p>Oltre al controllo della vista, i sintomi che spingono un paziente a rivolgersi al medico oculista sono disturbi e fastidi che riguardano gli occhi, come lesioni oculari, strabismo, sindrome dell’occhio secco, infiammazioni dell’occhio, o sintomi che riguardano la vista, come annebbiamento e macchie nel campo visivo.</p>
+	<p>Si consiglia di fare controlli oculistici periodici per monitorare lo stato di salute degli occhi e diagnosticare tempestivamente anche malattie asintomatiche, come il glaucoma.</p>
+	<h3>COME SI SVOLGE LA VISITA OCULISTICA?</h3>
+	<p>La visita oculistica inizia con l’anamnesi: il medico oculista si informa sullo stile di vita del paziente, le sue abitudini, eventuali malattie o cure farmacologiche in corso e le patologie oculistiche presenti in famiglia.</p>
+	<p>L’oculista esamina poi la zona esterna, la funzionalità e la motilità degli occhi e può suggerire esami più specifici come la misurazione della pressione intraoculare (tonometria) e l’esame del fondo oculare. Per una migliore osservazione, l’oculista può decidere di usare delle gocce per dilatare le pupille del paziente.</p>
+	<p>Talvolta, un fastidio agli occhi può avere origini in malattie non oculistiche: in questi casi il medico potrebbe consigliare al paziente accertamenti presso altri specialisti.</p>
+	<h3>COME PREPARARSI ALLA VISITA OCULISTICA?</h3>
+	<p>La visita oculistica non prevede alcuna preparazione specifica. A chi usa quotidianamente le lenti a contatto è consigliato di interrompere l'utilizzo nelle 24 precedenti. Si consiglia al paziente di portare con sé i referti di eventuali esami relativi al problema oculistico.</p>
+	<h3>LA VISITA OCULISTICA È DOLOROSA O PERICOLOSA?</h3>
+	<p>La visita oculistica non è invasiva per il paziente.</p>
+	<p>Le gocce per la dilatazione delle pupille non sono fastidiose, ma alterano la vista per 1-3 ore rendendo consigliabile la presenza di un accompagnatore.</p>"
+  },
+  {
+    "id": 3,
+    "name": "Igiene Dentale",
+    "image": "servizi/igieneDentale.jpg",
+    "description": "
+    <p>Le gengive possono essere affette da due tipi di disturbi: la semplice gengivite (infiammazione della parte della gengiva che circonda il dente), e la malattia parodontale, comunemente nota come piorrea, un’infezione batterica che attacca i tessuti  di sostegno del dente e che, nelle forme più gravi, può portare alla perdita del dente se non si interviene tempestivamente.</p>
+	<h3>I SINTOMI</h3>
+	<p>Il primo segno della gengivite è il sanguinamento delle gengive, elemento che contraddistingue anche la malattia parodontale. Quest'ultima ha però spesso un’evoluzione indolore, e quindi potrebbe essere trascurata, rivelandosi solo quando è troppo tardi. Per questo è importante eseguire regolari controlli dal dentista, che potrà diagnosticarla e curarla in tempo.</p>
+	<h3>COSA FA IL DENTISTA: LA DIAGNOSI</h3>
+	<p>Durante la visita il parodontologo può effettuare due esami per diagnosticare la parodontite e misurarne la gravità: il sondaggio parodontale e lo status radiografico.</p>
+	<p>Il sondaggio parodontale si esegue con una sonda graduata che viene delicatamente mossa lungo il bordo gengivale per individuare la tasca che si è eventualmente formata tra la gengiva e il dente e per misurarne la profondità. Dopo il sondaggio il medico può stabilire la necessità di ulteriori approfondimenti per una valutazione accurata dello stato del parodonto, necessaria per stabilire la terapia più idonea a debellare la malattia.</p>
+	<p>Lo status radiografico è uno strumento diagnostico che permette di evidenziare problemi che non sono visibili all'esame clinico, fornendo importanti informazioni non solo sull'altezza e la quantità di osso residuo, ma anche sulla sua morfologia. Si  ottiene tramite l'esecuzione di radiografie endorali settoriali.</p>
+	<h3>LE CURE</h3>
+	<p>La gengivite semplice si cura con una buona igiene orale domiciliare e professionale che rimuove la placca batterica e il tartaro (placca batterica calcificata), responsabili dell’infiammazione. È buona norma associare sciacqui con medicamenti (per esempio con la clorexidina) per limitare la repentina proliferazione della placca batterica appena rimossa.</p>
+	<p>La malattia parodontale è una malattia cronica, dovuta essenzialmente alla placca batterica, ma sostenuta da varie concause come la predisposizione ereditaria, il fumo, lo stress, la gravidanza, l’uso di alcuni farmaci, il bruxismo, il diabete e altre malattie. Quando la malattia è già in atto, la cura consiste nella rimozione dei germi con un’igiene  orale approfondita, talvolta anche sulla parte profonda della radice dei denti (levigatura delle radici).</p>
+	<h3>COME PREVENIRE LE MALATTIE GENGIVALI</h3>
+	<p>La prevenzione è fondamentale: una corretta igiene orale a casa, i controlli periodici, l’adozione di stili di vita sani che aiutano a rinforzare il sistema immunitario possono rivelarsi nel tempo i migliori alleati per rallentare e contrastare questa malattia.</p>"
+  },
+  {
+    "id": 4,
+    "name": "Visita pediatrica",
+    "image": "servizi/visitaPediatrica.jpg",
+    "description": "
+    <h3>CHE COS'È LA VISITA PEDIATRICA?</h3>
+	<p>Il pediatra è il medico specializzato nello sviluppo psicofisico del bambino e nella diagnosi e terapia delle malattie infantili.</p>
+	<p>Il pediatra segue il piccolo paziente dalla nascita fino al compimento dell’adolescenza, attraverso le diverse fasi dello sviluppo, e accompagna i genitori nel percorso di cura ed educazione dei figli.</p>
+	<p>Il pediatra è o dovrebbe essere anche il punto di riferimento per la famiglia per quanto riguarda l’educazione alla salute ed eventuali scelte informate da operare di fronte a questioni mediche che richiedono un parere specialistico.</p>
+	<p>Durante l’età evolutiva, infatti, si pongono le basi dello stile di vita che il bambino avrà in età adulta (alimentazione, attività fisica, uso del tempo libero, abitudini generali e attenzione alla salute) e affidarsi a un pediatra di fiducia è molto importante.</p>
+	<h3>A CHE COSA SERVE LA VISITA PEDIATRICA?</h3>
+	<p>La visita pediatrica è necessaria a tutti i bambini sani come controllo periodico durante il quale valutare i valori di crescita e alcune problematicità tipiche di ogni età: abilità motorie e competenze linguistiche, controllo della vista, andatura e postura della colonna vertebrale.</p>
+	<p>La visita pediatrica è fondamentale per diagnosticare, curare e monitorare eventuali sintomi o malattie tipiche dell’età infantile come infezioni delle alte vie respiratorie, tonsilliti, bronchiti, otiti, broncopolmoniti, malattie esantematiche o malattie infettive come varicella, rosolia, scarlattina, parotite, infezioni da streptococco, morbillo, malattia mani-piedi-bocca e altre.</p>
+	<p>La visita pediatrica è inoltre utile a escludere, diagnosticare, curare e monitorare tutte quelle malattie croniche che possono manifestarsi fin dall’infanzia e su cui è importante intervenire in tempo.</p>
+	<p>La visita pediatrica è il luogo dove i genitori possono acquisire conoscenze e esprimere dubbi sulle vaccinazioni proposte ai bambini, data l’importanza e la rilevanza di questo argomento per la salute del singolo bambino e di tutta la collettività.</p>
+	<h3>COME SI SVOLGE LA VISITA PEDIATRICA?</h3>
+	<p>La visita pediatrica inizia con l’anamnesi: quando il bambino è ancora piccolo, il colloquio viene fatto con i genitori che sono invitati a raccontare al pediatra comportamenti, abitudini e tutto ciò che ritengono rilevante della crescita del bambino.</p>
+	<p>Con l’età dello sviluppo, invece, il paziente può decidere di relazionarsi personalmente col pediatra.</p>
+	<p>La visita prevede innanzitutto un’osservazione dello stato generale di salute oltre che della zona dolorante e dei sintomi eventualmente lamentati. Vengono misurati peso e altezza del bambino, controllati vista e udito e osservato il movimento spontaneo. Il pediatra è attento alla sensibilità e alla delicatezza del giovane paziente e, soprattutto con bambini molto piccoli, è importante e rassicurante la partecipazione del genitore.</p>
+	<p>Il pediatra si preoccupa inoltre di pianificare col genitore eventuali screening di salute del bambino come l’ecografia dell’anca (consigliata nei primi mesi di vita), controlli oculistici ed ortodontici.</p>
+	<p>In casi individuali, a seguito di problemi rilevati durante la visita, il pediatra può suggerire ai genitori di sottoporre il figlio ad esami di accertamento o di chiedere un consulto ad altri specialisti.</p>
+	<h3>COME PREPARARSI?</h3>
+	<p>Non ci sono indicazioni particolari per la visita pediatrica. Il suggerimento ai genitori è quello di preparare il figlio alla visita e trasmettergli fiducia nei confronti del pediatra, che deve essere considerato un alleato e un compagno di strada dei genitori e del bambino nel percorso di crescita fisica e di sviluppo verso l’autonomia. Il pediatra deve creare durante la visita questo clima sereno e di fiducia che, con l’aiuto dei genitori, vince a poco a poco la diffidenza del bambino.</p>"
+  },
+  {
+    "id": 5,
+    "name": "Visita allergologica",
+    "image": "servizi/visitaAllergologica.jpg",
+    "description": "
+    <h3>QUANDO È INDICATA LA VISITA ALLERGOLOGICA?</h3>
+	<p>La visita allergologica serve per indagare con precisione la causa di sintomi come pruriti, difficoltà respiratorie, mal di testa, eczema. La visita allergologica fornisce al medico allergologo un quadro completo dei disturbi del paziente e gli permette di proporre la terapia adeguata. Dopo la diagnosi, la visita allergologica consente di controllare l’evolversi di un’allergia già diagnosticata.</p>
+	<h3>COME SI SVOLGELA VISITA ALLERGOLOGICA?</h3>
+	<p>Dopo la raccolta dell’anamnesi (ereditarietà familiare per allergie, abitudini come alimentazione, vizio del fumo, consumo di alcol, frequenza di attività fisica, tipologia di impiego, assunzione di farmaci ecc), la visita può prevedere l'esecuzione del prick test.</p>
+	<h3>CHE COS'È IL PRICK TEST?</h3>
+	<p>Il Prick Test è una prova allergica che consiste nell'iniettare nella pelle una piccola quantità di sostanza allergenica: se dopo qualche minuto la zona si gonfia, si arrossa o si scalda, il paziente è sensibile a uno o più allergeni. La sensibilità a un allergene non è tuttavia sempre corrispondente a un’allergia.</p>
+	<p>Gli allergeni disponibili per i prick test sono: gatto, cane, albume d’uovo, tuorlo d’uovo, aglio, soia, riso, gamberetti, kiwi, tonno, banana, pollo, sedano, maiale, pisello, mandorla, mais, patata, pomodoro, arachide, mango, melone, nocciole, pepe, olivo timo, sesamo, merluzzo, cozza, pesci d’acqua dolce, mix 5 alberi, mix 4 alberi, erbacee, nocciolo, ontano, cladosporium, ligustro, controllo positivo, controllo negativo, codolina.</p>
+	<p>Se ci fosse il sospetto di una malattia bronchiale ostruttiva il paziente può essere sottoposto anche a una spirometria.</p>
+	"
   }
 ]
