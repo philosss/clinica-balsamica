@@ -1,0 +1,30 @@
+[ 
+  {
+    "id": 1,
+    "name": "Milano",
+    "address": "Viale della Lombardia 32, 20100",
+    "phonenumber": "02 232532100",
+    "image": "sedi/milano.jpg"
+  },
+    {
+    "id": 2,
+    "name": "Verona",
+    "address": "Piazzale Veneto 10, 37100",
+    "phonenumber": "045 88101010",
+    "image": "sedi/verona.jpg"
+  },
+    {
+    "id": 3,
+    "name": "Grado",
+    "address": "Strada Veneziana 13, 34000",
+    "phonenumber": "0431 130295833",
+    "image": "sedi/grado.jpg"
+  },
+    {
+    "id": 4,
+    "name": "Roma",
+    "address": "Viale del Colosseo 22, 10100",
+    "phonenumber": "01 235552100",
+    "image": "sedi/roma.jpg"
+  }
+]

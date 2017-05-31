@@ -2,9 +2,13 @@
 
 
 var data = [
-    {firstname : "Malcom", lastname: "Reynolds"},
-    {firstname : "Kaylee", lastname: "Frye"},
-    {firstname : "Jayne", lastname: "Cobb"}
+{
+name: "prova1",
+address: "via roma, milano",
+phonenumber: "333333333",
+description: "che bella questa sede",
+id: 1
+}
 ];
 
 
@@ -15,6 +19,9 @@ function formatDoctors(item) {
     return '<div class="card">Nome: '+item.firstname+'<br>Cognome: '+item.lastname+'</div>';
 }
 
+function formatLocations(item) {
+    return '<div class="card">Nome: '+item.name+'</div>';
+}
 
 
 
