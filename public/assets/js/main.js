@@ -262,11 +262,11 @@ var toOutput="";
 
 function formatDoctors(item) {
 
-	toOutput+='<div class="col-sm-3"><div class="row">';
-	toOutput+='<div class="col-sm-4"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
-	toOutput+='<div class="col-sm-8">' + item.name + '<br />' + item.surname + '</div>';
+	toOutput+='<div class="col-sm-4"><div class="row cards-small">';
+	toOutput+='<div class="col-sm-3"><img src="../../assets/img/' + item.image + '" / width="40px"></div>';
+	toOutput+='<div class="col-sm-9"><b>' + item.name + ' ' + item.surname + '</b><br>'+item.location+'</div>';
 	toOutput+='</div></div>';
-	if(item.id%4==0){
+	if(item.id%3==0){
 		toOutput+='</div><div class="row">';
 	}
 }
