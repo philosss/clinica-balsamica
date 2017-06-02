@@ -11,7 +11,7 @@ $gray-darker:            lighten($gray-base, 13.5%) !default; // #222
 $gray-dark:              lighten($gray-base, 20%) !default;   // #333
 $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #fff
 
 $brand-primary:         #0E6E43 !important;
 
@@ -91,7 +91,7 @@ h1,h2,h3,h4,h5,h6 {
 // Image Spacer
 .image-spacer {
   width: 100%;
-  height: 350px;
+  height: 250px;
   display: block;
   clear: both;
   position: relative;
@@ -102,6 +102,9 @@ h1,h2,h3,h4,h5,h6 {
   }
   &.about {
     background-image: url("../img/cover_1.png");
+  }
+  &.doctors {
+    background-image: url("../img/all_doctors.jpg");
   }
 
   &.big {
@@ -174,6 +177,7 @@ h1,h2,h3,h4,h5,h6 {
 .content-wrapper {
   width: 100%;
   min-height: 30px;
+  padding-bottom:40px;
 
   &.white {
     background-color: white;
@@ -205,3 +209,39 @@ h1,h2,h3,h4,h5,h6 {
 
   }
 }
+.cards-small{ 
+  background: #FDFDFD;
+  border: 1px solid #979797;
+
+  font-size: 10px;
+  color: #6C6C6C;
+  letter-spacing: 0;
+
+  width: 90%;
+
+  padding:6px 0 6px 0;
+
+  margin-bottom:30px;
+}
+.breadcrumbs{
+  position: relative;
+  top:20px;
+  left:10px;
+  font-size: 12px;
+  color: #D3D3D3;
+  letter-spacing: 1.15px;
+  a{
+    color:#D3D3D3;
+  }
+  span{
+    color:#0E6E43;
+    a{
+      color:#0E6E43;
+    }
+  }
+  
+}
+.row{
+  margin:0;
+}
+
