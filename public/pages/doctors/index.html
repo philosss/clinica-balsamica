@@ -2,71 +2,29 @@
 <html lang="it">
 
     <head>
-        <meta charset="utf-8">
+      <meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-	    <title>Clinica Balsamica</title>
-
+	    <title>Clinica Balsamica - Dottori</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <meta name="description" content="" />
-	    <meta name="keywords" content="" />
-	    <meta name="author" content="" />
+      <!-- Theme style  -->
+      <link rel="stylesheet" href="../../assets/css/style.css">
 
-        <!-- Facebook and Twitter integration -->
-	    <meta property="og:title" content=""/>
-	    <meta property="og:image" content=""/>
-	    <meta property="og:url" content=""/>
-	    <meta property="og:site_name" content=""/>
-	    <meta property="og:description" content=""/>
-	    <meta name="twitter:title" content="" />
-	    <meta name="twitter:image" content="" />
-	    <meta name="twitter:url" content="" />
-	    <meta name="twitter:card" content="" />
+      <!-- Modernizr JS -->
+      <script src="../../assets/js/modernizr-2.6.2.min.js"></script>
 
-        <!-- Theme style  -->
-        <link rel="stylesheet" href="../../assets/css/style.css">
-
-        <!-- Modernizr JS -->
-        <script src="../../assets/js/modernizr-2.6.2.min.js"></script>
-        <!-- FOR IE9 below -->
-        <!--[if lt IE 9]>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->
+      <!-- FOR IE9 below -->
+      <!--[if lt IE 9]>
+      <script src="js/respond.min.js"></script>
+      <![endif]-->
 
 
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-                
-        <script>
-        var apiCall="doctors";
-        </script>
-        <style>
-        .cards-small{ 
-          background: #FDFDFD;
-          border: 1px solid #979797;
-          
-          font-size: 10px;
-          color: #6C6C6C;
-          letter-spacing: 0;
-          
-          width: 90%;
-          
-          padding:6px 0 6px 0;
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+              
+      <script>
+      //MUST BE DEFINED, EVEN BLANK
+      var apiCall="doctors";
+      </script>
 
-          margin-bottom:30px;
-        }
-        nav.sub-nav{
-
-          margin-bottom:30px;
-        }
-        body{
-          background-color: #fff;
-        }
-        footer{
-          background-color: #eee;
-        }
-
-
-        </style>
     </head>
 
     <body>
@@ -97,6 +55,7 @@
       <div class="content-wrapper white">
       <div class="row">
         <div class="col-sm-offset-1 col-sm-3 breadcrumbs"><a href='../../index.html'>Home</a> > <span><a href='index.html'>Tutti i dottori</a></span></div>
+      </div>
       <div class="row text-center">
         <h2 class="text-uppercase"><span class="eyebrow">La nostra equipe</span>Tutti i dottori</h2>
       </div>
@@ -104,40 +63,38 @@
       <!-- SUBNAVIGATION -->
       <nav class="sub-nav">
         <ul>
-          <li><a href='presentation.html' class="active">Presentazione</a></li>
-          <li><a href='work.html'>Lavora con Noi</a></li>
-          <li><a href='howtoreach.html'>Come Raggiungerci</a></li>
-          <li><a href='contacts.html'>Contatti</a></li>
+          <li><a href='index.html' class="active">Tutti i dottori in ordine alfabetico</a></li>
+          <li><a href='servizio.html'>Sfoglia per servizio</a></li>
+          <li><a href='howtoreach.html'>Sfoglia per sede</a></li>
         </ul>
       </nav>
-      
-        <div class="container" id="list">
-        </div>
+        <div class="container" id="list"></div>
       </div>
 
 
       <footer>
         <div class="container">
           <div class="row">
-            <div class="col-md-4">
+
+            <div class="col-sm-4">
               <div class="logo"></div>
             </div>
-            <div class="col-md-4">
-              <a href="../about/index.html">CHI SIAMO</a>
-              <a href="../about/presentation.html">Presentazione</a>
+            <div class="col-sm-4">
+              <a href="../about/index.html">Chi siamo</a>
               <a href="../about/work.html">Lavora con noi</a>
               <a href="../about/howtoreach.html">Come Raggiungerci</a>
               <a href="../about/contacts.html">Contatti</a>
             </div>
-            <div class="col-md-4">
-              <a href="index.html">DOTTORI</a>
-              <a href="../services/index.html">SERVIZI</a>
-              <a href="../locations/index.html">SEDI</a>
+            <div class="col-sm-4">
+              <a href="../doctors/index.html">Dottori</a>
+              <a href="../services/index.html">Servizi</a>
+              <a href="../locations/index.html">Sedi</a>
+              <a href="../faq.html">FAQ</a>              
             </div>
 
           </div>
 
-          <p class="copy text-center">Copyright &copy; 2017 Clinica Balsamica.</p>
+          <p class="copy text-center">Copyright &copy; 2017 Clinica Balsamica</p>
         </div>
       </footer>
 

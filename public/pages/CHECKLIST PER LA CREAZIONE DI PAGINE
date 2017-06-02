@@ -1,0 +1,12 @@
+CHECKLIST PER LA CREAZIONE DI PAGINE:
+
+1) Modificare <title>
+2) Definire la variabile javascript apiCall (per il fetch del JOSN della pagina).
+	--> Se la pagina non richiede chiamate ad API, lasciare definire apiCall="";
+3) Impostare la class="active" al link sul menù superiore (<div class="nav-resp">)
+4) Modificare i breadcrumbs. Salva la pagina. Testali.
+5) Impostare la subnavigation (<nav class="sub-nav">)
+
+	--> 6) Impostare la class="active" al link della subnavigation
+
+7) NON MODIFICARE i link del footer. Sono perfettamente funzionanti per tutte le sottocartelle di pages/

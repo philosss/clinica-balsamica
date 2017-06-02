@@ -5424,7 +5424,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0;
   width: 90%;
   padding: 6px 0 6px 0;
-  margin-bottom: 30px; }
+  margin-bottom: 30px !important; }
 
 .breadcrumbs {
   position: relative;
