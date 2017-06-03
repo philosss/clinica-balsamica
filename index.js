@@ -18,19 +18,15 @@ const knex = require('knex')({
 });
 
 function initDB() {
-    var doctorsList = require("./doctors.json");
+    var doctorsList = require("./db/doctors.json");
     doctorsList.map(doc => {
         knex("doctors").insert(doc);
     });
-    var locationsList = require("./locations.json");
+    var locationsList = require("./db/locations.json");
     doctorsList.map(loc => {
         knex("locations").insert(loc);
     });
-    var areasList = require("./areas.json");
-    areasList.map(area => {
-        knex("areas").insert(area);
-    });
-    var servicesList = require("./services.json");
+    var servicesList = require("./db/services.json");
     servicesList.map(serv => {
         knex("services").insert(serv);
     });
