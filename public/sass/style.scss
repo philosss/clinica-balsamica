@@ -221,6 +221,48 @@ h1,h2,h3,h4,h5,h6 {
 
   padding:6px 0 6px 0;
   margin-bottom:30px !important;
+  a{
+    text-decoration: none !important;
+    color:#6C6C6C;
+  }
+}
+.card{
+background: #FFFFFF;
+    min-height: 100px;
+    padding: 9px 0 0 0;
+    margin-bottom: 30px;
+border: #979797 1px solid;
+border-top: 0;
+
+
+font-size: 12px;
+
+line-height: 18px;
+
+
+color: #6C6C6C;
+letter-spacing: 0;
+
+/* banfi: */
+
+}
+.nodec{
+    text-decoration: none !important;
+  }
+.green-bar{
+  background: #0E6E43;
+  border: 1px solid #0E6E43;
+  text-align:center;
+  color:#fff;
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.71px;
+  line-height: 25px;
+  font-weight: 400;
+
+  
+
 }
 .breadcrumbs{
   position: relative;
