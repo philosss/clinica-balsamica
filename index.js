@@ -67,8 +67,22 @@ app.get("/services", function(req, res) {
     });
 });
 
+app.get("/doctors/services", function(req, res) {
+    knex.select("doctors.*", "doctors_services.serviceid").from("doctors").leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" }).orderBy("id").then(results =>  {
+        r = {};
+        for (var i = 0; i < results.length; i++) {
+            if (r[results[i].serviceid] == undefined) {
+                r[results[i].serviceid] = [];
+            }
+            r[results[i].serviceid].push(results[i]);
+            delete results[i].serviceid;
+        }
+        res.json(r);
+    });
+});
+
 app.get("/doctors", function(req, res) {
-    knex("doctors").orderBy("id").then(results =>  {
+    knex("doctors").then(results =>  {
         res.json(results);
     });
 });
