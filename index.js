@@ -82,7 +82,7 @@ app.get("/doctors/services", function(req, res) {
 });
 
 app.get("/doctors", function(req, res) {
-    knex("doctors").then(results =>  {
+    knex("doctors").orderBy("id").then(results =>  {
         res.json(results);
     });
 });
