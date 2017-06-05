@@ -18,17 +18,29 @@ const knex = require('knex')({
 });
 
 function initDB() {
+    var locationsList = require("./db/locations.json");
+    locationsList.map(loc => {
+        knex("locations").insert(loc).catch(err => {
+            console.log(err);
+        });
+    });
     var doctorsList = require("./db/doctors.json");
     doctorsList.map(doc => {
-        knex("doctors").insert(doc);
-    });
-    var locationsList = require("./db/locations.json");
-    doctorsList.map(loc => {
-        knex("locations").insert(loc);
+        knex("doctors").insert(doc).catch(err => {
+            console.log(err);
+        });
     });
     var servicesList = require("./db/services.json");
     servicesList.map(serv => {
-        knex("services").insert(serv);
+        knex("services").insert(serv).catch(err => {
+            console.log(err);
+        });
+    });
+    var doctorsServicesList = require("./db/doctors_services.json");
+    doctorsServicesList.map(serv => {
+        knex("doctors_services").insert(serv).catch(err => {
+            console.log(err);
+        });
     });
 }
 
@@ -60,7 +72,7 @@ app.get("/services", function(req, res) {
 });
 
 app.get("/doctors", function(req, res) {
-    knex("doctors").then(results =>  {
+    knex("doctors").orderBy("id").then(results =>  {
         res.json(results);
     });
 });
