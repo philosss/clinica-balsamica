@@ -56,7 +56,7 @@ app.post("/locations", function(req, res) {
 });
 
 app.get("/locations", function(req, res) {
-    knex("locations").then(results =>  {
+    knex("locations").orderBy("id").then(results =>  {
         res.json(results);
     });
 });
@@ -67,15 +67,31 @@ app.get("/services", function(req, res) {
     });
 });
 
+function indexOf(obj, id) {
+    for (var k in obj) {
+        if (obj[k].service_id == id)  {
+            return k;
+        }
+    }
+    return -1;
+}
+
 app.get("/doctors/services", function(req, res) {
-    knex.select("doctors.*", "doctors_services.serviceid").from("doctors").leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" }).orderBy("id").then(results =>  {
-        r = {};
+    knex.select("doctors.*", "doctors_services.serviceid", "services.name AS service_name").from("doctors").leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" }).join("services", { "services.id": "doctors_services.serviceid" }).then(results =>  {
+        var r = [];
         for (var i = 0; i < results.length; i++) {
-            if (r[results[i].serviceid] == undefined) {
-                r[results[i].serviceid] = [];
+            var x = indexOf(r, results[i].serviceid)
+            if (x >= 0) {
+                r[x].doctors.push(results[i]);
+            } else {
+                el = {};
+                el.service_id = results[i].serviceid;
+                el.service_name = results[i].service_name;
+                el.doctors = [results[i]];
+                r.push(el);
             }
-            r[results[i].serviceid].push(results[i]);
             delete results[i].serviceid;
+            delete results[i].service_name;
         }
         res.json(r);
     });
