@@ -82,7 +82,7 @@ app.get("/doctors/services", function(req, res) {
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
-        .orderBy("id")
+        .orderBy("doctors.surname", "doctors.name")
         .then(results =>  {
             var r = [];
             for (var i = 0; i < results.length; i++) {
@@ -104,7 +104,7 @@ app.get("/doctors/services", function(req, res) {
 });
 
 app.get("/doctors", function(req, res) {
-    knex("doctors").orderBy("id").then(results =>  {
+    knex("doctors").orderBy("surname", "name").then(results =>  {
         res.json(results);
     });
 });
