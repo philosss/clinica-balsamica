@@ -5337,6 +5337,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 20px;
     display: block; }
 
+a:hover {
+  color: #0E6E43 !important; }
+
 .image-spacer {
   width: 100%;
   height: 250px;
@@ -5502,5 +5505,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .row {
   margin: 0; }
+
+.serviceTitle span {
+  margin-left: 5px;
+  font-size: 15px; }
+.serviceTitle h3 {
+  font-family: AvenirNext-Medium;
+  font-size: 20px;
+  color: #4D4D4D;
+  letter-spacing: 1.31px;
+  text-transform: uppercase; }
 
 /*# sourceMappingURL=style.css.map */

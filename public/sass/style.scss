@@ -85,7 +85,11 @@ h1,h2,h3,h4,h5,h6 {
   }
 
 }
-
+a {
+    &:hover {
+      color: $brand-primary;
+    }
+  }
 
 
 // Image Spacer
@@ -321,5 +325,19 @@ h1,h2,h3,h4,h5,h6 {
 .row{
   margin:0;
 }
+.serviceTitle{
 
+  span{
+    margin-left: 5px;
+    font-size: 15px;
+  }
+  h3{
+    font-family: AvenirNext-Medium;
+    font-size: 20px;
+    color: #4D4D4D;
+    letter-spacing: 1.31px;
+    text-transform: uppercase;
+
+  }
+}
 

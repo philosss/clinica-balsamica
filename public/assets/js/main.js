@@ -3,6 +3,8 @@
 
 var toOutput="";
 var iterator=1;
+var iterator2=1;
+var list = $("#list");
 
 /* ----------------- API FORMATS -----------------*/
 
@@ -31,10 +33,22 @@ function formatLocations(item) {
     }
     iterator++;
 }
+function formatServices(item) {
+    toOutput+='<div class="col-sm-6 preCards">';
+    toOutput+='<a href="../services/id/'+ item.id +'.html">';
+    toOutput+='<div class="box">';
+    toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';       
+    toOutput+='<div class="cityname">' + item.name + '</div>';
+    toOutput+='</div></a></div>';
+    if(iterator%2==0){
+        toOutput+='</div><div class="row">';
+    }
+    iterator++;
+}
 
 
 
-function formatDoctorsServices(item) {
+function formatDoctorsBig(item) {
 
 
     toOutput+='<div class="col-sm-6 preCards">';
@@ -44,17 +58,25 @@ function formatDoctorsServices(item) {
     toOutput+='<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';       
     toOutput+='<div class="col-md-10 col-xs-9">Email: '+item.email+'<br>Telefono: '+item.phonenumber+'<br>Ufficio: #'+item.office+', '+item.location+'</div>';
     toOutput+='</div></a></div>';
-    if(iterator%2==0){
+    if(iterator2%2==0){
         toOutput+='</div><div class="row">';
     }
-    iterator++;
+    iterator2++;
 }
 
 function levelFormatterDoctorsServices(item){
-    console.log("asas");
-    toOutput+='<h1>1</h1>';
-    list.append(data.map(formatDoctorsServices));
-
+    
+    toOutput+='<a class="serviceTitle" href="../services/id/'+item.service_id+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+    list.append((item.doctors).map(formatDoctorsBig));
+    toOutput+='</div><div class="row">';
+    iterator2=1;
+}
+function levelFormatterDoctorsLocations(item){
+    
+    toOutput+='<a class="serviceTitle" href="../locations/id/'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+    list.append((item.doctors).map(formatDoctorsBig));
+    toOutput+='</div><div class="row">';
+    iterator2=1;
 }
 
 
@@ -95,21 +117,21 @@ function show(what, callback) {
             return response.json();
         })
         .then(function(data) {
-            var list = $("#list");
+            
             toOutput+='<div class="row">';
             switch (level1) {
                 case "locations":
-                    list.append(data.map(formatLocations));
+                    data.map(formatLocations);
                     break;
                 case "services":
-                    list.append(data.map(formatServices));
+                    data.map(formatServices);
                     break;
                 case "doctors":
-                	
                     level2=levels[1];
                     switch(level2){
                         case "services":
                             data.map(levelFormatterDoctorsServices);
+                        break;
                         case "locations":
                             data.map(levelFormatterDoctorsLocations);
                         break;
@@ -128,7 +150,6 @@ function show(what, callback) {
             }
             toOutput+='</div>';
             list.append(toOutput);
-        
         });
 
 }
