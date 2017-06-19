@@ -12,6 +12,9 @@ function formatFaq(item) {
     toOutput+='<div><h3>'+item.question+'</h3>';
     toOutput+='<p>'+item.answer+'</p></div>';
 }
+function formatAbout(item) {
+    toOutput+='<p>'+item.presentazione+'</p>';
+}
 function formatDoctorsSmall(item) {
     toOutput+='<div class="col-sm-4 preCards">';
     toOutput+='<a href="../doctors/id/'+ item.id +'.html">';
@@ -130,6 +133,9 @@ function show(what, callback) {
                 case "faq":
                     data.map(formatFaq);
                     break;
+                case "presentazione":
+                    data.map(formatAbout);
+                    break;                    
                 case "services":
                     data.map(formatServices);
                     break;
