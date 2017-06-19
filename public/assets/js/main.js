@@ -121,6 +121,7 @@ function show(what, callback) {
             toOutput+='<div class="row">';
             switch (level1) {
                 case "locations":
+                    toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatLocations);
                     break;
                 case "services":
