@@ -13,7 +13,7 @@ function formatDoctorsSmall(item) {
     toOutput+='<div class="col-sm-4 preCards">';
     toOutput+='<a href="../doctors/id/'+ item.id +'.html">';
     toOutput+='<div class="row cards card-small">';
-    toOutput+='<div class="col-sm-3 col-xs-2"><img src="../../assets/img/' + item.image + '" width="40px"></div>';       
+    toOutput+='<div class="col-sm-3 col-xs-2"><img src="../../assets/img/' + item.image + '" width="40px"></div>';
     toOutput+='<div class="col-sm-9 col-xs-10"><b>' + item.name + ' ' + item.surname + '</b><br>'+item.location+'</div>';
     toOutput+='</div></a></div>';
     if(iterator%3==0){
@@ -25,11 +25,11 @@ function formatLocations(item) {
     toOutput+='<div class="col-sm-6 preCards">';
     toOutput+='<a href="../locations/id/'+ item.id +'.html">';
     toOutput+='<div class="box">';
-    toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';       
+    toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
     toOutput+='<div class="cityname">' + item.name + '</div>';
     toOutput+='</div></a></div>';
     if(iterator%2==0){
-        toOutput+='</div><div class="row">';
+        toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
     }
     iterator++;
 }
@@ -37,7 +37,7 @@ function formatServices(item) {
     toOutput+='<div class="col-sm-6 preCards">';
     toOutput+='<a href="../services/id/'+ item.id +'.html">';
     toOutput+='<div class="box">';
-    toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';       
+    toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
     toOutput+='<div class="cityname">' + item.name + '</div>';
     toOutput+='</div></a></div>';
     if(iterator%2==0){
@@ -55,7 +55,7 @@ function formatDoctorsBig(item) {
     toOutput+='<a href="../doctors/id/'+ item.id +'.html">';
     toOutput+='<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
     toOutput+='<div class="cards card-big">';
-    toOutput+='<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';       
+    toOutput+='<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
     toOutput+='<div class="col-md-10 col-xs-9">Email: '+item.email+'<br>Telefono: '+item.phonenumber+'<br>Ufficio: #'+item.office+', '+item.location+'</div>';
     toOutput+='</div></a></div>';
     if(iterator2%2==0){
@@ -65,14 +65,14 @@ function formatDoctorsBig(item) {
 }
 
 function levelFormatterDoctorsServices(item){
-    
+
     toOutput+='<a class="serviceTitle" href="../services/id/'+item.service_id+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
     toOutput+='</div><div class="row">';
     iterator2=1;
 }
 function levelFormatterDoctorsLocations(item){
-    
+
     toOutput+='<a class="serviceTitle" href="../locations/id/'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
     toOutput+='</div><div class="row">';
@@ -101,7 +101,7 @@ $(document).ready(function() {
         $('.nav-resp').toggleClass('open');
     });
     //This variable must been set on the html page to call the APIs
-    if(apiCall!=""){ 
+    if(apiCall!=""){
     	show(apiCall);
     }
 });
@@ -117,7 +117,7 @@ function show(what, callback) {
             return response.json();
         })
         .then(function(data) {
-            
+
             toOutput+='<div class="row">';
             switch (level1) {
                 case "locations":
@@ -142,7 +142,7 @@ function show(what, callback) {
                             data.map(formatDoctorsSmall);
                         break;
                     }
-                    
+
                     break;
                 default:
                     //console.log("NoSuchParameter");
