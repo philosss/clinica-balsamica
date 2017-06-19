@@ -19,30 +19,31 @@ const knex = require('knex')({
 });
 
 function initDB() {
-    var ddl = fs.readFileSync("./db/ddl");
+    //var ddl = fs.readFileSync("./db/ddl");
     var locationsList = require("./db/locations.json");
     var doctorsList = require("./db/doctors.json");
     var servicesList = require("./db/services.json");
     var doctorsServicesList = require("./db/doctors_services.json");
 
-    knex.raw(ddl).catch(err => {
+    /*knex.schema.raw(ddl).catch(err => {
+        console.log("ERRORE NEL DDL");
+        console.log(err);
+    }).then(() => {*/
+    knex("locations").insert(locationsList).catch(err => {
         console.log(err);
     }).then(() => {
-        knex("locations").insert(locationsList).catch(err => {
+        knex("doctors").insert(doctorsList).catch(err => {
             console.log(err);
         }).then(() => {
-            knex("doctors").insert(doctorsList).catch(err => {
+            knex("services").insert(servicesList).catch(err => {
                 console.log(err);
             }).then(() => {
-                knex("services").insert(servicesList).catch(err => {
+                knex("doctors_services").insert(doctorsServicesList).catch(err => {
                     console.log(err);
-                }).then(() => {
-                    knex("doctors_services").insert(doctorsServicesList).catch(err => {
-                        console.log(err);
-                    })
-                });
+                })
             });
         });
+        //});
     });
 }
 
@@ -55,31 +56,39 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/locations", function(req, res) {
+app.post("/api/locations", function(req, res) {
     knex("locations").insert({ "name": req.body.name, "address": req.body.address, "phonenumber": req.body.phonenumber, "description": req.body.description }).then(ids => {
         res.json({ id: ids[0] });
     });
 });
 
-app.get("/locations", function(req, res) {
+app.get("/api/locations", function(req, res) {
     knex("locations").orderBy("id").then(results =>  {
         res.json(results);
     });
 });
 
-app.get("/services", function(req, res) {
+app.get("/api/services", function(req, res) {
     knex("services").then(results =>  {
         res.json(results);
     });
 });
 
-app.get("/service/:service_id", function(req, res) {
+app.get("/api/service/:service_id", function(req, res) {
     var i = parseInt(req.params.service_id);
     knex("services").then(results =>  {
         res.json(results);
     });
 });
-app.get("/doctor/:doctor_id", function(req, res) {
+
+app.get("/api/doctor/:doctor_id", function(req, res) {
+    var i = parseInt(req.params.doctor_id);
+    knex("doctors").where({ "doctors.id": i }).then(results =>  {
+        res.json(results);
+    });
+});
+
+app.get("/api/faq", function(req, res) {
     var i = parseInt(req.params.doctor_id);
     knex("doctors").where({ "doctors.id": i }).then(results =>  {
         res.json(results);
@@ -95,7 +104,7 @@ function indexOf(obj, id, by) {
     return -1;
 }
 
-app.get("/doctors/services", function(req, res) {
+app.get("/api/doctors/services", function(req, res) {
     knex
         .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
         .from("doctors")
@@ -124,7 +133,7 @@ app.get("/doctors/services", function(req, res) {
 });
 
 
-app.get("/doctors/locations", function(req, res) {
+app.get("/api/doctors/locations", function(req, res) {
     knex
         .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location_name", "locations.id AS location_id")
         .from("doctors")
@@ -152,7 +161,7 @@ app.get("/doctors/locations", function(req, res) {
         });
 });
 
-app.get("/doctors", function(req, res) {
+app.get("/api/doctors", function(req, res) {
     knex
         .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location")
         .from("doctors")
@@ -163,7 +172,7 @@ app.get("/doctors", function(req, res) {
         });
 });
 
-app.get("/doctors/fromLocation/:locationID", function(req, res) {
+app.get("/api/doctors/fromLocation/:locationID", function(req, res) {
     knex
         .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.image")
         .from("doctors")
