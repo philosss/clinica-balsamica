@@ -5377,6 +5377,7 @@ a:hover {
   clear: both;
   position: relative;
   overflow: hidden;
+  background-attachment: fixed;
   background-size: cover; }
   @media screen and (min-width: 1200px) {
     .image-spacer {
@@ -5402,8 +5403,7 @@ a:hover {
   .image-spacer.doctors_locations {
     background-image: url("../img/doctors_area.jpg"); }
   .image-spacer.big {
-    height: 600px;
-    background-attachment: fixed; }
+    height: 600px; }
   .image-spacer img {
     width: 100%;
     object-fit: cover; }

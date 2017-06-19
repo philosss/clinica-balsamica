@@ -56,13 +56,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/api/locations", function(req, res) {
-    knex("locations").insert({ "name": req.body.name, "address": req.body.address, "phonenumber": req.body.phonenumber, "description": req.body.description }).then(ids => {
-        res.json({ id: ids[0] });
-    });
-});
-
-app.get("/api/locations", function(req, res) {
+app.get(["/api/locations", "/api/howtoreach"], function(req, res) {
     knex("locations").orderBy("id").then(results =>  {
         res.json(results);
     });
@@ -76,7 +70,7 @@ app.get("/api/services", function(req, res) {
 
 app.get("/api/service/:service_id", function(req, res) {
     var i = parseInt(req.params.service_id);
-    knex("services").then(results =>  {
+    knex("services").where({"service.id": i}).then(results =>  {
         res.json(results);
     });
 });
@@ -127,7 +121,7 @@ app.get("/api/doctors/services", function(req, res) {
                     r[x].doctors.push(results[i]);
                 } else {
                     el = {};
-                    el.service_id = results[i].serviceid;
+                    el.serviceid = results[i].serviceid;
                     el.service_name = results[i].service_name;
                     el.doctors = [results[i]];
                     r.push(el);

@@ -13,7 +13,7 @@ function formatFaq(item) {
     toOutput+='<p>'+item.answer+'</p></div>';
 }
 function formatAbout(item) {
-    toOutput+='<p>'+item.presentazione+'</p>';
+    toOutput+='<p>'+item+'</p>';
 }
 function formatDoctorsSmall(item) {
     toOutput+='<div class="col-sm-4 preCards">';
@@ -51,7 +51,18 @@ function formatServices(item) {
     }
     iterator++;
 }
-
+function formatHowToReach(item) {
+    toOutput+='<div class="col-sm-6">';
+    toOutput+='<a href="../locations/id/'+ item.id +'.html">';
+    toOutput+='<div class="box">';
+    toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
+    toOutput+='<div class="cityname">' + item.name + '</div>';
+    toOutput+='</div></a></div>';
+    if(iterator%2==0){
+        toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
+    }
+    iterator++;
+}
 
 
 function formatDoctorsBig(item) {
@@ -151,12 +162,19 @@ function show(what, callback) {
                     toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatLocations);
                     break;
+                case "howtoreach":
+                    toOutput += '<div class="col-md-8 col-md-offset-2">';
+                    data.map(formatHowToReach);
+                    break;
                 case "faq":
                     data.map(formatFaq);
                     break;
+                case "work":
+                    data.map(formatFaq);
+                    break;                    
                 case "presentazione":
                     data.map(formatAbout);
-                    break;
+                    break;                                        
                 case "services":
                   toOutput += '<div class="col-md-8 col-md-offset-2">';
                   data.map(formatServices);
