@@ -109,7 +109,10 @@ function formatServiceDetails(item) {
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2><br />';
   out += item.description;
   out += '<br />';
-  out += '<a class="btn btn-primary btn-md">SCOPRI I DOTTORI CHE OPERANO QUI</a>';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">SCOPRI I DOTTORI CHE OPERANO QUI</a></div>';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">DOV’È DISPONIBILE QUESTO SERVIZIO?</a></div>';
+
+
 
   cont.append(out);
 
