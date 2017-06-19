@@ -70,7 +70,7 @@ app.get("/api/services", function(req, res) {
 
 app.get("/api/service/:service_id", function(req, res) {
     var i = parseInt(req.params.service_id);
-    knex("services").then(results =>  {
+    knex("services").where({"service.id": i}).then(results =>  {
         res.json(results);
     });
 });
@@ -121,7 +121,7 @@ app.get("/api/doctors/services", function(req, res) {
                     r[x].doctors.push(results[i]);
                 } else {
                     el = {};
-                    el.service_id = results[i].serviceid;
+                    el.serviceid = results[i].serviceid;
                     el.service_name = results[i].service_name;
                     el.doctors = [results[i]];
                     r.push(el);

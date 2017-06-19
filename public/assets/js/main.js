@@ -96,6 +96,21 @@ function levelFormatterDoctorsLocations(item){
     iterator2=1;
 }
 
+function formatServiceDetails(item) {
+  var cont = $('#content');
+
+  while (cont.hasChildNodes()) {
+    cont.removeChild(cont.lastChild);
+  }
+  console.log(item);
+
+  var out = '';
+
+  out = '<h2 class="text-uppercase">I nostri servizi<span class="eyebrow">Scopri i nostri fantastici Servizi</span></h2>';
+
+  cont.append(out);
+
+}
 
 
 
@@ -129,6 +144,11 @@ $(document).ready(function() {
 function show(what, callback) {
     var levels = what.split("/");
     var level1 = levels[0];
+
+    if (level1 == "service") {
+      what=what+'/'+window.location.search.substr(1);
+    }
+
     fetch("/api/" + what)
         .then(function(response) {
             return response.json();
@@ -156,9 +176,12 @@ function show(what, callback) {
                     data.map(formatAbout);
                     break;                                        
                 case "services":
-                    toOutput += '<div class="col-md-8 col-md-offset-2">';
-                    data.map(formatServices);
-                    break;
+                  toOutput += '<div class="col-md-8 col-md-offset-2">';
+                  data.map(formatServices);
+                  break;
+                case "service":
+                  data.map(formatServiceDetails);
+                  break;
                 case "doctors":
                     level2=levels[1];
                     switch(level2){
