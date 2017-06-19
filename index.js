@@ -89,10 +89,7 @@ app.get("/api/doctor/:doctor_id", function(req, res) {
 });
 
 app.get("/api/faq", function(req, res) {
-    var i = parseInt(req.params.doctor_id);
-    knex("doctors").where({ "doctors.id": i }).then(results =>  {
-        res.json(results);
-    });
+    res.json(require("./db/faq.json"));
 });
 
 function indexOf(obj, id, by) {
@@ -103,6 +100,10 @@ function indexOf(obj, id, by) {
     }
     return -1;
 }
+
+app.get("/api/doctors/location/:location_id", function(req, res) {
+
+});
 
 app.get("/api/doctors/services", function(req, res) {
     knex
