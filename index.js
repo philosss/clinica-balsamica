@@ -56,13 +56,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/api/locations", function(req, res) {
-    knex("locations").insert({ "name": req.body.name, "address": req.body.address, "phonenumber": req.body.phonenumber, "description": req.body.description }).then(ids => {
-        res.json({ id: ids[0] });
-    });
-});
-
-app.get("/api/locations", function(req, res) {
+app.get(["/api/locations", "/api/howtoreach"], function(req, res) {
     knex("locations").orderBy("id").then(results =>  {
         res.json(results);
     });
@@ -113,7 +107,7 @@ app.get("/api/doctors/location/:location_id", function(req, res) {
 
 app.get("/api/doctors/services", function(req, res) {
     knex
-        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location", "doctors_services.service_id", "services.name AS service_name")
+        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
@@ -122,17 +116,17 @@ app.get("/api/doctors/services", function(req, res) {
         .then(results =>  {
             var r = [];
             for (var i = 0; i < results.length; i++) {
-                var x = indexOf(r, results[i].service_id, 'service_id')
+                var x = indexOf(r, results[i].serviceid, 'serviceid')
                 if (x >= 0) {
                     r[x].doctors.push(results[i]);
                 } else {
                     el = {};
-                    el.service_id = results[i].service_id;
+                    el.service_id = results[i].serviceid;
                     el.service_name = results[i].service_name;
                     el.doctors = [results[i]];
                     r.push(el);
                 }
-                delete results[i].service_id;
+                delete results[i].serviceid;
                 delete results[i].service_name;
             }
             res.json(r);

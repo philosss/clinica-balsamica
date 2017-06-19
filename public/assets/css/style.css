@@ -5317,19 +5317,49 @@ footer {
     font-size: 11px;
     font-style: italic; }
 
-body, html {
+body,
+html {
   background-color: #eeeeee; }
 
-p, li {
+p,
+li {
   font-size: 14px;
   color: #6C6C6C;
   letter-spacing: 0;
   line-height: 26px; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 30px;
   margin-top: 30px; }
-  h1 p.eyebrow, h1 a.eyebrow, h1 i.eyebrow, h1 span.eyebrow, h2 p.eyebrow, h2 a.eyebrow, h2 i.eyebrow, h2 span.eyebrow, h3 p.eyebrow, h3 a.eyebrow, h3 i.eyebrow, h3 span.eyebrow, h4 p.eyebrow, h4 a.eyebrow, h4 i.eyebrow, h4 span.eyebrow, h5 p.eyebrow, h5 a.eyebrow, h5 i.eyebrow, h5 span.eyebrow, h6 p.eyebrow, h6 a.eyebrow, h6 i.eyebrow, h6 span.eyebrow {
+  h1 p.eyebrow,
+  h1 a.eyebrow,
+  h1 i.eyebrow,
+  h1 span.eyebrow,
+  h2 p.eyebrow,
+  h2 a.eyebrow,
+  h2 i.eyebrow,
+  h2 span.eyebrow,
+  h3 p.eyebrow,
+  h3 a.eyebrow,
+  h3 i.eyebrow,
+  h3 span.eyebrow,
+  h4 p.eyebrow,
+  h4 a.eyebrow,
+  h4 i.eyebrow,
+  h4 span.eyebrow,
+  h5 p.eyebrow,
+  h5 a.eyebrow,
+  h5 i.eyebrow,
+  h5 span.eyebrow,
+  h6 p.eyebrow,
+  h6 a.eyebrow,
+  h6 i.eyebrow,
+  h6 span.eyebrow {
     font-size: 10px;
     color: #9FA3A7;
     letter-spacing: 2.8px;
@@ -5348,7 +5378,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   background-size: cover; }
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 1200px) {
     .image-spacer {
       height: 380px; } }
   .image-spacer.home {
@@ -5372,7 +5402,8 @@ a:hover {
   .image-spacer.doctors_locations {
     background-image: url("../img/doctors_area.jpg"); }
   .image-spacer.big {
-    height: 600px; }
+    height: 600px;
+    background-attachment: fixed; }
   .image-spacer img {
     width: 100%;
     object-fit: cover; }

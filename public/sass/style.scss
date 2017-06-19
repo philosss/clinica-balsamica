@@ -1,38 +1,28 @@
 // Core variables and mixins
 @import "_bootstrap";
-
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
-
-$gray-base:              #000 !default;
-$gray-darker:            lighten($gray-base, 13.5%) !default; // #222
-$gray-dark:              lighten($gray-base, 20%) !default;   // #333
-$gray:                   lighten($gray-base, 33.5%) !default; // #555
-$gray-light:             lighten($gray-base, 46.7%) !default; // #777
-$gray-lighter:           lighten($gray-base, 93.5%) !default; // #fff
-
-$brand-primary:         #0E6E43 !important;
-
-
+$gray-base : #000 !default;
+$gray-darker : lighten($gray-base, 13.5%) !default; // #222
+$gray-dark : lighten($gray-base, 20%) !default; // #333
+$gray : lighten($gray-base, 33.5%) !default; // #555
+$gray-light : lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter : lighten($gray-base, 93.5%) !default; // #fff
+$brand-primary : #0E6E43 !important;
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
-
 //** Background color for `<body>`.
-$body-bg:               #fff !default;
+$body-bg : #fff !default;
 //** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
-
+$text-color : $gray-dark !default;
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color : $brand-primary !default;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
+$link-hover-color : darken($link-color, 15%) !default;
 //** Link hover decoration.
 $link-hover-decoration: underline !default;
-
-
 //== Useful Mixins
 @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
@@ -49,322 +39,293 @@ $link-hover-decoration: underline !default;
     transition: all $transition ease;
 }
 
-
 // nav
 @import "_nav";
-
 // footer
 @import "_footer";
-
 // Custom Settings
-
-body, html {
-  background-color: $gray-lighter;
+body,
+html {
+    background-color: $gray-lighter;
 }
 
-p,li {
-  font-size: 14px;
-  color: #6C6C6C;
-  letter-spacing: 0;
-  line-height: 26px;
+p,
+li {
+    font-size: 14px;
+    color: #6C6C6C;
+    letter-spacing: 0;
+    line-height: 26px;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  margin-bottom: 30px;
-  margin-top: 30px;
-
-  p,a,i,span {
-    &.eyebrow {
-      font-size: 10px;
-      color: #9FA3A7;
-      letter-spacing: 2.8px;
-      margin-bottom: 5px;
-      margin-top: 20px;
-      display: block;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    p,
+    a,
+    i,
+    span {
+        &.eyebrow {
+            font-size: 10px;
+            color: #9FA3A7;
+            letter-spacing: 2.8px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+            display: block;
+        }
     }
-  }
-
 }
+
 a {
     &:hover {
-      color: $brand-primary;
+        color: $brand-primary;
     }
-  }
-
+}
 
 // Image Spacer
 .image-spacer {
-  width: 100%;
-  height: 280px;
-  display: block;
-  clear: both;
-  position: relative;
-  overflow: hidden;
-
-  @media screen and(min-width: $screen-md) {
-    height: 380px;
-  }
-
-  &.home {
-    background-image: url("../img/cover_1.jpg");
-  }
-  &.about {
-    background-image: url("../img/cover_1.png");
-  }
-  &.doctors {
-    background-image: url("../img/all_doctors.jpg");
-  }
-  &.locations {
-    background-image: url("../img/all_locations.jpg");
-  }
-  &.services {
-    background-image: url("../img/all_services.jpg");
-  }
-  &.faq {
-    background-image: url("../img/faq.jpg");
-  }  
-  &.work {
-    background-image: url("../img/about/work.jpg");
-  }  
-  &.howtoreach {
-    background-image: url("../img/about/howtoreach.jpg");
-  } 
-  &.doctors_services {
-    background-image: url("../img/doctors_service.jpg");
-  }  
-  &.doctors_locations {
-    background-image: url("../img/doctors_area.jpg");
-  } 
-
-
-  &.big {
-    height: 600px;
-  }
-
-  background-size: cover;
-
-  img {
     width: 100%;
-    object-fit: cover;
-  }
-
-  .main {
-    text-align: center;
-    width: 100%;
-
-
-    position: absolute;
-    top: 45%; left: 50%;
-    transform: translate(-50%,-50%);
-
-    /* BENVENUTI IN: */
-    p {
-      margin: 0;
-      font-size: 10px;
-      color: #FFFFFF;
-      letter-spacing: 2.35px;
-
-      text-transform: uppercase;
-
-      @media screen and(max-width: $screen-sm) {
-        font-size: 8px;
-      }
-    }
-    /* CLINICA: */
-    span {
-      magin: 0;
-      font-size: 68px;
-      color: #FFFFFF;
-      line-height: 146px;
-      text-transform: uppercase;
-
-      @media screen and(max-width: $screen-sm) {
-        line-height: 50px;
-        font-size: 18px;
-      }
-    }
-    /* BALSAMICA: */
-    i {
-      font-size: 100px;
-      color: #FFFFFF;
-      letter-spacing: 3px;
-      text-shadow: 0 0 53px rgba(0,0,0,0.10);
-      text-transform: uppercase;
-      font-style: normal;
-
-      @media screen and(max-width: $screen-sm) {
-        line-height: 50px;
-        font-size: 38px;
-      }
-    }
-
-
-  }
-}
-
-// Content Presentation text
-
-.content-wrapper {
-  width: 100%;
-  min-height: 30px;
-  padding-bottom:40px;
-
-  &.white {
-    background-color: white;
-    border-bottom: 0.5px solid #D3D3D3;
-  }
-  &.green {
-    background-color: $brand-primary;
-    color: white !important;
-
-    padding: 30px;
-
-    p {
-      color: rgba(255,255,255,0.9);
-    }
-    .eyebrow {
-      color: rgba(255,255,255,0.8);
-    }
-  }
-
-  &.spaced {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .content {
-
-  }
-  .content-loader {
-
-  }
-}
-.preCards{
-  a{
-    text-decoration: none !important;
-  }
-}
-.cards {
-  background: #FFFFFF;
-
-  padding: 9px 0 0 0;
-  margin-bottom: 30px;
-  border: #979797 1px solid;
-
-  font-size: 12px;
-
-  color: #6C6C6C;
-  letter-spacing: 0;
-
-
-  &.card-small {
-    background: #FDFDFD;
-    font-size: 10px;
-    width: 90%;
-    padding:6px 0 6px 0;
-    margin-bottom:30px !important;
-    a {
-      color:#6C6C6C;
-    }
-  }
-  &.card-big{
-    min-height: 100px;
-    border-top: 0;
-    line-height: 18px;
-  }
-}
-
-.box {
-  background: #F2F2F2;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
-  text-transform: uppercase;
-  text-align:center;
-  border: 0.5px solid #A9A9A9;
-  margin-bottom:50px;
-  color: #595959;
-  letter-spacing: 1.28px;
-
-  .coverimg {
-    -webkit-border-top-left-radius: 15px;
-    -webkit-border-top-right-radius: 15px;
-    -moz-border-radius-topleft: 15px;
-    -moz-border-radius-topright: 15px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    width: 100%;
-    max-height: 120px;
+    height: 280px;
     display: block;
     clear: both;
     position: relative;
     overflow: hidden;
-  }
-  img {
-    width: 100%;
-  }
-  .cityname {
-    letter-spacing: 1.71px;
-
-    line-height: 45px;
-    font-weight: 400;
-  }
-
+    @media screen and(min-width: $screen-lg) {
+        height: 380px;
+    }
+    &.home {
+        background-image: url("../img/cover_1.jpg");
+    }
+    &.about {
+        background-image: url("../img/cover_1.png");
+    }
+    &.doctors {
+        background-image: url("../img/all_doctors.jpg");
+    }
+    &.locations {
+        background-image: url("../img/all_locations.jpg");
+    }
+    &.services {
+        background-image: url("../img/all_services.jpg");
+    }
+    &.faq {
+        background-image: url("../img/faq.jpg");
+    }
+    &.work {
+        background-image: url("../img/about/work.jpg");
+    }
+    &.howtoreach {
+        background-image: url("../img/about/howtoreach.jpg");
+    }
+    &.doctors_services {
+        background-image: url("../img/doctors_service.jpg");
+    }
+    &.doctors_locations {
+        background-image: url("../img/doctors_area.jpg");
+    }
+    &.big {
+        height: 600px;
+        background-attachment: fixed;
+    }
+    background-size: cover;
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+    .main {
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* BENVENUTI IN: */
+        p {
+            margin: 0;
+            font-size: 10px;
+            color: #FFFFFF;
+            letter-spacing: 2.35px;
+            text-transform: uppercase;
+            @media screen and(max-width: $screen-sm) {
+                font-size: 8px;
+            }
+        }
+        /* CLINICA: */
+        span {
+            magin: 0;
+            font-size: 68px;
+            color: #FFFFFF;
+            line-height: 146px;
+            text-transform: uppercase;
+            @media screen and(max-width: $screen-sm) {
+                line-height: 50px;
+                font-size: 18px;
+            }
+        }
+        /* BALSAMICA: */
+        i {
+            font-size: 100px;
+            color: #FFFFFF;
+            letter-spacing: 3px;
+            text-shadow: 0 0 53px rgba(0, 0, 0, 0.10);
+            text-transform: uppercase;
+            font-style: normal;
+            @media screen and(max-width: $screen-sm) {
+                line-height: 50px;
+                font-size: 38px;
+            }
+        }
+    }
 }
 
+// Content Presentation text
+.content-wrapper {
+    width: 100%;
+    min-height: 30px;
+    padding-bottom: 40px;
+    &.white {
+        background-color: white;
+        border-bottom: 0.5px solid #D3D3D3;
+    }
+    &.green {
+        background-color: $brand-primary;
+        color: white !important;
+        padding: 30px;
+        p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .eyebrow {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+    &.spaced {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .content {}
+    .content-loader {}
+}
+
+.preCards {
+    a {
+        text-decoration: none !important;
+    }
+}
+
+.cards {
+    background: #FFFFFF;
+    padding: 9px 0 0 0;
+    margin-bottom: 30px;
+    border: #979797 1px solid;
+    font-size: 12px;
+    color: #6C6C6C;
+    letter-spacing: 0;
+    &.card-small {
+        background: #FDFDFD;
+        font-size: 10px;
+        width: 90%;
+        padding: 6px 0 6px 0;
+        margin-bottom: 30px !important;
+        a {
+            color: #6C6C6C;
+        }
+    }
+    &.card-big {
+        min-height: 100px;
+        border-top: 0;
+        line-height: 18px;
+    }
+}
+
+.box {
+    background: #F2F2F2;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 0.5px solid #A9A9A9;
+    margin-bottom: 50px;
+    color: #595959;
+    letter-spacing: 1.28px;
+    .coverimg {
+        -webkit-border-top-left-radius: 15px;
+        -webkit-border-top-right-radius: 15px;
+        -moz-border-radius-topleft: 15px;
+        -moz-border-radius-topright: 15px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        width: 100%;
+        max-height: 120px;
+        display: block;
+        clear: both;
+        position: relative;
+        overflow: hidden;
+    }
+    img {
+        width: 100%;
+    }
+    .cityname {
+        letter-spacing: 1.71px;
+        line-height: 45px;
+        font-weight: 400;
+    }
+}
 
 .green-bar {
-  background: #0E6E43;
-  border: 1px solid #0E6E43;
-  text-align:center;
-  color:#fff;
-  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
-  font-size: 11px;
-  letter-spacing: 1.71px;
-  line-height: 25px;
-  font-weight: 400;
-
+    background: #0E6E43;
+    border: 1px solid #0E6E43;
+    text-align: center;
+    color: #fff;
+    font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1.71px;
+    line-height: 25px;
+    font-weight: 400;
 }
 
 .breadcrumbs {
-  position: relative;
-  top:20px;
-  left:10px;
-  font-size: 12px;
-  color: #D3D3D3;
-  letter-spacing: 1.15px;
-  a {
-    color:#D3D3D3;
-  }
-  span {
-    color:#0E6E43;
+    position: relative;
+    top: 20px;
+    left: 10px;
+    font-size: 12px;
+    color: #D3D3D3;
+    letter-spacing: 1.15px;
     a {
-      color:#0E6E43;
+        color: #D3D3D3;
     }
-  }
-
+    span {
+        color: #0E6E43;
+        a {
+            color: #0E6E43;
+        }
+    }
 }
 
 .row {
-  margin:0;
+    margin: 0;
 }
 
 .serviceTitle {
-
-  span{
-    margin-left: 5px;
-    font-size: 15px;
-  }
-  h3{
-    font-family: AvenirNext-Medium;
-    font-size: 20px;
-    color: #4D4D4D;
-    letter-spacing: 1.31px;
-    text-transform: uppercase;
-    margin-bottom:30px;
-  }
+    span {
+        margin-left: 5px;
+        font-size: 15px;
+    }
+    h3 {
+        font-family: AvenirNext-Medium;
+        font-size: 20px;
+        color: #4D4D4D;
+        letter-spacing: 1.31px;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+    }
 }
-h3{
-  margin-bottom:0px;
+
+h3 {
+    margin-bottom: 0px;
 }
