@@ -5563,6 +5563,10 @@ a:hover {
   margin-bottom: 30px; }
 
 h3 {
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+  color: #0E6E43 !important; }
+
+#content {
+  text-align: left; }
 
 /*# sourceMappingURL=style.css.map */

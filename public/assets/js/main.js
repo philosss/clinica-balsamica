@@ -103,7 +103,7 @@ function formatServiceDetails(item) {
 
   var out = '';
 
-  out = '<h2 class="text-uppercase"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2>';
+  out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2><br />';
   out += item.description;
 
   cont.append(out);
