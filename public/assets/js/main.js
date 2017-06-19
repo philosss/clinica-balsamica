@@ -98,15 +98,21 @@ function levelFormatterDoctorsLocations(item){
 
 function formatServiceDetails(item) {
   var cont = $('#content');
+  var image = $('#imageSpacer');
 
-  while (cont.hasChildNodes()) {
-    cont.removeChild(cont.lastChild);
-  }
+  image.css("background-image", 'url("../../assets/img/'+item.image+'")');
+
   console.log(item);
 
   var out = '';
 
-  out = '<h2 class="text-uppercase">I nostri servizi<span class="eyebrow">Scopri i nostri fantastici Servizi</span></h2>';
+  out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2><br />';
+  out += item.description;
+  out += '<br />';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">SCOPRI I DOTTORI CHE OPERANO QUI</a></div>';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">DOV’È DISPONIBILE QUESTO SERVIZIO?</a></div>';
+
+
 
   cont.append(out);
 
@@ -148,6 +154,7 @@ function show(what, callback) {
     if (level1 == "service") {
       what=what+'/'+window.location.search.substr(1);
     }
+    console.log(what);
 
     fetch("/api/" + what)
         .then(function(response) {
@@ -171,10 +178,10 @@ function show(what, callback) {
                     break;
                 case "work":
                     data.map(formatFaq);
-                    break;                    
+                    break;
                 case "presentazione":
                     data.map(formatAbout);
-                    break;                                        
+                    break;
                 case "services":
                   toOutput += '<div class="col-md-8 col-md-offset-2">';
                   data.map(formatServices);
