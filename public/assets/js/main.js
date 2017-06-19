@@ -52,11 +52,11 @@ function formatServices(item) {
     iterator++;
 }
 function formatHowToReach(item) {
-    toOutput+='<div class="col-sm-6">';
+    toOutput+='<div class="col-sm-6 preCards">';
     toOutput+='<a href="../locations/id/'+ item.id +'.html">';
-    toOutput+='<div class="box">';
-    toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
-    toOutput+='<div class="cityname">' + item.name + '</div>';
+    toOutput+='<div class="HowToReachbox">';
+    toOutput+='<div class="coverimg"><img src="../../assets/img/' + item.image + '"></div>';
+    toOutput+='<div class="cityname"><span>' + item.name + '</span><br>'+ item.address + '<br>'+ item.phonenumber + '</div>';
     toOutput+='</div></a></div>';
     if(iterator%2==0){
         toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
