@@ -41,7 +41,7 @@ function formatLocations(item) {
 }
 function formatServices(item) {
     toOutput+='<div class="col-sm-6 preCards">';
-    toOutput+='<a href="../services/id/'+ item.id +'.html">';
+    toOutput+='<a href="../services/service.html?'+ item.id +'">';
     toOutput+='<div class="box">';
     toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
     toOutput+='<div class="cityname">' + item.name + '</div>';
@@ -136,7 +136,7 @@ function show(what, callback) {
                     break;
                 case "presentazione":
                     data.map(formatAbout);
-                    break;                    
+                    break;
                 case "services":
                     toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatServices);
