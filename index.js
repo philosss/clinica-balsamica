@@ -78,10 +78,11 @@ function indexOf(obj, id) {
 
 app.get("/doctors/services", function(req, res) {
     knex
-        .select("doctors.*", "doctors_services.serviceid", "services.name AS service_name")
+        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.image", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
+        .join("locations", { "locations.id": "doctors.location" })
         .orderBy("doctors.surname", "doctors.name")
         .then(results =>  {
             var r = [];
@@ -104,9 +105,14 @@ app.get("/doctors/services", function(req, res) {
 });
 
 app.get("/doctors", function(req, res) {
-    knex("doctors").orderBy("surname", "name").then(results =>  {
-        res.json(results);
-    });
+    knex
+        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.image", "locations.name AS location")
+        .from("doctors")
+        .join("locations", { "locations.id": "doctors.location" })
+        .orderBy("surname", "name")
+        .then(results =>  {
+            res.json(results);
+        });
 });
 
 app.get("/doctors/fromLocation/:locationID", function(req, res) {
