@@ -5522,6 +5522,31 @@ a:hover {
     line-height: 45px;
     font-weight: 400; }
 
+.HowToReachbox {
+  text-align: left;
+  margin-bottom: 50px;
+  color: #595959; }
+  .HowToReachbox .coverimg {
+    width: 100%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: block;
+    clear: both;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    max-height: 225px; }
+  .HowToReachbox img {
+    width: 100%; }
+  .HowToReachbox .cityname {
+    letter-spacing: 0.71px;
+    font-size: 12px; }
+    .HowToReachbox .cityname span {
+      color: #0E6E43;
+      text-transform: uppercase;
+      font-weight: 500; }
+
 .green-bar {
   background: #0E6E43;
   border: 1px solid #0E6E43;
