@@ -92,6 +92,10 @@ app.get("/api/faq", function(req, res) {
     res.json(require("./db/faq.json"));
 });
 
+app.get("/api/work", function(req, res) {
+    res.json(require("./db/work.json"));
+});
+
 function indexOf(obj, id, by) {
     for (var k in obj) {
         if (obj[k][by] == id)  {
