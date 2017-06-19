@@ -5321,6 +5321,11 @@ body,
 html {
   background-color: #eeeeee; }
 
+a.btn-primary, button.btn-primary {
+  background-color: #0E6E43 !important; }
+a.btn:hover, button.btn:hover {
+  color: white !important; }
+
 p,
 li {
   font-size: 14px;
@@ -5377,7 +5382,6 @@ a:hover {
   clear: both;
   position: relative;
   overflow: hidden;
-  background-attachment: fixed;
   background-size: cover; }
   @media screen and (min-width: 1200px) {
     .image-spacer {

@@ -98,6 +98,9 @@ function levelFormatterDoctorsLocations(item){
 
 function formatServiceDetails(item) {
   var cont = $('#content');
+  var image = $('#imageSpacer');
+
+  image.css("background-image", 'url("../../assets/img/'+item.image+'")');
 
   console.log(item);
 
@@ -105,6 +108,8 @@ function formatServiceDetails(item) {
 
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2><br />';
   out += item.description;
+  out += '<br />';
+  out += '<a class="btn btn-primary btn-md">SCOPRI I DOTTORI CHE OPERANO QUI</a>';
 
   cont.append(out);
 
