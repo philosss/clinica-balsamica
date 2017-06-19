@@ -41,7 +41,7 @@ function formatServices(item) {
     toOutput+='<div class="cityname">' + item.name + '</div>';
     toOutput+='</div></a></div>';
     if(iterator%2==0){
-        toOutput+='</div><div class="row">';
+        toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
     }
     iterator++;
 }
@@ -68,14 +68,14 @@ function levelFormatterDoctorsServices(item){
 
     toOutput+='<a class="serviceTitle" href="../services/id/'+item.service_id+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
-    toOutput+='</div><div class="row">';
+    toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
     iterator2=1;
 }
 function levelFormatterDoctorsLocations(item){
 
     toOutput+='<a class="serviceTitle" href="../locations/id/'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
-    toOutput+='</div><div class="row">';
+    toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
     iterator2=1;
 }
 
@@ -112,19 +112,21 @@ $(document).ready(function() {
 function show(what, callback) {
     var levels = what.split("/");
     var level1 = levels[0];
-    fetch("/" + what)
+    fetch("/api/" + what)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
 
             toOutput+='<div class="row">';
+
             switch (level1) {
                 case "locations":
                     toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatLocations);
                     break;
                 case "services":
+                    toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatServices);
                     break;
                 case "doctors":
