@@ -101,7 +101,7 @@ a {
   position: relative;
   overflow: hidden;
 
-  @media screen and(min-width: $screen-md) {
+  @media screen and(min-width: $screen-lg) {
     height: 380px;
   }
 
@@ -122,19 +122,19 @@ a {
   }
   &.faq {
     background-image: url("../img/faq.jpg");
-  }  
+  }
   &.work {
     background-image: url("../img/about/work.jpg");
-  }  
+  }
   &.howtoreach {
     background-image: url("../img/about/howtoreach.jpg");
-  } 
+  }
   &.doctors_services {
     background-image: url("../img/doctors_service.jpg");
-  }  
+  }
   &.doctors_locations {
     background-image: url("../img/doctors_area.jpg");
-  } 
+  }
 
 
   &.big {

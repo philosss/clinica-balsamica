@@ -5348,7 +5348,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   background-size: cover; }
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 1200px) {
     .image-spacer {
       height: 380px; } }
   .image-spacer.home {
