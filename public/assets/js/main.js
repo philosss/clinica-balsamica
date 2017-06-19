@@ -99,14 +99,12 @@ function levelFormatterDoctorsLocations(item){
 function formatServiceDetails(item) {
   var cont = $('#content');
 
-  while (cont.hasChildNodes()) {
-    cont.removeChild(cont.lastChild);
-  }
   console.log(item);
 
   var out = '';
 
-  out = '<h2 class="text-uppercase">I nostri servizi<span class="eyebrow">Scopri i nostri fantastici Servizi</span></h2>';
+  out = '<h2 class="text-uppercase"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2>';
+  out += item.description;
 
   cont.append(out);
 
@@ -148,6 +146,7 @@ function show(what, callback) {
     if (level1 == "service") {
       what=what+'/'+window.location.search.substr(1);
     }
+    console.log(what);
 
     fetch("/api/" + what)
         .then(function(response) {
@@ -171,10 +170,10 @@ function show(what, callback) {
                     break;
                 case "work":
                     data.map(formatFaq);
-                    break;                    
+                    break;
                 case "presentazione":
                     data.map(formatAbout);
-                    break;                                        
+                    break;
                 case "services":
                   toOutput += '<div class="col-md-8 col-md-offset-2">';
                   data.map(formatServices);

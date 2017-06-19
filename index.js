@@ -70,7 +70,7 @@ app.get("/api/services", function(req, res) {
 
 app.get("/api/service/:service_id", function(req, res) {
     var i = parseInt(req.params.service_id);
-    knex("services").where({"service.id": i}).then(results =>  {
+    knex("services").where({"services.id": i}).then(results =>  {
         res.json(results);
     });
 });
