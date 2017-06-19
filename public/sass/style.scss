@@ -95,11 +95,15 @@ a {
 // Image Spacer
 .image-spacer {
   width: 100%;
-  height: 250px;
+  height: 280px;
   display: block;
   clear: both;
   position: relative;
   overflow: hidden;
+
+  @media screen and(min-width: $screen-md) {
+    height: 380px;
+  }
 
   &.home {
     background-image: url("../img/cover_1.jpg");
@@ -112,6 +116,9 @@ a {
   }
   &.locations {
     background-image: url("../img/all_locations.jpg");
+  }
+  &.services {
+    background-image: url("../img/all_services.jpg");
   }
   &.faq {
     background-image: url("../img/faq.jpg");
@@ -128,6 +135,7 @@ a {
   &.doctors_locations {
     background-image: url("../img/doctors_area.jpg");
   } 
+
 
   &.big {
     height: 600px;
@@ -236,48 +244,49 @@ a {
     text-decoration: none !important;
   }
 }
-.cards{
+.cards {
   background: #FFFFFF;
-  
+
   padding: 9px 0 0 0;
   margin-bottom: 30px;
   border: #979797 1px solid;
-  
+
   font-size: 12px;
-  
+
   color: #6C6C6C;
   letter-spacing: 0;
 
 
-  &.card-small{ 
+  &.card-small {
     background: #FDFDFD;
     font-size: 10px;
     width: 90%;
     padding:6px 0 6px 0;
     margin-bottom:30px !important;
-    a{
+    a {
       color:#6C6C6C;
     }
   }
-    &.card-big{ 
+  &.card-big{
     min-height: 100px;
     border-top: 0;
     line-height: 18px;
   }
 }
-.box{
 
+.box {
   background: #F2F2F2;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
   text-transform: uppercase;
   text-align:center;
-  border: 1px solid #A9A9A9;
+  border: 0.5px solid #A9A9A9;
   margin-bottom:50px;
   color: #595959;
   letter-spacing: 1.28px;
-  .coverimg{
+
+  .coverimg {
     -webkit-border-top-left-radius: 15px;
     -webkit-border-top-right-radius: 15px;
     -moz-border-radius-topleft: 15px;
@@ -290,23 +299,21 @@ a {
     clear: both;
     position: relative;
     overflow: hidden;
-    top:-1px;
   }
-  img{
+  img {
     width: 100%;
   }
-  .cityname{
+  .cityname {
     letter-spacing: 1.71px;
-    
-  line-height: 45px;
-  font-weight: 400;
 
+    line-height: 45px;
+    font-weight: 400;
   }
-  
+
 }
 
 
-.green-bar{
+.green-bar {
   background: #0E6E43;
   border: 1px solid #0E6E43;
   text-align:center;
@@ -319,28 +326,31 @@ a {
   font-weight: 400;
 
 }
-.breadcrumbs{
+
+.breadcrumbs {
   position: relative;
   top:20px;
   left:10px;
   font-size: 12px;
   color: #D3D3D3;
   letter-spacing: 1.15px;
-  a{
+  a {
     color:#D3D3D3;
   }
-  span{
+  span {
     color:#0E6E43;
-    a{
+    a {
       color:#0E6E43;
     }
   }
-  
+
 }
-.row{
+
+.row {
   margin:0;
 }
-.serviceTitle{
+
+.serviceTitle {
 
   span{
     margin-left: 5px;
@@ -358,4 +368,3 @@ a {
 h3{
   margin-bottom:0px;
 }
-
