@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const url = require('url');
+const fs = require('fs');
 
 const params = url.parse(process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/clinicabalsamica");
 const auth = params.auth.split(':');
@@ -18,23 +19,28 @@ const knex = require('knex')({
 });
 
 function initDB() {
+    var ddl = fs.readFileSync("./db/ddl");
     var locationsList = require("./db/locations.json");
     var doctorsList = require("./db/doctors.json");
     var servicesList = require("./db/services.json");
     var doctorsServicesList = require("./db/doctors_services.json");
 
-    knex("locations").insert(locationsList).catch(err => {
+    knex.raw(ddl).catch(err => {
         console.log(err);
     }).then(() => {
-        knex("doctors").insert(doctorsList).catch(err => {
+        knex("locations").insert(locationsList).catch(err => {
             console.log(err);
         }).then(() => {
-            knex("services").insert(servicesList).catch(err => {
+            knex("doctors").insert(doctorsList).catch(err => {
                 console.log(err);
             }).then(() => {
-                knex("doctors_services").insert(doctorsServicesList).catch(err => {
+                knex("services").insert(servicesList).catch(err => {
                     console.log(err);
-                })
+                }).then(() => {
+                    knex("doctors_services").insert(doctorsServicesList).catch(err => {
+                        console.log(err);
+                    })
+                });
             });
         });
     });
@@ -67,9 +73,22 @@ app.get("/services", function(req, res) {
     });
 });
 
-function indexOf(obj, id) {
+app.get("/service/:service_id", function(req, res) {
+    var i = parseInt(req.params.service_id);
+    knex("services").then(results =>  {
+        res.json(results);
+    });
+});
+app.get("/doctor/:doctor_id", function(req, res) {
+    var i = parseInt(req.params.doctor_id);
+    knex("doctors").where({ "doctors.id": i }).then(results =>  {
+        res.json(results);
+    });
+});
+
+function indexOf(obj, id, by) {
     for (var k in obj) {
-        if (obj[k].service_id == id)  {
+        if (obj[k][by] == id)  {
             return k;
         }
     }
@@ -78,7 +97,7 @@ function indexOf(obj, id) {
 
 app.get("/doctors/services", function(req, res) {
     knex
-        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.image", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
+        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
@@ -87,7 +106,7 @@ app.get("/doctors/services", function(req, res) {
         .then(results =>  {
             var r = [];
             for (var i = 0; i < results.length; i++) {
-                var x = indexOf(r, results[i].serviceid)
+                var x = indexOf(r, results[i].serviceid, 'service_id')
                 if (x >= 0) {
                     r[x].doctors.push(results[i]);
                 } else {
@@ -104,9 +123,38 @@ app.get("/doctors/services", function(req, res) {
         });
 });
 
+
+app.get("/doctors/locations", function(req, res) {
+    knex
+        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location_name", "locations.id AS location_id")
+        .from("doctors")
+        .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
+        .join("services", { "services.id": "doctors_services.serviceid" })
+        .join("locations", { "locations.id": "doctors.location" })
+        .orderBy("doctors.surname", "doctors.name")
+        .then(results =>  {
+            var r = [];
+            for (var i = 0; i < results.length; i++) {
+                var x = indexOf(r, results[i].location_id, 'location_id')
+                if (x >= 0) {
+                    r[x].doctors.push(results[i]);
+                } else {
+                    el = {};
+                    el.location_id = results[i].location_id;
+                    el.location_name = results[i].location_name;
+                    el.doctors = [results[i]];
+                    r.push(el);
+                }
+                delete results[i].location_id;
+                delete results[i].location_name;
+            }
+            res.json(r);
+        });
+});
+
 app.get("/doctors", function(req, res) {
     knex
-        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.image", "locations.name AS location")
+        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location")
         .from("doctors")
         .join("locations", { "locations.id": "doctors.location" })
         .orderBy("surname", "name")
