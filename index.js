@@ -70,9 +70,14 @@ app.get("/api/services", function(req, res) {
 
 app.get("/api/service/:service_id", function(req, res) {
     var i = parseInt(req.params.service_id);
-    knex("services").where({"service.id": i}).then(results =>  {
-        res.json(results);
-    });
+    knex
+        .select("services.*", "doctors.name AS doctorName", "doctors.surname AS doctorSurname")
+        .from("services")
+        .join("doctors", { "services.responsible": "doctors.id" })
+        .where({ "services.id": i })
+        .then(results =>  {
+            res.json(results);
+        });
 });
 
 app.get("/api/doctor/:doctor_id", function(req, res) {
