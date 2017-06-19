@@ -94,6 +94,7 @@ a {
     clear: both;
     position: relative;
     overflow: hidden;
+    background-attachment: fixed;
     @media screen and(min-width: $screen-lg) {
         height: 380px;
     }
@@ -129,7 +130,6 @@ a {
     }
     &.big {
         height: 600px;
-        background-attachment: fixed;
     }
     background-size: cover;
     img {
