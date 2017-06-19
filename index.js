@@ -172,18 +172,6 @@ app.get("/api/doctors", function(req, res) {
         });
 });
 
-app.get("/api/doctors/fromLocation/:locationID", function(req, res) {
-    knex
-        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.image")
-        .from("doctors")
-        .join("doctors_services", { "doctors.id": "doctors_services.doctorid" })
-        .join("services_locations", { "services_locations.serviceid": "doctors_services.serviceid" })
-        .where({ "services_locations.locationid": 1 })
-        .then(results =>  {
-            res.json(results);
-        });
-});
-
 app.set("port", serverPort);
 app.listen(serverPort, function() {
     console.log(`Your app is ready at port ${serverPort}`);
