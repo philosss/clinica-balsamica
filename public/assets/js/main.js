@@ -8,7 +8,10 @@ var list = $("#list");
 
 /* ----------------- API FORMATS -----------------*/
 
-
+function formatFaq(item) {
+    toOutput+='<div><h3>'+item.question+'</h3>';
+    toOutput+='<p>'+item.answer+'</p></div>';
+}
 function formatDoctorsSmall(item) {
     toOutput+='<div class="col-sm-4 preCards">';
     toOutput+='<a href="../doctors/id/'+ item.id +'.html">';
@@ -124,6 +127,9 @@ function show(what, callback) {
                 case "locations":
                     toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatLocations);
+                    break;
+                case "faq":
+                    data.map(formatFaq);
                     break;
                 case "services":
                     toOutput += '<div class="col-md-8 col-md-offset-2">';

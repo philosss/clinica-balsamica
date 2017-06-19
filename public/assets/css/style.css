@@ -5361,6 +5361,8 @@ a:hover {
     background-image: url("../img/all_locations.jpg"); }
   .image-spacer.services {
     background-image: url("../img/all_services.jpg"); }
+  .image-spacer.faq {
+    background-image: url("../img/faq.jpg"); }
   .image-spacer.big {
     height: 600px; }
   .image-spacer img {
