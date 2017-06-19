@@ -5402,6 +5402,8 @@ a:hover {
     background-image: url("../img/doctors_service.jpg"); }
   .image-spacer.doctors_locations {
     background-image: url("../img/doctors_area.jpg"); }
+  .image-spacer.contacts {
+    background-image: url("../img/about/contacts.jpg"); }
   .image-spacer.big {
     height: 600px; }
   .image-spacer img {
@@ -5587,7 +5589,25 @@ a:hover {
   text-transform: uppercase;
   margin-bottom: 30px; }
 
+.company-info {
+  color: #6C6C6C;
+  font-size: 12px;
+  line-height: 20px; }
+  .company-info img {
+    width: 90px; }
+
+.info {
+  color: #6C6C6C;
+  font-size: 12px;
+  line-height: 20px; }
+
 h3 {
   margin-bottom: 0px; }
+
+.form-group label {
+  font-size: 11px;
+  color: #9B9B9B;
+  text-transform: uppercase;
+  font-weight: normal; }
 
 /*# sourceMappingURL=style.css.map */

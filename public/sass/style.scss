@@ -128,6 +128,9 @@ a {
     &.doctors_locations {
         background-image: url("../img/doctors_area.jpg");
     }
+    &.contacts {
+        background-image: url("../img/about/contacts.jpg");
+    }    
     &.big {
         height: 600px;
     }
@@ -357,7 +360,33 @@ a {
         margin-bottom: 30px;
     }
 }
+.company-info{
+  color:#6C6C6C;
+  font-size:12px;
+  line-height: 20px;
+  
+  img{
+  width:90px;
+  }
+
+
+}
+.info{
+  color:#6C6C6C;
+  font-size:12px;
+  line-height: 20px;
+  }
 
 h3 {
     margin-bottom: 0px;
+}
+
+.form-group{
+  label{
+      
+      font-size: 11px;
+      color: #9B9B9B;
+      text-transform:uppercase;
+      font-weight: normal;
+  }
 }
