@@ -56,13 +56,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/api/locations", function(req, res) {
-    knex("locations").insert({ "name": req.body.name, "address": req.body.address, "phonenumber": req.body.phonenumber, "description": req.body.description }).then(ids => {
-        res.json({ id: ids[0] });
-    });
-});
-
-app.get("/api/locations", function(req, res) {
+app.get(["/api/locations", "/api/howtoreach"], function(req, res) {
     knex("locations").orderBy("id").then(results =>  {
         res.json(results);
     });
