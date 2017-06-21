@@ -113,6 +113,20 @@ app.get("/api/doctors/location/:location_id", function(req, res) {
     });
 });
 
+app.get("/api/doctors/services/:service_id", function(req, res) {
+  var i = parseInt(req.params.service_id);
+    knex
+        .select("doctors.*")
+        .from("doctors")
+        .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
+        .join("services", { "services.id": "doctors_services.serviceid" })
+        .where({ "services.id": i })
+        .orderBy("doctors.surname", "doctors.name")
+        .then(results =>  {
+            res.json(results);
+        });
+});
+
 app.get("/api/doctors/services", function(req, res) {
     knex
         .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
