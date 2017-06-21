@@ -232,7 +232,10 @@ function show(what, callback) {
     if (level1 == "service" || level1 == "location") {
       what=what+'/'+window.location.search.substr(1);
     }
-    if ((level1 == "doctors" || level1 == "locations") && level2 == "services" && parameters != '') {
+    if (level1 == "doctors" && level2 == "services" && parameters != '') {
+      what=what+'/'+parameters;
+    }
+    if (level1 == "locations" && level2 == "services" && parameters != '') {
       what=what+'/'+parameters;
     }
 
@@ -243,25 +246,12 @@ function show(what, callback) {
             return response.json();
         })
         .then(function(data) {
-          console.console.log(data);
-
             toOutput+='<div class="row">';
 
             switch (level1) {
                 case "locations":
-                  console.log(level2);
-                  switch (level2) {
-                    case "services":
-                      console.console.log(data);
-                      formatLocationsForService(data);
-                    break;
-
-                    default:
-                      toOutput += '<div class="col-md-8 col-md-offset-2">';
-                      data.map(formatLocations);
-                    break;
-
-                  }
+                    toOutput += '<div class="col-md-8 col-md-offset-2">';
+                    data.map(formatLocations);
                   break;
                 case "location":
                   data.map(formatLocationDetails);
