@@ -5618,4 +5618,14 @@ h3 {
   text-transform: uppercase;
   font-weight: normal; }
 
+.doctorDetails {
+  margin-top: 40px; }
+  .doctorDetails .doctorProfileImage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto; }
+
 /*# sourceMappingURL=style.css.map */

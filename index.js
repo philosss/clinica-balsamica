@@ -107,7 +107,10 @@ function indexOf(obj, id, by) {
 }
 
 app.get("/api/doctors/location/:location_id", function(req, res) {
-
+    var i = parseInt(req.params.location_id);
+    knex.select("doctors.*").from("doctors").where({ "location": i }).then((results) => {
+        res.json(results);
+    });
 });
 
 app.get("/api/doctors/services", function(req, res) {
