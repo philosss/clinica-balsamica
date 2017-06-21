@@ -5684,6 +5684,7 @@ h3 {
   font-weight: normal; }
 
 .doctor-details {
+  color: #6C6C6C;
   margin-top: 40px; }
   .doctor-details .doctorProfileImage {
     width: 200px;
@@ -5703,5 +5704,13 @@ h3 {
   .doctor-details a {
     color: #6C6C6C;
     text-decoration: underline; }
+  .doctor-details .row {
+    margin-bottom: 4px; }
+  .doctor-details .colored {
+    text-decoration: underline;
+    color: #0E6E43 !important; }
+  .doctor-details .vcentered-container {
+    display: flex;
+    align-items: center; }
 
 /*# sourceMappingURL=style.css.map */
