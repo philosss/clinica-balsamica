@@ -5321,6 +5321,11 @@ body,
 html {
   background-color: #eeeeee; }
 
+a.btn-primary, button.btn-primary {
+  background-color: #0E6E43 !important; }
+a.btn:hover, button.btn:hover {
+  color: white !important; }
+
 p,
 li {
   font-size: 14px;
@@ -5377,7 +5382,6 @@ a:hover {
   clear: both;
   position: relative;
   overflow: hidden;
-  background-attachment: fixed;
   background-size: cover; }
   @media screen and (min-width: 1200px) {
     .image-spacer {
@@ -5402,6 +5406,8 @@ a:hover {
     background-image: url("../img/doctors_service.jpg"); }
   .image-spacer.doctors_locations {
     background-image: url("../img/doctors_area.jpg"); }
+  .image-spacer.contacts {
+    background-image: url("../img/about/contacts.jpg"); }
   .image-spacer.big {
     height: 600px; }
   .image-spacer img {
@@ -5587,8 +5593,30 @@ a:hover {
   text-transform: uppercase;
   margin-bottom: 30px; }
 
+.company-info {
+  color: #6C6C6C;
+  font-size: 12px;
+  line-height: 20px; }
+  .company-info img {
+    width: 90px; }
+
+.info {
+  color: #6C6C6C;
+  font-size: 12px;
+  line-height: 20px; }
+
 h3 {
-  margin-bottom: 0px; }
+  margin-bottom: 0px;
+  color: #0E6E43 !important; }
+
+#content {
+  text-align: left; }
+
+.form-group label {
+  font-size: 11px;
+  color: #9B9B9B;
+  text-transform: uppercase;
+  font-weight: normal; }
 
 .doctorDetails {
   margin-top: 40px; }
