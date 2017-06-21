@@ -106,6 +106,15 @@ a {
     }
 }
 
+div {
+  &.space-top {
+    padding-top: 40px;
+  }
+  &.space-bottom {
+    padding-bottom: 40px;
+  }
+}
+
 // Image Spacer
 .image-spacer {
     width: 100%;
