@@ -136,7 +136,7 @@ function formatLocationDetails(item) {
   out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Scopri i dottori che offrono questo servizio</a></div>';
   out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Dov\'è disponibile questo servizio</a></div>';
 
->>>>>>> be02b22ff6dc04699fe07495d4a8bde0df2bface
+
 
   cont.append(out);
 
