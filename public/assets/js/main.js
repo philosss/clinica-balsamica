@@ -252,7 +252,7 @@ function show(what, callback) {
 
             switch (level1) {
                 case "locations":
-
+                  console.log(level2);
                   switch (level2) {
                     case "services":
                       console.console.log(data);
@@ -312,7 +312,7 @@ function show(what, callback) {
 
                     break;
                 default:
-                    //console.log("NoSuchParameter");
+                    console.log("NoSuchParameter");
                     break;
             }
             toOutput+='</div>';
