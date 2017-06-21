@@ -124,7 +124,7 @@ function formatLocationDetails(item) {
   var cont = $('#content');
   var image = $('#imageSpacer');
   var dynamicbreadcrumb = $('#dynamicbreadcrumb');
-  image.css("background-image", 'url("../../assets/img/'+item.image+'")');
+  image.css("background-image", 'url("../../assets/img/background/'+item.image+'")');
 
   //console.log(item);
   dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Sedi</a></li><li class="breadcrumb-item active">'+item.name+'</li></ol>');
@@ -133,8 +133,8 @@ function formatLocationDetails(item) {
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Le nostre sedi</span>'+item.name+'</h2><br />';
   out += item.description;
   out += '<br />';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Scopri i dottori che offrono questo servizio</a></div>';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Dov\'è disponibile questo servizio</a></div>';
+
+  out += '<div class="text-center"><a class="btn btn-primary btn-md">Scopri i servizi disponibili qui</a></div>';
 
 
 
