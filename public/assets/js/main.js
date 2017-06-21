@@ -172,7 +172,7 @@ function formatLocationsForService(item) {
 
   var cont = $('#content');
   var dynamicbreadcrumb = $('#dynamicbreadcrumb');
-  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item"><a href="../services/service.html?'+item.service_id+'">'+item.service_name+'</a></li><li class="breadcrumb-item active">'+item.name+'</li></ol>');
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item"><a href="../services/service.html?'+item[1].service_id+'">'+item[1].service_name+'</a></li><li class="breadcrumb-item active">'+item[1].name+'</li></ol>');
 
 
   var out = '';
@@ -180,26 +180,27 @@ function formatLocationsForService(item) {
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Sedi disponibili per</span><a href="../services/service.html?'+ item[1].service_id +'" class="green">'+item[1].service_name+'</a></h2><br />';
   out += '<br />';
 
+  out += '<div class="col-md-8 col-md-offset-2">';
   cont.append(out);
 
-  cont.append('<div class="col-md-8 col-md-offset-2">');
   item.map(formatLocationsForServiceDetail);
+
   cont.append('</div>');
 }
 
 // NOT BREADCRUMBABLE
 function formatLocationsForServiceDetail(item) {
-  var cont = $('#content');
-  var out = '';
+  var content = $('#content');
+  var output = '';
 
-  out+='<div class="col-sm-6 preCards">';
-  out+='<a href="../locations/sede.html?'+ item.id +'">';
-  out+='<div class="box">';
-  out+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
-  out+='<div class="cityname">' + item.name + '</div>';
-  out+='</div></a></div>';
+  output+='<div class="col-sm-6 preCards">';
+  output+='<a href="../locations/sede.html?'+ item.id +'">';
+  output+='<div class="box">';
+  output+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
+  output+='<div class="cityname">' + item.name + '</div>';
+  output+='</div></a></div>';
 
-  cont.append(out);
+  content.append(output);
 }
 
 
@@ -253,8 +254,14 @@ function show(what, callback) {
 
             switch (level1) {
                 case "locations":
-                    toOutput += '<div class="col-md-8 col-md-offset-2">';
-                    data.map(formatLocations);
+                    if (level2 == "services") {
+                      formatLocationsForService(data);
+                    }
+                    else {
+                      toOutput += '<div class="col-md-8 col-md-offset-2">';
+                      data.map(formatLocations);
+                    }
+
                   break;
                 case "location":
                   data.map(formatLocationDetails);
