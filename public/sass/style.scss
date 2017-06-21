@@ -424,6 +424,7 @@ h3 {
 
 
 .doctor-details {
+    color: #6C6C6C;
     margin-top: 40px;
 
     .doctorProfileImage {
@@ -447,5 +448,19 @@ h3 {
     a {
         color: #6C6C6C;
         text-decoration: underline;
+    }
+
+    .row {
+        margin-bottom: 4px;
+    }
+
+    .colored {
+        text-decoration: underline;
+        color: $brand-primary;
+    }
+
+    .vcentered-container {
+        display: flex;
+        align-items: center;
     }
 }
