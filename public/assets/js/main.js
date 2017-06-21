@@ -29,7 +29,7 @@ function formatDoctorsSmall(item) {
 }
 function formatLocations(item) {
     toOutput+='<div class="col-sm-6 preCards">';
-    toOutput+='<a href="../locations/id/'+ item.id +'.html">';
+    toOutput+='<a href="../locations/sede.html?'+ item.id +'">';
     toOutput+='<div class="box">';
     toOutput+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
     toOutput+='<div class="cityname">' + item.name + '</div>';
@@ -99,18 +99,41 @@ function levelFormatterDoctorsLocations(item){
 function formatServiceDetails(item) {
   var cont = $('#content');
   var image = $('#imageSpacer');
+  var dynamicbreadcrumb = $('#dynamicbreadcrumb');
 
   image.css("background-image", 'url("../../assets/img/'+item.image+'")');
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Servizi</a></li><li class="breadcrumb-item active">'+item.name+'</li></ol>');
 
-  console.log(item);
+  //console.log(item);
 
   var out = '';
 
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2><br />';
   out += item.description;
   out += '<br />';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">SCOPRI I DOTTORI CHE OPERANO QUI</a></div>';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">DOV’È DISPONIBILE QUESTO SERVIZIO?</a></div>';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Scopri i dottori che offrono questo servizio</a></div>';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Dov\'è disponibile questo servizio</a></div>';
+  
+
+
+  cont.append(out);
+
+}
+function formatLocationDetails(item) {
+  var cont = $('#content');
+  var image = $('#imageSpacer');
+  var dynamicbreadcrumb = $('#dynamicbreadcrumb');
+  image.css("background-image", 'url("../../assets/img/'+item.image+'")');
+
+  //console.log(item);
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Sedi</a></li><li class="breadcrumb-item active">'+item.name+'</li></ol>');
+  var out = '';
+
+  out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Le nostre sedi</span>'+item.name+'</h2><br />';
+  out += item.description;
+  out += '<br />';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Scopri i dottori che offrono questo servizio</a></div>';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Dov\'è disponibile questo servizio</a></div>';
   
 
 
@@ -151,7 +174,7 @@ function show(what, callback) {
     var levels = what.split("/");
     var level1 = levels[0];
 
-    if (level1 == "service") {
+    if (level1 == "service" || level1 == "location") {
       what=what+'/'+window.location.search.substr(1);
     }
     console.log(what);
@@ -169,6 +192,9 @@ function show(what, callback) {
                     toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatLocations);
                     break;
+                case "location":
+                  data.map(formatLocationDetails);
+                  break;    
                 case "howtoreach":
                     toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatHowToReach);
@@ -197,9 +223,6 @@ function show(what, callback) {
                         break;
                         case "locations":
                             data.map(levelFormatterDoctorsLocations);
-                        break;
-                        case "id":
-                            //doctor's profile
                         break;
                         default:
                             data.map(formatDoctorsSmall);

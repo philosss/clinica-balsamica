@@ -335,10 +335,11 @@ a {
     font-weight: 400;
 }
 
-.breadcrumbs {
+.breadcrumb {
     position: relative;
     top: 20px;
     left: 10px;
+    margin-bottom:0;
     font-size: 12px;
     color: #D3D3D3;
     letter-spacing: 1.15px;
@@ -351,6 +352,9 @@ a {
             color: #0E6E43;
         }
     }
+}
+.breadcrumb > .active {
+    color: #0E6E43;
 }
 
 .row {

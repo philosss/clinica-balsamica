@@ -79,6 +79,16 @@ app.get("/api/service/:service_id", function(req, res) {
             res.json(results);
         });
 });
+app.get("/api/location/:location_id", function(req, res) {
+    var i = parseInt(req.params.location_id);
+    knex
+        .select("locations.*")
+        .from("locations")
+        .where({ "locations.id": i })
+        .then(results =>  {
+            res.json(results);
+        });
+});
 
 app.get("/api/doctor/:doctor_id", function(req, res) {
     var i = parseInt(req.params.doctor_id);
