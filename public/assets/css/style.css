@@ -5442,9 +5442,9 @@ a:hover {
   color: #0E6E43 !important; }
 
 div.space-top {
-  padding-top: 40px; }
+  padding-top: 20px; }
 div.space-bottom {
-  padding-bottom: 40px; }
+  padding-bottom: 20px; }
 
 .image-spacer {
   width: 100%;
@@ -5725,5 +5725,11 @@ h3 {
   .doctor-details .vcentered-container {
     display: flex;
     align-items: center; }
+
+.home-contact .telephone {
+  margin-top: 0px; }
+@media screen and (min-width: 992px) {
+  .home-contact .telephone {
+    margin-top: 100px; } }
 
 /*# sourceMappingURL=style.css.map */
