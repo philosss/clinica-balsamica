@@ -171,6 +171,9 @@ function formatDoctorsForServiceDetail(item) {
 function formatLocationsForService(item) {
 
   var cont = $('#content');
+  var dynamicbreadcrumb = $('#dynamicbreadcrumb');
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item"><a href="../services/service.html?'+item.service_id+'">'+item.service_name+'</a></li><li class="breadcrumb-item active">'+item.name+'</li></ol>');
+
 
   var out = '';
 
