@@ -143,15 +143,33 @@ app.get("/api/doctors/location/:location_id", function (req, res) {
 });
 
 
+// doctors in service
 app.get("/api/doctors/services/:service_id", function(req, res) {
   var i = parseInt(req.params.service_id);
     knex
-        .select("doctors.*")
+        .select("doctors.*", "services.name AS service_name", "services.id AS service_id")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
         .where({ "services.id": i })
         .orderBy("doctors.surname", "doctors.name")
+        .then(results =>  {
+            res.json(results);
+        });
+});
+
+// locations in service
+app.get("/api/locations/services/:service_id", function(req, res) {
+  var i = parseInt(req.params.service_id);
+    knex
+        .select("locations.*", "services.name AS service_name", "services.id AS service_id")
+        .from("doctors")
+        .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
+        .join("services", { "services.id": "doctors_services.serviceid" })
+        .join("locations", { "locations.id": "doctors.location" })
+        .where({ "services.id": i })
+        .groupBy("locations.name", "locations.address", "locations.phonenumber", "locations.id", "services.id", "services.name")
+        .orderBy("locations.name")
         .then(results =>  {
             res.json(results);
         });

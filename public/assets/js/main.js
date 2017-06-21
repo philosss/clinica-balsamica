@@ -111,9 +111,10 @@ function formatServiceDetails(item) {
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Scopri Questo Servizio</span>'+item.name+'</h2><br />';
   out += item.description;
   out += '<br />';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Scopri i dottori che offrono questo servizio</a></div>';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Dov\'è disponibile questo servizio</a></div>';
-  
+
+  out += '<div class="col-md-6 col-sm-12 text-center"><a href="../../pages/doctors/for_service.html?' + item.id + '" class="btn btn-primary btn-md">Scopri i dottori che offrono questo servizio</a></div>';
+  out += '<div class="col-md-6 col-sm-12 text-center"><a href="../../pages/locations/for_service.html?' + item.id + '" class="btn btn-primary btn-md">Dov\'è disponibile questo servizio</a></div>';
+
 
 
   cont.append(out);
@@ -123,7 +124,7 @@ function formatLocationDetails(item) {
   var cont = $('#content');
   var image = $('#imageSpacer');
   var dynamicbreadcrumb = $('#dynamicbreadcrumb');
-  image.css("background-image", 'url("../../assets/img/'+item.image+'")');
+  image.css("background-image", 'url("../../assets/img/background/'+item.image+'")');
 
   //console.log(item);
   dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Sedi</a></li><li class="breadcrumb-item active">'+item.name+'</li></ol>');
@@ -132,19 +133,75 @@ function formatLocationDetails(item) {
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Le nostre sedi</span>'+item.name+'</h2><br />';
   out += item.description;
   out += '<br />';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Scopri i dottori che offrono questo servizio</a></div>';
-  out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">Dov\'è disponibile questo servizio</a></div>';
-  
 
+  out += '<div class="text-center"><a class="btn btn-primary btn-md">Scopri i servizi disponibili qui</a></div>';
 
   cont.append(out);
+}
 
+function formatDoctorsForService(item) {
+  var cont = $('#content');
+  var out = '';
+
+  out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Dottori che operano in</span><a href="../services/service.html?'+ item[1].service_id +'" class="green">'+item[1].service_name+'</a></h2><br />';
+  out += '<br />';
+
+  cont.append(out);
+  item.map(formatDoctorsForServiceDetail);
+}
+
+// NOT BREADCRUMBABLE
+function formatDoctorsForServiceDetail(item) {
+  var cont = $('#content');
+  var out = '';
+
+  out+='<div class="col-sm-6 preCards">';
+  out+='<a href="../doctors/id/'+ item.id +'.html">';
+  out+='<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
+  out+='<div class="cards card-big">';
+  out+='<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
+  out+='<div class="col-md-10 col-xs-9">Email: '+item.email+'<br>Telefono: '+item.phonenumber+'<br>Ufficio: #'+item.office+', '+item.location+'</div>';
+  out+='</div></a></div>';
+
+  cont.append(out);
 }
 
 
+// location for service
+function formatLocationsForService(item) {
+
+  var cont = $('#content');
+  var dynamicbreadcrumb = $('#dynamicbreadcrumb');
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item"><a href="../services/service.html?'+item[1].service_id+'">'+item[1].service_name+'</a></li><li class="breadcrumb-item active">'+item[1].name+'</li></ol>');
 
 
+  var out = '';
 
+  out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Sedi disponibili per</span><a href="../services/service.html?'+ item[1].service_id +'" class="green">'+item[1].service_name+'</a></h2><br />';
+  out += '<br />';
+
+  out += '<div class="col-md-8 col-md-offset-2">';
+  cont.append(out);
+
+  item.map(formatLocationsForServiceDetail);
+
+  cont.append('</div>');
+}
+
+// NOT BREADCRUMBABLE
+function formatLocationsForServiceDetail(item) {
+  var content = $('#content');
+  var output = '';
+
+  output+='<div class="col-sm-6 preCards">';
+  output+='<a href="../locations/sede.html?'+ item.id +'">';
+  output+='<div class="box">';
+  output+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
+  output+='<div class="cityname">' + item.name + '</div>';
+  output+='</div></a></div>';
+
+  content.append(output);
+}
 
 
 
@@ -173,10 +230,19 @@ $(document).ready(function() {
 function show(what, callback) {
     var levels = what.split("/");
     var level1 = levels[0];
+    var level2 = levels[1];
+    var parameters = window.location.search.substr(1);
 
     if (level1 == "service" || level1 == "location") {
       what=what+'/'+window.location.search.substr(1);
     }
+    if (level1 == "doctors" && level2 == "services" && parameters != '') {
+      what=what+'/'+parameters;
+    }
+    if (level1 == "locations" && level2 == "services" && parameters != '') {
+      what=what+'/'+parameters;
+    }
+
     console.log(what);
 
     fetch("/api/" + what)
@@ -184,17 +250,22 @@ function show(what, callback) {
             return response.json();
         })
         .then(function(data) {
-
             toOutput+='<div class="row">';
 
             switch (level1) {
                 case "locations":
-                    toOutput += '<div class="col-md-8 col-md-offset-2">';
-                    data.map(formatLocations);
-                    break;
+                    if (level2 == "services") {
+                      formatLocationsForService(data);
+                    }
+                    else {
+                      toOutput += '<div class="col-md-8 col-md-offset-2">';
+                      data.map(formatLocations);
+                    }
+
+                  break;
                 case "location":
                   data.map(formatLocationDetails);
-                  break;    
+                  break;
                 case "howtoreach":
                     toOutput += '<div class="col-md-8 col-md-offset-2">';
                     data.map(formatHowToReach);
@@ -216,10 +287,17 @@ function show(what, callback) {
                   data.map(formatServiceDetails);
                   break;
                 case "doctors":
-                    level2=levels[1];
                     switch(level2){
                         case "services":
-                            data.map(levelFormatterDoctorsServices);
+
+                            if (parameters != null) {
+                              console.log(data);
+                              formatDoctorsForService(data);
+                            }
+                            else {
+                              data.map(levelFormatterDoctorsServices);
+                            }
+
                         break;
                         case "locations":
                             data.map(levelFormatterDoctorsLocations);
@@ -231,7 +309,7 @@ function show(what, callback) {
 
                     break;
                 default:
-                    //console.log("NoSuchParameter");
+                    console.log("NoSuchParameter");
                     break;
             }
             toOutput+='</div>';
