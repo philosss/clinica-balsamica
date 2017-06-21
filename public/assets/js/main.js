@@ -53,7 +53,7 @@ function formatServices(item) {
 }
 function formatHowToReach(item) {
     toOutput+='<div class="col-sm-6 preCards">';
-    toOutput+='<a href="../locations/id/'+ item.id +'.html">';
+    toOutput+='<a href="../locations/sede.html?'+ item.id +'">';
     toOutput+='<div class="HowToReachbox">';
     toOutput+='<div class="coverimg"><img src="../../assets/img/' + item.image + '"></div>';
     toOutput+='<div class="cityname"><span>' + item.name + '</span><br>'+ item.address + '<br>'+ item.phonenumber + '</div>';
