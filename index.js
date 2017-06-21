@@ -56,72 +56,91 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get(["/api/locations", "/api/howtoreach"], function(req, res) {
-    knex("locations").orderBy("id").then(results =>  {
+app.get(["/api/locations", "/api/howtoreach"], function (req, res) {
+    knex("locations").orderBy("id").then(results => {
         res.json(results);
     });
 });
 
-app.get("/api/services", function(req, res) {
-    knex("services").then(results =>  {
+app.get("/api/services", function (req, res) {
+    knex("services").then(results => {
         res.json(results);
     });
 });
 
-app.get("/api/service/:service_id", function(req, res) {
+app.get("/api/service/:service_id", function (req, res) {
     var i = parseInt(req.params.service_id);
     knex
         .select("services.*", "doctors.name AS doctorName", "doctors.surname AS doctorSurname")
         .from("services")
         .join("doctors", { "services.responsible": "doctors.id" })
         .where({ "services.id": i })
-        .then(results =>  {
+        .then(results => {
             res.json(results);
         });
 });
 
-app.get("/api/doctor/:doctor_id", function(req, res) {
+app.get("/api/doctor/:doctor_id", function (req, res) {
     var i = parseInt(req.params.doctor_id);
-    knex("doctors").where({ "doctors.id": i }).then(results =>  {
-        res.json(results);
-    });
+    knex
+        .select("doctors.*", "services.name AS serviceName", "services.responsible")
+        .from("doctors")
+        .leftJoin("doctors_services", { "doctors_services.doctorid": "doctors.id" })
+        .leftJoin("services", { "services.id": "doctors_services.serviceid" })
+        .where({ "doctors.id": i })
+        .then(results => {
+            var result = results[0];
+            result.services = [];
+            for (var i in results) {
+                var serv = { "name": results[i].serviceName };
+                if (results[i].responsible == results[i].id) {
+                    serv.responsible = true
+                } else {
+                    serv.responsible = false
+                }
+                result.services.push(serv);
+                delete results[i].responsible;
+            }
+            delete result.serviceName;
+            res.json(result);
+        });
 });
 
-app.get("/api/faq", function(req, res) {
+app.get("/api/faq", function (req, res) {
     res.json(require("./db/faq.json"));
 });
-app.get("/api/work", function(req, res) {
+app.get("/api/work", function (req, res) {
     res.json(require("./db/work.json"));
 });
-app.get("/api/presentazione", function(req, res) {
+app.get("/api/presentazione", function (req, res) {
     res.json(require("./db/presentazione.json"));
 });
 
 function indexOf(obj, id, by) {
     for (var k in obj) {
-        if (obj[k][by] == id)  {
+        if (obj[k][by] == id) {
             return k;
         }
     }
     return -1;
 }
 
-app.get("/api/doctors/location/:location_id", function(req, res) {
+app.get("/api/doctors/location/:location_id", function (req, res) {
     var i = parseInt(req.params.location_id);
     knex.select("doctors.*").from("doctors").where({ "location": i }).then((results) => {
         res.json(results);
     });
 });
 
-app.get("/api/doctors/services", function(req, res) {
+app.get("/api/doctors/services", function (req, res) {
     knex
-        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
+        .select("doctors.*", "locations.name AS location", "doctors_services.serviceid", "services.name AS service_name")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
         .join("locations", { "locations.id": "doctors.location" })
         .orderBy("doctors.surname", "doctors.name")
-        .then(results =>  {
+        .then(results => {
             var r = [];
             for (var i = 0; i < results.length; i++) {
                 var x = indexOf(r, results[i].serviceid, 'serviceid')
@@ -142,15 +161,15 @@ app.get("/api/doctors/services", function(req, res) {
 });
 
 
-app.get("/api/doctors/locations", function(req, res) {
+app.get("/api/doctors/locations", function (req, res) {
     knex
-        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location_name", "locations.id AS location_id")
+        .select("doctors.*", "locations.name AS location_name", "locations.id AS location_id")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
         .join("locations", { "locations.id": "doctors.location" })
         .orderBy("doctors.surname", "doctors.name")
-        .then(results =>  {
+        .then(results => {
             var r = [];
             for (var i = 0; i < results.length; i++) {
                 var x = indexOf(r, results[i].location_id, 'location_id')
@@ -170,18 +189,18 @@ app.get("/api/doctors/locations", function(req, res) {
         });
 });
 
-app.get("/api/doctors", function(req, res) {
+app.get("/api/doctors", function (req, res) {
     knex
-        .select("doctors.id", "doctors.name", "doctors.surname", "doctors.email", "doctors.office", "doctors.phonenumber", "doctors.image", "locations.name AS location")
+        .select("doctors.*", "locations.name AS location")
         .from("doctors")
         .join("locations", { "locations.id": "doctors.location" })
         .orderBy("surname", "name")
-        .then(results =>  {
+        .then(results => {
             res.json(results);
         });
 });
 
 app.set("port", serverPort);
-app.listen(serverPort, function() {
+app.listen(serverPort, function () {
     console.log(`Your app is ready at port ${serverPort}`);
 });
