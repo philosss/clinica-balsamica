@@ -79,6 +79,16 @@ app.get("/api/service/:service_id", function (req, res) {
             res.json(results);
         });
 });
+app.get("/api/location/:location_id", function(req, res) {
+    var i = parseInt(req.params.location_id);
+    knex
+        .select("locations.*")
+        .from("locations")
+        .where({ "locations.id": i })
+        .then(results =>  {
+            res.json(results);
+        });
+});
 
 app.get("/api/doctor/:doctor_id", function (req, res) {
     var i = parseInt(req.params.doctor_id);
@@ -131,6 +141,22 @@ app.get("/api/doctors/location/:location_id", function (req, res) {
         res.json(results);
     });
 });
+
+
+app.get("/api/doctors/services/:service_id", function(req, res) {
+  var i = parseInt(req.params.service_id);
+    knex
+        .select("doctors.*")
+        .from("doctors")
+        .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
+        .join("services", { "services.id": "doctors_services.serviceid" })
+        .where({ "services.id": i })
+        .orderBy("doctors.surname", "doctors.name")
+        .then(results =>  {
+            res.json(results);
+        });
+});
+
 
 app.get("/api/doctors/services", function (req, res) {
     knex

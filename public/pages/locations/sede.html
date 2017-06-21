@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<title>Clinica Balsamica - Servizi</title>
+	<title>Clinica Balsamica - Sedi</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Theme style  -->
@@ -41,7 +41,7 @@
 
 	<script>
 		//MUST BE DEFINED, EVEN BLANK
-		var apiCall = "services";
+		var apiCall = "location";
 	</script>
 
 	<body>
@@ -61,9 +61,9 @@
 					</li>
 					<li><a href='../doctors/index.html'>Dottori</a>
 					</li>
-					<li><a href='../services/index.html' class="active">Servizi</a>
+					<li><a href='../services/index.html'>Servizi</a>
 					</li>
-					<li><a href='../locations/index.html'>Sedi</a>
+					<li><a href='../locations/index.html' class="active">Sedi</a>
 					</li>
 					<li><a href='../faq.html'>FAQ</a>
 					</li>
@@ -73,21 +73,19 @@
 		</nav>
 
 		<!-- SPACER IMAGE -->
-		<div class="image-spacer services"></div>
+		<div class="image-spacer" id='imageSpacer'></div>
 
 
 
 		<!-- Content -->
 		<div class="content-wrapper white">
-          <ol class="breadcrumb col-sm-offset-1">
-            <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
-            <li class="breadcrumb-item active">Servizi</li>
-          </ol>
-
+			<div id="dynamicbreadcrumb"></div>
 			<div class="row text-center">
-				<h2 class="text-uppercase"><span class="eyebrow">Scopri i nostri fantastici Servizi</span>I nostri servizi</h2>
-			</div>
-			<div class="container" id="list">
+				<div class='col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1' id='content'>
+
+				</div>
+
+
 			</div>
 		</div>
 
