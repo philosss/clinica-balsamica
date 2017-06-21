@@ -136,32 +136,21 @@ function formatLocationDetails(item) {
 
   out += '<div class="text-center"><a class="btn btn-primary btn-md">Scopri i servizi disponibili qui</a></div>';
 
-
-
   cont.append(out);
-
 }
 
 function formatDoctorsForService(item) {
-
   var cont = $('#content');
-
   var out = '';
 
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Dottori che operano in</span><a href="../services/service.html?'+ item[1].service_id +'" class="green">'+item[1].service_name+'</a></h2><br />';
   out += '<br />';
 
   cont.append(out);
-
-  // cont.append('<div class="col-sm-12" style="margin-top:100px;">');
   item.map(formatDoctorsForServiceDetail);
-  // cont.append('</div>');
-
-
-
-
 }
 
+// NOT BREADCRUMBABLE
 function formatDoctorsForServiceDetail(item) {
   var cont = $('#content');
   var out = '';
@@ -178,7 +167,37 @@ function formatDoctorsForServiceDetail(item) {
 }
 
 
+// location for service
+function formatLocationsForService(item) {
 
+  var cont = $('#content');
+
+  var out = '';
+
+  out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Sedi disponibili per</span><a href="../services/service.html?'+ item[1].service_id +'" class="green">'+item[1].service_name+'</a></h2><br />';
+  out += '<br />';
+
+  cont.append(out);
+
+  cont.append('<div class="col-md-8 col-md-offset-2">');
+  item.map(formatLocationsForServiceDetail);
+  cont.append('</div>');
+}
+
+// NOT BREADCRUMBABLE
+function formatLocationsForServiceDetail(item) {
+  var cont = $('#content');
+  var out = '';
+
+  out+='<div class="col-sm-6 preCards">';
+  out+='<a href="../locations/sede.html?'+ item.id +'">';
+  out+='<div class="box">';
+  out+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
+  out+='<div class="cityname">' + item.name + '</div>';
+  out+='</div></a></div>';
+
+  cont.append(out);
+}
 
 
 
@@ -213,9 +232,10 @@ function show(what, callback) {
     if (level1 == "service" || level1 == "location") {
       what=what+'/'+window.location.search.substr(1);
     }
-    if (level1 == "doctors" && level2 == "services" && parameters != '') {
+    if ((level1 == "doctors" || level1 == "locations") && level2 == "services" && parameters != '') {
       what=what+'/'+parameters;
     }
+
     console.log(what);
 
     fetch("/api/" + what)
@@ -223,14 +243,26 @@ function show(what, callback) {
             return response.json();
         })
         .then(function(data) {
+          console.console.log(data);
 
             toOutput+='<div class="row">';
 
             switch (level1) {
                 case "locations":
-                    toOutput += '<div class="col-md-8 col-md-offset-2">';
-                    data.map(formatLocations);
+
+                  switch (level2) {
+                    case "services":
+                      console.console.log(data);
+                      formatLocationsForService(data);
                     break;
+
+                    default:
+                      toOutput += '<div class="col-md-8 col-md-offset-2">';
+                      data.map(formatLocations);
+                    break;
+
+                  }
+                  break;
                 case "location":
                   data.map(formatLocationDetails);
                   break;
