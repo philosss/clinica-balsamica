@@ -83,16 +83,16 @@ function formatDoctorsBig(item) {
 
 function levelFormatterDoctorsServices(item){
 
-    toOutput+='<a class="serviceTitle" href="../services/id/'+item.service_id+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+    toOutput+='<br /><a class="serviceTitle" href="../services/id/'+item.service_id+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
-    toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
+    toOutput+='</div><div class="row">';
     iterator2=1;
 }
 function levelFormatterDoctorsLocations(item){
 
     toOutput+='<a class="serviceTitle" href="../locations/id/'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
-    toOutput+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
+
     iterator2=1;
 }
 
@@ -141,7 +141,10 @@ function formatLocationDetails(item) {
 
 function formatDoctorsForService(item) {
   var cont = $('#content');
+  var dynamicbreadcrumb = $('#dynamicbreadcrumb');
   var out = '';
+
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item active">'+item[1].service_name+'</li></ol>');
 
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Dottori che operano in</span><a href="../services/service.html?'+ item[1].service_id +'" class="green">'+item[1].service_name+'</a></h2><br />';
   out += '<br />';
@@ -180,12 +183,26 @@ function formatLocationsForService(item) {
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Sedi disponibili per</span><a href="../services/service.html?'+ item[1].service_id +'" class="green">'+item[1].service_name+'</a></h2><br />';
   out += '<br />';
 
-  out += '<div class="col-md-8 col-md-offset-2">';
+
+
+  out += '<div class="row"><div class="col-md-8 col-md-offset-2">';
+  for (var i = 0; i<item.length; i++) {
+
+    out+='<div class="col-sm-6 preCards">';
+    out+='<a href="../locations/sede.html?'+ item[i].id +'">';
+    out+='<div class="box">';
+    out+='<div class="coverimg"><img src="../../assets/img/cards/' + item[i].image + '"></div>';
+    out+='<div class="cityname">' + item[i].name + '</div>';
+    out+='</div></a></div>';
+
+    if(i%2!=0){
+        out+='</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
+    }
+  }
+
+
+
   cont.append(out);
-
-  item.map(formatLocationsForServiceDetail);
-
-  cont.append('</div>');
 }
 
 // NOT BREADCRUMBABLE
@@ -193,12 +210,7 @@ function formatLocationsForServiceDetail(item) {
   var content = $('#content');
   var output = '';
 
-  output+='<div class="col-sm-6 preCards">';
-  output+='<a href="../locations/sede.html?'+ item.id +'">';
-  output+='<div class="box">';
-  output+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
-  output+='<div class="cityname">' + item.name + '</div>';
-  output+='</div></a></div>';
+
 
   content.append(output);
 }

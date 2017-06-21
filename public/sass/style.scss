@@ -52,11 +52,13 @@ html {
 a,button {
   &.btn-primary {
     background-color: #0E6E43 !important;
+    border: none;
   }
 
   &.btn {
     &:hover {
       color: white !important;
+      border: none;
     }
   }
 }
@@ -368,6 +370,8 @@ a {
 }
 
 .serviceTitle {
+  float: left;
+  width:100%;
     span {
         margin-left: 5px;
         font-size: 15px;
