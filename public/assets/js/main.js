@@ -111,7 +111,7 @@ function formatServiceDetails(item) {
   out += '<br />';
   out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">SCOPRI I DOTTORI CHE OPERANO QUI</a></div>';
   out += '<div class="col-md-6 col-sm-12 text-center"><a class="btn btn-primary btn-md">DOV’È DISPONIBILE QUESTO SERVIZIO?</a></div>';
-
+  
 
 
   cont.append(out);
