@@ -136,7 +136,7 @@ app.get("/api/doctors/location/:location_id", function (req, res) {
 app.get("/api/doctors/services/:service_id", function(req, res) {
   var i = parseInt(req.params.service_id);
     knex
-        .select("doctors.*")
+        .select("doctors.*", "services.name AS service_name", "services.id AS service_id")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
         .join("services", { "services.id": "doctors_services.serviceid" })
