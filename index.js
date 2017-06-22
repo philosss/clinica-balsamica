@@ -68,6 +68,15 @@ app.get("/api/services", function (req, res) {
     });
 });
 
+app.get("/api/top-services/:limit", function (req, res) {
+    var i = parseInt(req.params.limit);
+    knex("services")
+    .limit(i)
+    .then(results => {
+        res.json(results);
+    });
+});
+
 app.get("/api/service/:service_id", function (req, res) {
     var i = parseInt(req.params.service_id);
     knex
@@ -88,6 +97,15 @@ app.get("/api/location/:location_id", function(req, res) {
         .then(results =>  {
             res.json(results);
         });
+});
+
+app.get("/api/top-doctors/:limit", function (req, res) {
+    var i = parseInt(req.params.limit);
+    knex("doctors")
+    .limit(i)
+    .then(results => {
+        res.json(results);
+    });
 });
 
 app.get("/api/doctor/:doctor_id", function (req, res) {
