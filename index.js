@@ -294,12 +294,21 @@ app.get("/api/doctors", function (req, res) {
 
 
 
-// MAIL SENDER
+// MAIL SENDER - HOMEPAGE
 app.get("/api/email/info", function (req, res) {
   var message = req.param('message');
   var email = req.param('email');
+  var type = req.param('type');
+  var messageToSend=null;
 
-  let messageToSend = "Received message from: " + email + "\nSaying: " + message;
+  if(type==0){
+    messageToSend = "Richiesta di prenotazione ricevuta da: " + email + "\nMessaggio: " + message;
+  }else{
+    var name = req.param('name');
+    var subject = req.param("subject");
+    messageToSend = "Messaggio sicevuto da: " + email + "\nName: " + name+ "\nSubject: " + subject+ "\nSaying: " + message;  
+  }
+  
   console.log(messageToSend);
 
   // validation takes place on server side too
