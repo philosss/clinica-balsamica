@@ -126,26 +126,25 @@ app.get("/api/top-doctors/:limit", function (req, res) {
 app.get("/api/doctor/:doctor_id", function (req, res) {
     var i = parseInt(req.params.doctor_id);
     knex
-        .select("doctors.*", "services.name AS serviceName", "services.responsible")
+        .select("doctors.*", "locations.name AS locationName", "services.name AS serviceName",  "services.id AS serviceID", "services.responsible")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors_services.doctorid": "doctors.id" })
         .leftJoin("services", { "services.id": "doctors_services.serviceid" })
+        .join("locations", {"locations.id": "doctors.location"})
         .where({ "doctors.id": i })
         .then(results => {
             var result = results[0];
             result.services = [];
+            result.responsibleOf = [];
             for (var i in results) {
-                var serv = { "name": results[i].serviceName };
+                result.services.push({ "id": results[i].serviceID, "name": results[i].serviceName });
                 if (results[i].responsible == results[i].id) {
-                    serv.responsible = true
-                } else {
-                    serv.responsible = false
+                    result.responsibleOf.push({ "id": results[i].serviceID, "name": results[i].serviceName })
                 }
-                result.services.push(serv);
                 delete results[i].responsible;
             }
             delete result.serviceName;
-            res.json(result);
+            res.json([result]);
         });
 });
 
