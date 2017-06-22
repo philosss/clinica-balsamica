@@ -256,16 +256,16 @@ app.get("/api/doctors/locations", function (req, res) {
     knex
         .select("doctors.*", "locations.name AS location_name", "locations.id AS location_id")
         .from("doctors")
-        .leftJoin("doctors_services", { "doctors.id": "doctors_services.doctorid" })
-        .join("services", { "services.id": "doctors_services.serviceid" })
         .join("locations", { "locations.id": "doctors.location" })
         .orderBy("doctors.surname", "doctors.name")
         .then(results => {
             var r = [];
             for (var i = 0; i < results.length; i++) {
                 var x = indexOf(r, results[i].location_id, 'location_id')
+                // Se la location è già stata inserita, aggiungo il dottore a quella location
                 if (x >= 0) {
                     r[x].doctors.push(results[i]);
+                // Altrimenti la creo, ed aggiungo il dottore
                 } else {
                     el = {};
                     el.location_id = results[i].location_id;

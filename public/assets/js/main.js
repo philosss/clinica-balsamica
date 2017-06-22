@@ -17,7 +17,7 @@ function formatAbout(item) {
 }
 function formatDoctorsSmall(item) {
     toOutput+='<div class="col-sm-4 preCards">';
-    toOutput+='<a href="../doctors/dottore.html?"'+item.id+'>';
+    toOutput+='<a href="../doctors/dottore.html?'+item.id+'">';
     toOutput+='<div class="row cards card-small">';
     toOutput+='<div class="col-sm-3 col-xs-2"><img src="../../assets/img/' + item.image + '" width="40px"></div>';
     toOutput+='<div class="col-sm-9 col-xs-10"><b>' + item.name + ' ' + item.surname + '</b><br>'+item.location+'</div>';
