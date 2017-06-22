@@ -229,7 +229,7 @@ function formatServicesForLocation(item) {
   var dynamicbreadcrumb = $('#dynamicbreadcrumb');
 
   image.css("background-image", 'url("../../assets/img/background/'+item[1].location_image+'")');
-  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Sedi</a></li><li class="breadcrumb-item active">'+item[1].location_name+'</li></ol>');
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../locations/index.html">Sedi</a></li><li class="breadcrumb-item active">'+item[1].location_name+'</li></ol>');
 
 
 
