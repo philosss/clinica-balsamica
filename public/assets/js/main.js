@@ -69,7 +69,7 @@ function formatDoctorsBig(item) {
 
 
     toOutput+='<div class="col-sm-6 preCards">';
-    toOutput+='<a href="../doctors/id/'+ item.id +'.html">';
+    toOutput+='<a href="../doctors/dottore.html?'+ item.id +'">';
     toOutput+='<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
     toOutput+='<div class="cards card-big">';
     toOutput+='<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
@@ -82,15 +82,14 @@ function formatDoctorsBig(item) {
 }
 
 function levelFormatterDoctorsServices(item){
-
-    toOutput+='<br /><a class="serviceTitle" href="../services/id/'+item.service_id+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+    toOutput+='<br /><a class="serviceTitle" href="../services/service.html?'+item.serviceid+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
     toOutput+='</div><div class="row">';
     iterator2=1;
 }
 function levelFormatterDoctorsLocations(item){
 
-    toOutput+='<a class="serviceTitle" href="../locations/id/'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+    toOutput+='<a class="serviceTitle" href="../locations/sede.html?'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
 
     iterator2=1;
@@ -217,11 +216,11 @@ function formatServicesForLocation(item) {
   var out = '';
 
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Servizi disponibili per</span><a href="../locations/sede.html?'+ item[1].location_id +'" class="green">'+item[1].location_name+'</a></h2><br />';
-  
-  
 
-    
-  
+
+
+
+
   for (var i = 0; i<item.length; i++) {
     out+='<div class="col-sm-6 preCards">';
     out+='<a href="../services/service.html?'+ item[i].id +'">';
@@ -327,7 +326,7 @@ function show(what, callback) {
                       toOutput += '<div class="col-md-8 col-md-offset-2">';
                       data.map(formatServices);
                     }
-                  
+
                   break;
                 case "service":
                   data.map(formatServiceDetails);
@@ -336,8 +335,7 @@ function show(what, callback) {
                     switch(level2){
                         case "services":
 
-                            if (parameters != null) {
-                              console.log(data);
+                            if (parameters != "") {
                               formatDoctorsForService(data);
                             }
                             else {
