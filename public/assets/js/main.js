@@ -134,7 +134,7 @@ function formatLocationDetails(item) {
   out += item.description;
   out += '<br />';
 
-  out += '<div class="text-center"><a class="btn btn-primary btn-md">Scopri i servizi disponibili qui</a></div>';
+  out += '<div class="text-center"><a class="btn btn-primary btn-md" href="../services/for_location.html?'+item.id+'">Scopri i servizi disponibili qui</a></div>';
 
   cont.append(out);
 }
@@ -175,7 +175,7 @@ function formatLocationsForService(item) {
 
   var cont = $('#content');
   var dynamicbreadcrumb = $('#dynamicbreadcrumb');
-  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item"><a href="../services/service.html?'+item[1].service_id+'">'+item[1].service_name+'</a></li><li class="breadcrumb-item active">'+item[1].name+'</li></ol>');
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item active">'+item[1].service_name+'</li></ol>');
 
 
   var out = '';
@@ -186,8 +186,8 @@ function formatLocationsForService(item) {
 
 
   out += '<div class="row"><div class="col-md-8 col-md-offset-2">';
-  for (var i = 0; i<item.length; i++) {
 
+  for (var i = 0; i<item.length; i++) {
     out+='<div class="col-sm-6 preCards">';
     out+='<a href="../locations/sede.html?'+ item[i].id +'">';
     out+='<div class="box">';
@@ -204,15 +204,40 @@ function formatLocationsForService(item) {
 
   cont.append(out);
 }
+function formatServicesForLocation(item) {
+  var cont = $('#content');
+  var image = $('#imageSpacer');
+  var dynamicbreadcrumb = $('#dynamicbreadcrumb');
 
-// NOT BREADCRUMBABLE
-function formatLocationsForServiceDetail(item) {
-  var content = $('#content');
-  var output = '';
+  image.css("background-image", 'url("../../assets/img/background/'+item[1].location_image+'")');
+  dynamicbreadcrumb.html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Sedi</a></li><li class="breadcrumb-item active">'+item[1].location_name+'</li></ol>');
 
 
 
-  content.append(output);
+  var out = '';
+
+  out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Servizi disponibili per</span><a href="../locations/sede.html?'+ item[1].location_id +'" class="green">'+item[1].location_name+'</a></h2><br />';
+  
+  
+
+    
+  
+  for (var i = 0; i<item.length; i++) {
+    out+='<div class="col-sm-6 preCards">';
+    out+='<a href="../services/service.html?'+ item[i].id +'">';
+    out+='<div class="box">';
+    out+='<div class="coverimg"><img src="../../assets/img/cards/' + item[i].image + '"></div>';
+    out+='<div class="cityname">' + item[i].name + '</div>';
+    out+='</div></a></div>';
+    if(iterator%2==0){
+        out+='</div><div class="row">';
+    }
+    iterator++;
+  }
+
+
+  cont.append(out);
+
 }
 
 
@@ -254,6 +279,9 @@ function show(what, callback) {
     if (level1 == "locations" && level2 == "services" && parameters != '') {
       what=what+'/'+parameters;
     }
+    if (level1 == "services" && level2 == "locations") {
+      what=what+'/'+window.location.search.substr(1);
+    }
 
     console.log(what);
 
@@ -292,8 +320,14 @@ function show(what, callback) {
                     data.map(formatAbout);
                     break;
                 case "services":
-                  toOutput += '<div class="col-md-8 col-md-offset-2">';
-                  data.map(formatServices);
+                  if (level2 == "locations") {
+                      formatServicesForLocation(data);
+                    }
+                    else {
+                      toOutput += '<div class="col-md-8 col-md-offset-2">';
+                      data.map(formatServices);
+                    }
+                  
                   break;
                 case "service":
                   data.map(formatServiceDetails);

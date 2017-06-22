@@ -176,7 +176,7 @@ app.get("/api/doctors/services/:service_id", function(req, res) {
         });
 });
 
-// locations in service
+// locations by service
 app.get("/api/locations/services/:service_id", function(req, res) {
   var i = parseInt(req.params.service_id);
     knex
@@ -188,6 +188,21 @@ app.get("/api/locations/services/:service_id", function(req, res) {
         .where({ "services.id": i })
         .groupBy("locations.name", "locations.address", "locations.phonenumber", "locations.id", "services.id", "services.name")
         .orderBy("locations.name")
+        .then(results =>  {
+            res.json(results);
+        });
+});
+// services by location
+app.get("/api/services/locations/:location_id", function(req, res) {
+  var i = parseInt(req.params.location_id);
+    knex
+        .select("services.id", "services.name", "services.image", "locations.name AS location_name","locations.id AS location_id","locations.image AS location_image")
+        .from("services")
+        .join("doctors_services", {"services.id":"doctors_services.serviceid"})
+        .join("doctors",{"doctors_services.doctorid":"doctors.id"})
+        .join("locations",{"doctors.location":"locations.id"})
+        .where({"doctors.location": i }) 
+        .groupBy("services.id", "services.name", "services.image","locations.name","locations.image","locations.id")       
         .then(results =>  {
             res.json(results);
         });
