@@ -7,6 +7,8 @@ const fs = require('fs');
 const params = url.parse(process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/clinicabalsamica");
 const auth = params.auth.split(':');
 
+
+
 const knex = require('knex')({
     client: 'pg',
     connection: {
@@ -17,6 +19,19 @@ const knex = require('knex')({
         database: params.pathname.split('/')[1]
     }
 });
+
+// nodemailer used to send emails instead of express-mailer
+const nodemailer = require('nodemailer');
+let transporter = nodemailer.createTransport({ // Setup Account
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // secure:true for port 465, secure:false for port 587
+    auth: {
+        user: 'clinicabalsamica@gmail.com',
+        pass: 'MaCheBellaClinica001'
+    }
+});
+
 
 function initDB() {
     //var ddl = fs.readFileSync("./db/ddl");
@@ -276,6 +291,54 @@ app.get("/api/doctors", function (req, res) {
             res.json(results);
         });
 });
+
+
+
+// MAIL SENDER
+app.get("/api/email/info", function (req, res) {
+  var message = req.param('message');
+  var email = req.param('email');
+
+  let messageToSend = "Received message from: " + email + "\nSaying: " + message;
+  console.log(messageToSend);
+
+  // validation takes place on server side too
+  let ok = false;
+  if (validateEmail(email) && message != "" && message.length>20) {
+    ok = true;
+    // Send Email
+    let mailOptions = {
+      from: email, // sender address
+      to: 'clinicabalsamica@gmail.com', // list of receivers
+      subject: 'Info Email', // Subject line
+      text: messageToSend, // plain text body
+      html: '' // html body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        res.json({"status" : "Error"});
+        return;
+      }
+      res.json({"status" : "OK"});
+    });
+
+  }
+
+  if (!ok) {
+    res.json({"status" : "Error"});
+  }
+});
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+
+
 
 app.set("port", serverPort);
 app.listen(serverPort, function () {
