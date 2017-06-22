@@ -101,6 +101,7 @@ function formatResponsibleOfInDoctor(item) {
 }
 
 function formatDoctorDetails(item) {
+    $(".doctorProfileImage").css("background-image", "url('../../assets/img/"+item.image+"')")
     $("#name-surname").html(item.name+" "+item.surname);
     $("#email").html(item.email);
     $("#phonenumber").html(item.phonenumber);
