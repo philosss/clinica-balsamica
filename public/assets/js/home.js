@@ -31,8 +31,10 @@ function fetchTopServices(limit) {
 function formatTopDoctors(item) {
   var out = '';
 
+  console.log(item);
+
   out+='<div class="col-sm-4 preCards">';
-  out+='<a href="../doctors/id/'+ item.id +'.html">';
+  out+='<a href="../pages/doctors/dottore.html?'+ item.id +'">';
   out+='<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
   out+='<div class="cards card-big">';
   out+='<div class="col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
@@ -46,7 +48,7 @@ function formatTopServices(item) {
   var out = '';
 
   out+='<div class="col-sm-4 preCards">';
-  out+='<a href="../services/service.html?'+ item.id +'">';
+  out+='<a href="../pages/services/service.html?'+ item.id +'">';
   out+='<div class="box">';
   out+='<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
   out+='<div class="cityname">' + item.name + '</div>';
