@@ -47,6 +47,10 @@ $link-hover-decoration: underline !default;
 body,
 html {
     background-color: $gray-lighter;
+
+}
+body {
+  overflow-x: hidden;
 }
 
 a,button {
