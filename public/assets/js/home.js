@@ -1,8 +1,64 @@
+let infoForm = $("#info-form");  // Form reference
+
 $(document).ready(function() {
     fetchTopDoctors(6);
     fetchTopServices(3);
+
+    infoForm.on('submit', validateForm);
+
 });
 
+
+// Form Validation
+function validateForm(e) {
+  e.preventDefault();
+
+  let email = $("#email");
+  let message = $("#comment");
+
+  console.log(email.val());
+  console.log(message.val());
+
+  if (validateEmail(email.val())) {
+    if (message.val() != "" && message.val().length > 20) {
+
+      //Send Data
+
+      console.log("/api/email/info?message=" + message.val() + "&email=" + email.val());
+
+      fetch("/api/email/info?message=" + message.val() + "&email=" + email.val())
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+        if (data.status == "OK") {
+          alert("Messaggio Inviato correttamente, riceverai una risposta a breve!");
+        }
+        else {
+          alert("Si è verificato un'errore... Riprova...");
+        }
+      });
+
+
+    }
+    else {
+      alert("Il messaggio che hai scritto è troppo corto... Deve essere lungo almeno 20 caratteri!");
+    }
+  }
+  else {
+    alert("Inserisci una mail valida...");
+  }
+
+}
+
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+
+// DOCTORS AND SERVICES SERVER METHODS
 
 let doctorsContainer = $('#content-doctors');
 let servicesContainer = $('#content-services');
@@ -30,8 +86,6 @@ function fetchTopServices(limit) {
 
 function formatTopDoctors(item) {
   var out = '';
-
-  console.log(item);
 
   out+='<div class="col-sm-4 preCards">';
   out+='<a href="../pages/doctors/dottore.html?'+ item.id +'">';
