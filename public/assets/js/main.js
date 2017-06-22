@@ -69,7 +69,7 @@ function formatDoctorsBig(item) {
 
 
     toOutput+='<div class="col-sm-6 preCards">';
-    toOutput+='<a href="../doctors/id/'+ item.id +'.html">';
+    toOutput+='<a href="../doctors/dottore.html?'+ item.id +'">';
     toOutput+='<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
     toOutput+='<div class="cards card-big">';
     toOutput+='<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
@@ -82,15 +82,14 @@ function formatDoctorsBig(item) {
 }
 
 function levelFormatterDoctorsServices(item){
-
-    toOutput+='<br /><a class="serviceTitle" href="../services/id/'+item.service_id+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+    toOutput+='<br /><a class="serviceTitle" href="../services/service.html?'+item.serviceid+'"><h3>'+item.service_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
     toOutput+='</div><div class="row">';
     iterator2=1;
 }
 function levelFormatterDoctorsLocations(item){
 
-    toOutput+='<a class="serviceTitle" href="../locations/id/'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+    toOutput+='<a class="serviceTitle" href="../locations/sede.html?'+item.location_id+'"><h3>'+item.location_name+'<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
     list.append((item.doctors).map(formatDoctorsBig));
 
     iterator2=1;
