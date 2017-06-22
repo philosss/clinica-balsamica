@@ -93,11 +93,11 @@ function levelFormatterDoctorsLocations(item){
 }
 
 function formatServicesInDoctor(item) {
-    $("#services").append('<a href="../../pages/services/service.html?'+item.id+'"><span class="colored">'+item.name+'</span></a> ')
+    $("#services").append('<a href="../../pages/services/service.html?'+item.id+'"><span class="colored">'+item.name+'</span></a><br/>')
 }
 
 function formatResponsibleOfInDoctor(item) {
-    $("#responsibleOf").append('<a href="../../pages/services/service.html?'+item.id+'"><span class="colored">'+item.name+'</span></a> ')
+    $("#responsibleOf").append('<a href="../../pages/services/service.html?'+item.id+'"><span class="colored">'+item.name+'</span></a><br/>')
 }
 
 function formatDoctorDetails(item) {
