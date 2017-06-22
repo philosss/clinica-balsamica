@@ -217,11 +217,11 @@ function formatServicesForLocation(item) {
   var out = '';
 
   out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Servizi disponibili per</span><a href="../locations/sede.html?'+ item[1].location_id +'" class="green">'+item[1].location_name+'</a></h2><br />';
-  
-  
 
-    
-  
+
+
+
+
   for (var i = 0; i<item.length; i++) {
     out+='<div class="col-sm-6 preCards">';
     out+='<a href="../services/service.html?'+ item[i].id +'">';
@@ -327,7 +327,7 @@ function show(what, callback) {
                       toOutput += '<div class="col-md-8 col-md-offset-2">';
                       data.map(formatServices);
                     }
-                  
+
                   break;
                 case "service":
                   data.map(formatServiceDetails);
@@ -336,8 +336,7 @@ function show(what, callback) {
                     switch(level2){
                         case "services":
 
-                            if (parameters != null) {
-                              console.log(data);
+                            if (parameters != "") {
                               formatDoctorsForService(data);
                             }
                             else {
