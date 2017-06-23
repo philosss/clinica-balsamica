@@ -25,9 +25,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicons/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
-   	<meta name="msapplication-TileColor" content="#0b7532">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#0b7532">
+	<meta name="msapplication-TileColor" content="#0b7532">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#0b7532">
 
 	<!-- Modernizr JS -->
 	<script src="../../assets/js/modernizr-2.6.2.min.js"></script>
@@ -41,7 +41,27 @@
 
 	<script>
 		//MUST BE DEFINED, EVEN BLANK
-		var apiCall = "locations/services";
+		var apiCall = "locations/services/" + window.location.search.substr(1);
+
+		var toOutput = '';
+		function format(item) {
+			$('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item active">' + item[0].service_name + '</li></ol>');
+			toOutput += '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Sedi disponibili per</span><a href="../services/service.html?' + item[1].service_id + '" class="green">' + item[0].service_name + '</a></h2><br />';
+			toOutput += '<br />';
+			toOutput += '<div class="row"><div class="col-md-8 col-md-offset-2">';
+
+			toOutput += '<div class="col-sm-6 preCards">';
+			toOutput += '<a href="../locations/sede.html?' + item[i].id + '">';
+			toOutput += '<div class="box">';
+			toOutput += '<div class="coverimg"><img src="../../assets/img/cards/' + item[i].image + '"></div>';
+			toOutput += '<div class="cityname">' + item[i].name + '</div>';
+			toOutput += '</div></a></div>';
+
+			if (iterator % 2 != 0) {
+				toOutput += '</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
+			}
+			iterator++;
+		}
 	</script>
 
 	<body>
@@ -79,9 +99,9 @@
 
 		<!-- Content -->
 		<div class="content-wrapper white">
-      <div id="dynamicbreadcrumb"></div>
+			<div id="dynamicbreadcrumb"></div>
 			<div class="row text-center">
-				<div class='col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1' id='content'>
+				<div class='col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1' id='list'>
 
 				</div>
 

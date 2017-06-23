@@ -25,9 +25,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicons/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
-   	<meta name="msapplication-TileColor" content="#0b7532">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#0b7532">
+	<meta name="msapplication-TileColor" content="#0b7532">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#0b7532">
 
 	<!-- Modernizr JS -->
 	<script src="../../assets/js/modernizr-2.6.2.min.js"></script>
@@ -41,7 +41,17 @@
 
 	<script>
 		//MUST BE DEFINED, EVEN BLANK
-		var apiCall = "location";
+		var apiCall = "location/" + window.location.search.substr(1);
+		var toOutput = '';
+
+		function format(item) {
+			$('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Sedi</a></li><li class="breadcrumb-item active">' + item.name + '</li></ol>');
+			$('#imageSpacer').css("background-image", 'url("../../assets/img/background/' + item.image + '")');
+			toOutput = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Le nostre sedi</span>' + item.name + '</h2><br />';
+			toOutput += item.description;
+			toOutput += '<br />';
+			toOutput += '<div class="text-center"><a class="btn btn-primary btn-md" href="../services/for_location.html?' + item.id + '">Scopri i servizi disponibili qui</a></div>';
+		}
 	</script>
 
 	<body>
@@ -76,12 +86,11 @@
 		<div class="image-spacer" id='imageSpacer'></div>
 
 
-
 		<!-- Content -->
 		<div class="content-wrapper white">
 			<div id="dynamicbreadcrumb"></div>
 			<div class="row text-center">
-				<div class='col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1' id='content'>
+				<div class='col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1' id='list'>
 
 				</div>
 

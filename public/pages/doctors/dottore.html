@@ -39,6 +39,33 @@
 
   <script>
     var apiCall = "doctor/" + window.location.search.substr(1)
+
+    function formatServicesInDoctor(item) {
+      $("#services").append('<a href="../../pages/services/service.html?' + item.id + '"><span class="colored">' + item.name + '</span></a><br/>')
+    }
+
+    function formatResponsibleOfInDoctor(item) {
+      $("#responsibleOf").append('<a href="../../pages/services/service.html?' + item.id + '"><span class="colored">' + item.name + '</span></a><br/>')
+    }
+    
+    function format(item) {
+      $(".doctorProfileImage").css("background-image", "url('../../assets/img/" + item.image + "')")
+      $("#name-surname").html(item.name + " " + item.surname);
+      $("#email").html(item.email);
+      $("#phonenumber").html(item.phonenumber);
+      $("#office").html("#" + item.office + ", " + item.locationName);
+
+      if (item.services.length > 0) {
+        item.services.map(formatServicesInDoctor);
+      } else {
+        $("#services").html("Nessuno");
+      }
+      if (item.responsibleOf.length > 0) {
+        item.responsibleOf.map(formatResponsibleOfInDoctor);
+      } else {
+        $("#responsibleOf").html("Nessuno");
+      }
+    }
   </script>
 
 </head>
@@ -68,76 +95,76 @@
   <div class="content-wrapper white">
     <div id="dynamicBreadcrum"></div>
 
-      <div class="row">
-        <div class="doctor-details text-center col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-          <div class="doctorProfileImage"></div>
-          <h1 id="name-surname">Cristina d'ampezzo</h1>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-              <div class="col-xs-2 col-xs-offset-3 text-left"><span class="glyphicon glyphicon-envelope"></span></div>
-              <div class="col-xs-4 text-left line-height-150"><a id="email" href="mailto:cristina.dampezzo@clinicabalsami.ca">cristina.dampezzo@clinicabalsami.ca</a></div>
-            </div>
+    <div class="row">
+      <div class="doctor-details text-center col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+        <div class="doctorProfileImage"></div>
+        <h1 id="name-surname">Cristina d'ampezzo</h1>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="col-xs-2 col-xs-offset-3 text-left"><span class="glyphicon glyphicon-envelope"></span></div>
+            <div class="col-xs-4 text-left line-height-150"><a id="email" href="mailto:cristina.dampezzo@clinicabalsami.ca">cristina.dampezzo@clinicabalsami.ca</a></div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-              <div class="col-xs-2 col-xs-offset-3 text-left"><span class="glyphicon glyphicon-earphone"></span></div>
-              <div class="col-xs-4 text-left line-height-150"><a id="phonenumber" href="tel:022039918">0220399188</a></div>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="col-xs-2 col-xs-offset-3 text-left"><span class="glyphicon glyphicon-earphone"></span></div>
+            <div class="col-xs-4 text-left line-height-150"><a id="phonenumber" href="tel:022039918">0220399188</a></div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-              <div class="col-xs-2 col-xs-offset-3 text-left"><span class="glyphicon glyphicon-map-marker"></span></div>
-              <div class="col-xs-4 text-left line-height-150"><span id="office">#562, Milano</span></div>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="col-xs-2 col-xs-offset-3 text-left"><span class="glyphicon glyphicon-map-marker"></span></div>
+            <div class="col-xs-4 text-left line-height-150"><span id="office">#562, Milano</span></div>
           </div>
+        </div>
 
-          <br />
-          <br />
+        <br />
+        <br />
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 vcentered-container">
-              <div class="col-xs-6 text-center">Si occupa di:</div>
-              <div id="services" class="col-xs-6 text-left"></div>
-            </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 vcentered-container">
+            <div class="col-xs-6 text-center">Si occupa di:</div>
+            <div id="services" class="col-xs-6 text-left"></div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 vcentered-container">
-              <div class="col-xs-6 text-center">Responsabile del Servizio:</div>
-              <div id="responsibleOf" class="col-xs-6 text-left"></div>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3 vcentered-container">
+            <div class="col-xs-6 text-center">Responsabile del Servizio:</div>
+            <div id="responsibleOf" class="col-xs-6 text-left"></div>
           </div>
         </div>
       </div>
+    </div>
 
-      <br />
-      <footer>
-        <div class="container">
-          <div class="row">
+    <br />
+    <footer>
+      <div class="container">
+        <div class="row">
 
-            <div class="col-sm-4">
-              <div class="logo"></div>
-            </div>
-            <div class="col-sm-4">
-              <a href="../about/index.html">Chi siamo</a>
-              <a href="../about/work.html">Lavora con noi</a>
-              <a href="../about/howtoreach.html">Come Raggiungerci</a>
-              <a href="../about/contacts.html">Contatti</a>
-            </div>
-            <div class="col-sm-4">
-              <a href="../doctors/index.html">Dottori</a>
-              <a href="../services/index.html">Servizi</a>
-              <a href="../locations/index.html">Sedi</a>
-              <a href="../faq.html">FAQ</a>
-            </div>
-
+          <div class="col-sm-4">
+            <div class="logo"></div>
+          </div>
+          <div class="col-sm-4">
+            <a href="../about/index.html">Chi siamo</a>
+            <a href="../about/work.html">Lavora con noi</a>
+            <a href="../about/howtoreach.html">Come Raggiungerci</a>
+            <a href="../about/contacts.html">Contatti</a>
+          </div>
+          <div class="col-sm-4">
+            <a href="../doctors/index.html">Dottori</a>
+            <a href="../services/index.html">Servizi</a>
+            <a href="../locations/index.html">Sedi</a>
+            <a href="../faq.html">FAQ</a>
           </div>
 
-          <p class="copy text-center">Copyright &copy; 2017 Clinica Balsamica</p>
         </div>
-      </footer>
 
-      <!-- Main -->
-      <script src="../../assets/js/main.js"></script>
+        <p class="copy text-center">Copyright &copy; 2017 Clinica Balsamica</p>
+      </div>
+    </footer>
+
+    <!-- Main -->
+    <script src="../../assets/js/main.js"></script>
 </body>
 
 </html>

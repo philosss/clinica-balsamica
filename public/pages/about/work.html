@@ -1,111 +1,119 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Clinica Balsamica - Lavora con noi</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
 
-    <link rel="apple-touch-icon" sizes="57x57" href="../../assets/img/favicons/apple-icon-57x57.png">
-  	<link rel="apple-touch-icon" sizes="60x60" href="../../assets/img/favicons/apple-icon-60x60.png">
-  	<link rel="apple-touch-icon" sizes="72x72" href="../../assets/img/favicons/apple-icon-72x72.png">
-  	<link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/favicons/apple-icon-76x76.png">
-  	<link rel="apple-touch-icon" sizes="114x114" href="../../assets/img/favicons/apple-icon-114x114.png">
-  	<link rel="apple-touch-icon" sizes="120x120" href="../../assets/img/favicons/apple-icon-120x120.png">
-  	<link rel="apple-touch-icon" sizes="144x144" href="../../assets/img/favicons/apple-icon-144x144.png">
-  	<link rel="apple-touch-icon" sizes="152x152" href="../../assets/img/favicons/apple-icon-152x152.png">
-  	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-icon-180x180.png">
-  	<link rel="icon" type="image/png" sizes="192x192" href="../../assets/img/favicons/android-icon-192x192.png">
-  	<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
-  	<link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicons/favicon-96x96.png">
-  	<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
-   	<meta name="msapplication-TileColor" content="#0b7532">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#0b7532">
-    
-    <!-- Modernizr JS -->
-    <script src="../../assets/js/modernizr-2.6.2.min.js"></script>
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Clinica Balsamica - Lavora con noi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Theme style  -->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+
+  <link rel="apple-touch-icon" sizes="57x57" href="../../assets/img/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../../assets/img/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../../assets/img/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../../assets/img/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../../assets/img/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../../assets/img/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../../assets/img/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/img/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
+  <meta name="msapplication-TileColor" content="#0b7532">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#0b7532">
+
+  <!-- Modernizr JS -->
+  <script src="../../assets/js/modernizr-2.6.2.min.js"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-    <script>
-      //MUST BE DEFINED, EVEN BLANK
-      var apiCall="work";
-    </script>
-  </head>
-  <body>
-    <nav class="main-nav">
-      <div class="logo"></div>
-      <div id="nav-menu">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="nav-resp">
-        <ul>
-          <li><a href='../../index.html'>Home</a></li>
-          <li><a href='../about/index.html' class="active">Chi Siamo</a></li>
-          <li><a href='../doctors/index.html'>Dottori</a></li>
-          <li><a href='../services/index.html'>Servizi</a></li>
-          <li><a href='../locations/index.html'>Sedi</a></li>
-          <li><a href='../faq.html'>FAQ</a></li>
-        </ul>
-      </div>
-    </nav>
-    <!-- SPACER IMAGE -->
-    <div class="image-spacer work"></div>
-    <div class="content-wrapper white">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  <script>
+    //MUST BE DEFINED, EVEN BLANK
+    var apiCall = "work";
+    var toOutput = '';
+    function format(item) {
+      toOutput += '<div><h3>' + item.question + '</h3>';
+      toOutput += '<p>' + item.answer + '</p></div>';
+    }
+  </script>
+</head>
+
+<body>
+  <nav class="main-nav">
+    <div class="logo"></div>
+    <div id="nav-menu">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-resp">
+      <ul>
+        <li><a href='../../index.html'>Home</a></li>
+        <li><a href='../about/index.html' class="active">Chi Siamo</a></li>
+        <li><a href='../doctors/index.html'>Dottori</a></li>
+        <li><a href='../services/index.html'>Servizi</a></li>
+        <li><a href='../locations/index.html'>Sedi</a></li>
+        <li><a href='../faq.html'>FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- SPACER IMAGE -->
+  <div class="image-spacer work"></div>
+  <div class="content-wrapper white">
     <ol class="breadcrumb col-sm-offset-1">
       <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
       <li class="breadcrumb-item"><a href="index.html">Chi siamo</a></li>
       <li class="breadcrumb-item active">Lavora con noi</li>
     </ol>
-      <div class="row text-center">
-        <h2 class="text-uppercase"><span class="eyebrow">Posizioni aperte</span>Lavora con noi</h2>
-      </div>
-      <!-- SUBNAVIGATION -->
-      <nav class="sub-nav">
-        <ul>
-          <li><a href='index.html'>Presentazione</a></li>
-          <li><a href='work.html' class="active">Lavora con Noi</a></li>
-          <li><a href='howtoreach.html'>Come Raggiungerci</a></li>
-          <li><a href='contacts.html'>Contatti</a></li>
-        </ul>
-      </nav>
-      <div class="container">
-        <div class="row">
-          <div class='col-md-10 col-md-offset-1 col-sm-12'>
-            <p>Troverai qui un elenco delle posizioni aperte. Per maggiori informazioni, contattaci <a href="contacts.html">qui</a>.</p>
-            <div id="list"></div>
-          </div>
+    <div class="row text-center">
+      <h2 class="text-uppercase"><span class="eyebrow">Posizioni aperte</span>Lavora con noi</h2>
+    </div>
+    <!-- SUBNAVIGATION -->
+    <nav class="sub-nav">
+      <ul>
+        <li><a href='index.html'>Presentazione</a></li>
+        <li><a href='work.html' class="active">Lavora con Noi</a></li>
+        <li><a href='howtoreach.html'>Come Raggiungerci</a></li>
+        <li><a href='contacts.html'>Contatti</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class='col-md-10 col-md-offset-1 col-sm-12'>
+          <p>Troverai qui un elenco delle posizioni aperte. Per maggiori informazioni, contattaci <a href="contacts.html">qui</a>.</p>
+          <div id="list"></div>
         </div>
       </div>
     </div>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-4">
-            <div class="logo"></div>
-          </div>
-          <div class="col-sm-4">
-            <a href="../about/index.html">Chi siamo</a>
-            <a href="../about/work.html">Lavora con noi</a>
-            <a href="../about/howtoreach.html">Come Raggiungerci</a>
-            <a href="../about/contacts.html">Contatti</a>
-          </div>
-          <div class="col-sm-4">
-            <a href="../doctors/index.html">Dottori</a>
-            <a href="../services/index.html">Servizi</a>
-            <a href="../locations/index.html">Sedi</a>
-            <a href="../faq.html">FAQ</a>
-          </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="logo"></div>
         </div>
-        <p class="copy text-center">Copyright &copy; 2017 Clinica Balsamica</p>
+        <div class="col-sm-4">
+          <a href="../about/index.html">Chi siamo</a>
+          <a href="../about/work.html">Lavora con noi</a>
+          <a href="../about/howtoreach.html">Come Raggiungerci</a>
+          <a href="../about/contacts.html">Contatti</a>
+        </div>
+        <div class="col-sm-4">
+          <a href="../doctors/index.html">Dottori</a>
+          <a href="../services/index.html">Servizi</a>
+          <a href="../locations/index.html">Sedi</a>
+          <a href="../faq.html">FAQ</a>
+        </div>
       </div>
-    </footer>
-    <!-- Main -->
-    <script src="../../assets/js/main.js"></script>
-  </body>
+      <p class="copy text-center">Copyright &copy; 2017 Clinica Balsamica</p>
+    </div>
+  </footer>
+  <!-- Main -->
+  <script src="../../assets/js/main.js"></script>
+</body>
+
 </html>
