@@ -42,24 +42,34 @@
 	<script>
 		//MUST BE DEFINED, EVEN BLANK
 		var apiCall = "locations/services/" + window.location.search.substr(1);
-
+		var h = true;
+		var iterator = 1;
 		var toOutput = '';
-		function format(item) {
-			$('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item active">' + item[0].service_name + '</li></ol>');
-			toOutput += '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Sedi disponibili per</span><a href="../services/service.html?' + item[1].service_id + '" class="green">' + item[0].service_name + '</a></h2><br />';
-			toOutput += '<br />';
-			toOutput += '<div class="row"><div class="col-md-8 col-md-offset-2">';
 
-			toOutput += '<div class="col-sm-6 preCards">';
-			toOutput += '<a href="../locations/sede.html?' + item[i].id + '">';
-			toOutput += '<div class="box">';
-			toOutput += '<div class="coverimg"><img src="../../assets/img/cards/' + item[i].image + '"></div>';
-			toOutput += '<div class="cityname">' + item[i].name + '</div>';
-			toOutput += '</div></a></div>';
+		function header(item) {
+			$('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item active">' + item.service_name + '</li></ol>');
+
+			toOutput += '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Sedi disponibili per</span><a href="../services/service.html?' + item.service_id + '" class="green">' + item.service_name + '</a></h2><br />';
+			toOutput += '<br />';
+		}
+
+		function format(item) {
+			if (h == true) {
+				header(item);
+				h = false;
+			}
 
 			if (iterator % 2 != 0) {
 				toOutput += '</div></div><div class="row"><div class="col-md-8 col-md-offset-2">';
 			}
+
+			toOutput += '<div class="col-sm-6 preCards">';
+			toOutput += '<a href="../locations/sede.html?' + item.id + '">';
+			toOutput += '<div class="box">';
+			toOutput += '<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
+			toOutput += '<div class="cityname">' + item.name + '</div>';
+			toOutput += '</div></a></div>';
+
 			iterator++;
 		}
 	</script>

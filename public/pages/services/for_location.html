@@ -41,20 +41,30 @@
 
 	<script>
 		//MUST BE DEFINED, EVEN BLANK
-		var apiCall = "services/locations";
-		var toOutput = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Servizi disponibili per</span><a href="../locations/sede.html?' + item[1].location_id + '" class="green">' + item[1].location_name + '</a></h2><br />';
+		var apiCall = "services/locations/" + window.location.search.substr(1);
+		var toOutput = "";
+		var h = true;
 
-		function init() {
-			$('#imageSpacer').css("background-image", 'url("../../assets/img/background/' + item[1].location_image + '")');
-			$('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../locations/index.html">Sedi</a></li><li class="breadcrumb-item active">' + item[1].location_name + '</li></ol>');
+		function header(item) {
+			$('#imageSpacer').css("background-image", 'url("../../assets/img/background/' + item.location_image + '")');
+			$('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="index.html">Sedi</a></li><li class="breadcrumb-item active">' + item.location_name + '</li></ol>');
+
+		 	toOutput = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Servizi disponibili per</span><a href="../locations/sede.html?'+ item.location_id +'" class="green">'+item.location_name+'</a></h2><br />';
+			toOutput += '<br />';
 		}
 
 		function format(item) {
+			console.log(item);
+			if(h == true) {
+				header(item);
+				h = false;
+			}
+
 			toOutput += '<div class="col-sm-6 preCards">';
-			toOutput += '<a href="../services/service.html?' + item[i].id + '">';
+			toOutput += '<a href="../services/service.html?' + item.id + '">';
 			toOutput += '<div class="box">';
-			toOutput += '<div class="coverimg"><img src="../../assets/img/cards/' + item[i].image + '"></div>';
-			toOutput += '<div class="cityname">' + item[i].name + '</div>';
+			toOutput += '<div class="coverimg"><img src="../../assets/img/cards/' + item.image + '"></div>';
+			toOutput += '<div class="cityname">' + item.name + '</div>';
 			toOutput += '</div></a></div>';
 			if (iterator % 2 == 0) {
 				toOutput += '</div><div class="row">';
@@ -100,7 +110,7 @@
 		<div class="content-wrapper white">
 			<div id="dynamicbreadcrumb"></div>
 			<div class="row text-center">
-				<div class='col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1' id='content'>
+				<div class='col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1' id='list'>
 
 				</div>
 
