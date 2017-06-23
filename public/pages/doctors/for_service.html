@@ -25,9 +25,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicons/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
-   	<meta name="msapplication-TileColor" content="#0b7532">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#0b7532">
+	<meta name="msapplication-TileColor" content="#0b7532">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#0b7532">
 
 	<!-- Modernizr JS -->
 	<script src="../../assets/js/modernizr-2.6.2.min.js"></script>
@@ -41,7 +41,38 @@
 
 	<script>
 		//MUST BE DEFINED, EVEN BLANK
-		var apiCall = "doctors/services";
+		var apiCall = "doctors/services/" + location.search.substr(1);
+		var h = true;
+
+		function header(item) {
+			var out = '';
+			console.log(item);
+
+			$('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item active">' + item.service_name + '</li></ol>');
+
+			out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Dottori che operano in</span><a href="../services/service.html?' + item.service_id + '" class="green">' + item.service_name + '</a></h2><br />';
+			out += '<br />';
+
+			$('#content').append(out);
+		}
+
+		function format(item) {
+			if (h == true) {
+				header(item);
+				h = false;
+			}
+			var out = '';
+
+			out += '<div class="col-sm-6 preCards">';
+			out += '<a href="../doctors/dottore.html?'+item.id+'">';
+			out += '<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
+			out += '<div class="cards card-big">';
+			out += '<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
+			out += '<div class="col-md-10 col-xs-9">Email: ' + item.email + '<br>Telefono: ' + item.phonenumber + '<br>Ufficio: #' + item.office + ', ' + item.location + '</div>';
+			out += '</div></a></div>';
+
+			$('#content').append(out);
+		}
 	</script>
 
 	<body>

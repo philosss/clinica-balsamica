@@ -41,32 +41,27 @@
     //MUST BE DEFINED, EVEN BLANK
     var apiCall = "doctors/services/" + window.location.search.substr(1);
 
-    function format(item) {
-      var out = '';
+    var iterator2 = 1;
 
-      $('#dynamicbreadcrumb').html('<ol class="breadcrumb col-sm-offset-1"><li class="breadcrumb-item"><a href="../../index.html">Home</a></li><li class="breadcrumb-item"><a href="../services/index.html">Servizi</a></li><li class="breadcrumb-item active">' + item[1].service_name + '</li></ol>');
-
-      out = '<h2 class="text-uppercase" style="text-align:center;"><span class="eyebrow">Dottori che operano in</span><a href="../services/service.html?' + item[1].service_id + '" class="green">' + item[1].service_name + '</a></h2><br />';
-      out += '<br />';
-
-      $('#content').append(out);
-      item.map(formatDoctorsForServiceDetail);
+    function formatDoctorsBig(item) {
+      toOutput += '<div class="col-sm-6 preCards">';
+      toOutput += '<a href="../doctors/dottore.html?' + item.id + '">';
+      toOutput += '<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
+      toOutput += '<div class="cards card-big">';
+      toOutput += '<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
+      toOutput += '<div class="col-md-10 col-xs-9">Email: ' + item.email + '<br>Telefono: ' + item.phonenumber + '<br>Ufficio: #' + item.office + ', ' + item.location + '</div>';
+      toOutput += '</div></a></div>';
+      if (iterator2 % 2 == 0) {
+        toOutput += '</div><div class="row">';
+      }
+      iterator2++;
     }
 
-    // NOT BREADCRUMBABLE
-    function formatDoctorsForServiceDetail(item) {
-      var cont = $('#content');
-      var out = '';
-
-      out += '<div class="col-sm-6 preCards">';
-      out += '<a href="../doctors/id/' + item.id + '.html">';
-      out += '<div class="row green-bar">DR.' + item.name + ' ' + item.surname + '</div>';
-      out += '<div class="cards card-big">';
-      out += '<div class="col-md-2 col-xs-3"><img src="../../assets/img/' + item.image + '" / width="60px"></div>';
-      out += '<div class="col-md-10 col-xs-9">Email: ' + item.email + '<br>Telefono: ' + item.phonenumber + '<br>Ufficio: #' + item.office + ', ' + item.location + '</div>';
-      out += '</div></a></div>';
-
-      cont.append(out);
+    function format(item) {
+      toOutput += '<br /><a class="serviceTitle" href="../services/service.html?' + item.serviceid + '"><h3>' + item.service_name + '<span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span></h3></a>';
+      item.doctors.map(formatDoctorsBig);
+      toOutput += '</div><div class="row">';
+      iterator2 = 1;
     }
   </script>
 

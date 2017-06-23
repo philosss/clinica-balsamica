@@ -86,10 +86,10 @@ app.get("/api/services", function (req, res) {
 app.get("/api/top-services/:limit", function (req, res) {
     var i = parseInt(req.params.limit);
     knex("services")
-    .limit(i)
-    .then(results => {
-        res.json(results);
-    });
+        .limit(i)
+        .then(results => {
+            res.json(results);
+        });
 });
 
 app.get("/api/service/:service_id", function (req, res) {
@@ -103,13 +103,13 @@ app.get("/api/service/:service_id", function (req, res) {
             res.json(results);
         });
 });
-app.get("/api/location/:location_id", function(req, res) {
+app.get("/api/location/:location_id", function (req, res) {
     var i = parseInt(req.params.location_id);
     knex
         .select("locations.*")
         .from("locations")
         .where({ "locations.id": i })
-        .then(results =>  {
+        .then(results => {
             res.json(results);
         });
 });
@@ -117,20 +117,20 @@ app.get("/api/location/:location_id", function(req, res) {
 app.get("/api/top-doctors/:limit", function (req, res) {
     var i = parseInt(req.params.limit);
     knex("doctors")
-    .limit(i)
-    .then(results => {
-        res.json(results);
-    });
+        .limit(i)
+        .then(results => {
+            res.json(results);
+        });
 });
 
 app.get("/api/doctor/:doctor_id", function (req, res) {
     var i = parseInt(req.params.doctor_id);
     knex
-        .select("doctors.*", "locations.name AS locationName", "services.name AS serviceName",  "services.id AS serviceID", "services.responsible")
+        .select("doctors.*", "locations.name AS locationName", "services.name AS serviceName", "services.id AS serviceID", "services.responsible")
         .from("doctors")
         .leftJoin("doctors_services", { "doctors_services.doctorid": "doctors.id" })
         .leftJoin("services", { "services.id": "doctors_services.serviceid" })
-        .join("locations", {"locations.id": "doctors.location"})
+        .join("locations", { "locations.id": "doctors.location" })
         .where({ "doctors.id": i })
         .then(results => {
             var result = results[0];
@@ -176,8 +176,8 @@ app.get("/api/doctors/location/:location_id", function (req, res) {
 
 
 // doctors in service
-app.get("/api/doctors/services/:service_id", function(req, res) {
-  var i = parseInt(req.params.service_id);
+app.get("/api/doctors/services/:service_id", function (req, res) {
+    var i = parseInt(req.params.service_id);
     knex
         .select("doctors.*", "services.name AS service_name", "services.id AS service_id")
         .from("doctors")
@@ -185,14 +185,14 @@ app.get("/api/doctors/services/:service_id", function(req, res) {
         .join("services", { "services.id": "doctors_services.serviceid" })
         .where({ "services.id": i })
         .orderBy("doctors.surname", "doctors.name")
-        .then(results =>  {
+        .then(results => {
             res.json(results);
         });
 });
 
 // locations by service
-app.get("/api/locations/services/:service_id", function(req, res) {
-  var i = parseInt(req.params.service_id);
+app.get("/api/locations/services/:service_id", function (req, res) {
+    var i = parseInt(req.params.service_id);
     knex
         .select("locations.*", "services.name AS service_name", "services.id AS service_id")
         .from("doctors")
@@ -202,22 +202,22 @@ app.get("/api/locations/services/:service_id", function(req, res) {
         .where({ "services.id": i })
         .groupBy("locations.name", "locations.address", "locations.phonenumber", "locations.id", "services.id", "services.name")
         .orderBy("locations.name")
-        .then(results =>  {
+        .then(results => {
             res.json(results);
         });
 });
 // services by location
-app.get("/api/services/locations/:location_id", function(req, res) {
-  var i = parseInt(req.params.location_id);
+app.get("/api/services/locations/:location_id", function (req, res) {
+    var i = parseInt(req.params.location_id);
     knex
-        .select("services.id", "services.name", "services.image", "locations.name AS location_name","locations.id AS location_id","locations.image AS location_image")
+        .select("services.id", "services.name", "services.image", "locations.name AS location_name", "locations.id AS location_id", "locations.image AS location_image")
         .from("services")
-        .join("doctors_services", {"services.id":"doctors_services.serviceid"})
-        .join("doctors",{"doctors_services.doctorid":"doctors.id"})
-        .join("locations",{"doctors.location":"locations.id"})
-        .where({"doctors.location": i }) 
-        .groupBy("services.id", "services.name", "services.image","locations.name","locations.image","locations.id")       
-        .then(results =>  {
+        .join("doctors_services", { "services.id": "doctors_services.serviceid" })
+        .join("doctors", { "doctors_services.doctorid": "doctors.id" })
+        .join("locations", { "doctors.location": "locations.id" })
+        .where({ "doctors.location": i })
+        .groupBy("services.id", "services.name", "services.image", "locations.name", "locations.image", "locations.id")
+        .then(results => {
             res.json(results);
         });
 });
@@ -265,7 +265,7 @@ app.get("/api/doctors/locations", function (req, res) {
                 // Se la location è già stata inserita, aggiungo il dottore a quella location
                 if (x >= 0) {
                     r[x].doctors.push(results[i]);
-                // Altrimenti la creo, ed aggiungo il dottore
+                    // Altrimenti la creo, ed aggiungo il dottore
                 } else {
                     el = {};
                     el.location_id = results[i].location_id;
@@ -295,49 +295,49 @@ app.get("/api/doctors", function (req, res) {
 
 // MAIL SENDER - HOMEPAGE
 app.get("/api/email/info", function (req, res) {
-  var message = req.param('message');
-  var email = req.param('email');
-  var type = req.param('type');
-  var messageToSend=null;
+    var message = req.param('message');
+    var email = req.param('email');
+    var type = req.param('type');
+    var messageToSend = null;
 
-  if(type==0){
-    messageToSend = "Richiesta di prenotazione ricevuta da: " + email + "\nMessaggio: " + message;
-  }else{
-    var name = req.param('name');
-    var subject = req.param("subject");
-    messageToSend = "Messaggio sicevuto da: " + email + "\nName: " + name+ "\nSubject: " + subject+ "\nSaying: " + message;  
-  }
-  
-  console.log(messageToSend);
+    if (type == 0) {
+        messageToSend = "Richiesta di prenotazione ricevuta da: " + email + "\nMessaggio: " + message;
+    } else {
+        var name = req.param('name');
+        var subject = req.param("subject");
+        messageToSend = "Messaggio sicevuto da: " + email + "\nName: " + name + "\nSubject: " + subject + "\nSaying: " + message;
+    }
 
-  // validation takes place on server side too
-  let ok = false;
-  if (validateEmail(email) && message != "" && message.length>20) {
-    ok = true;
-    // Send Email
-    let mailOptions = {
-      from: email, // sender address
-      to: 'clinicabalsamica@gmail.com', // list of receivers
-      subject: 'Info Email', // Subject line
-      text: messageToSend, // plain text body
-      html: '' // html body
-    };
+    console.log(messageToSend);
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-        res.json({"status" : "Error"});
-        return;
-      }
-      res.json({"status" : "OK"});
-    });
+    // validation takes place on server side too
+    let ok = false;
+    if (validateEmail(email) && message != "" && message.length > 20) {
+        ok = true;
+        // Send Email
+        let mailOptions = {
+            from: email, // sender address
+            to: 'clinicabalsamica@gmail.com', // list of receivers
+            subject: 'Info Email', // Subject line
+            text: messageToSend, // plain text body
+            html: '' // html body
+        };
 
-  }
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+                res.json({ "status": "Error" });
+                return;
+            }
+            res.json({ "status": "OK" });
+        });
 
-  if (!ok) {
-    res.json({"status" : "Error"});
-  }
+    }
+
+    if (!ok) {
+        res.json({ "status": "Error" });
+    }
 });
 
 function validateEmail(email) {

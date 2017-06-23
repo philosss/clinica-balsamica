@@ -36,8 +36,11 @@
   <script>
     //MUST BE DEFINED, EVEN BLANK
     var apiCall = "howtoreach";
-    var toOutput = '<div class="col-md-8 col-md-offset-2">';
-    
+
+    function init() {
+      toOutput = '<div class="col-md-8 col-md-offset-2">';
+    }
+
     function format(item) {
       toOutput += '<div class="col-sm-6 preCards">';
       toOutput += '<a href="../locations/sede.html?' + item.id + '">';

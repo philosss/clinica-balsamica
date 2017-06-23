@@ -41,7 +41,7 @@
 
 	<script>
 		//MUST BE DEFINED, EVEN BLANK
-		var apiCall = "services";
+		var apiCall = "services/" + window.location.search.substr(1);
 		var toOutput = "";
 
 		function init() {
