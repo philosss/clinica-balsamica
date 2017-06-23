@@ -7,8 +7,6 @@ const fs = require('fs');
 const params = url.parse(process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:5432/clinicabalsamica");
 const auth = params.auth.split(':');
 
-
-
 const knex = require('knex')({
     client: 'pg',
     connection: {
