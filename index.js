@@ -14,10 +14,12 @@ const knex = require('knex')({
         port: params.port,
         user: auth[0],
         password: auth[1],
-        database: params.pathname.split('/')[1]
+        database: params.pathname.split('/')[1],
+        multipleStatements: true
     }
 });
 const serverPort = process.env.PORT || 8080;
+
 
 // nodemailer used to send emails
 const nodemailer = require('nodemailer');
@@ -33,31 +35,32 @@ const transporter = nodemailer.createTransport({ // Setup Account
 
 // Create database if not exists, and add data from JSON files
 function initDB() {
-    //var ddl = fs.readFileSync("./db/ddl");
+
+    var ddl = fs.readFileSync("./db/ddl.sql").toString();
     var locationsList = require("./db/locations.json");
     var doctorsList = require("./db/doctors.json");
     var servicesList = require("./db/services.json");
     var doctorsServicesList = require("./db/doctors_services.json");
 
-    /*knex.schema.raw(ddl).catch(err => {
+    knex.raw(ddl).catch(err => {
         console.log("ERRORE NEL DDL");
         console.log(err);
-    }).then(() => {*/
-    knex("locations").insert(locationsList).catch(err => {
-        console.log(err);
     }).then(() => {
-        knex("doctors").insert(doctorsList).catch(err => {
+        knex("locations").insert(locationsList).catch(err => {
             console.log(err);
         }).then(() => {
-            knex("services").insert(servicesList).catch(err => {
+            knex("doctors").insert(doctorsList).catch(err => {
                 console.log(err);
             }).then(() => {
-                knex("doctors_services").insert(doctorsServicesList).catch(err => {
+                knex("services").insert(servicesList).catch(err => {
                     console.log(err);
-                })
+                }).then(() => {
+                    knex("doctors_services").insert(doctorsServicesList).catch(err => {
+                        console.log(err);
+                    })
+                });
             });
         });
-        //});
     });
 }
 
