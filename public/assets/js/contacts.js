@@ -27,9 +27,9 @@ function validateForm(e) {
 
       //Send Data
 
-      console.log("/api/email/info?trype=1&message=" + message.val() + "&email=" + email.val()+"&name="+name.val()+"&subject="+subject.val());
+      console.log("/api/email/info?type=1&message=" + message.val() + "&email=" + email.val()+"&name="+name.val()+"&subject="+subject.val());
 
-      fetch("/api/email/info?trype=1&message=" + message.val() + "&email=" + email.val()+"&name="+name.val()+"&subject="+subject.val())
+      fetch("/api/email/info?type=1&message=" + message.val() + "&email=" + email.val()+"&name="+name.val()+"&subject="+subject.val())
       .then(function(response) {
         return response.json();
       })

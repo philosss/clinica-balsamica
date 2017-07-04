@@ -24,9 +24,9 @@ function validateForm(e) {
 
       //Send Data
 
-      console.log("/api/email/info?trype=0&message=" + message.val() + "&email=" + email.val());
+      console.log("/api/email/info?type=0&message=" + message.val() + "&email=" + email.val());
 
-      fetch("/api/email/info?trype=0&message=" + message.val() + "&email=" + email.val())
+      fetch("/api/email/info?type=0&message=" + message.val() + "&email=" + email.val())
       .then(function(response) {
         return response.json();
       })
