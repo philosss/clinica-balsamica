@@ -42,26 +42,30 @@ function initDB() {
     var servicesList = require("./db/services.json");
     var doctorsServicesList = require("./db/doctors_services.json");
 
-    knex.raw(ddl).catch(err => {
-        console.log("ERRORE NEL DDL");
-        console.log(err);
-    }).then(() => {
-        knex("locations").insert(locationsList).catch(err => {
-            console.log(err);
+    knex.select("doctors.*").from("doctors").catch(err => {
+        knex.raw(ddl).catch(err => {
+           console.log("ERRORE NEL DDL");
+           console.log(err);
         }).then(() => {
-            knex("doctors").insert(doctorsList).catch(err => {
-                console.log(err);
-            }).then(() => {
-                knex("services").insert(servicesList).catch(err => {
-                    console.log(err);
-                }).then(() => {
-                    knex("doctors_services").insert(doctorsServicesList).catch(err => {
-                        console.log(err);
-                    })
-                });
-            });
-        });
+           knex("locations").insert(locationsList).catch(err => {
+               console.log(err);
+           }).then(() => {
+               knex("doctors").insert(doctorsList).catch(err => {
+                   console.log(err);
+               }).then(() => {
+                   knex("services").insert(servicesList).catch(err => {
+                       console.log(err);
+                   }).then(() => {
+                       knex("doctors_services").insert(doctorsServicesList).catch(err => {
+                           console.log(err);
+                       })
+                   });
+               });
+           });
+       });
     });
+
+    
 }
 
 // Set up Middlewares
@@ -326,13 +330,13 @@ app.get("/api/presentazione", function (req, res) {
 
 // Mail sender - homepage
 app.get("/api/email/info", function (req, res) {
-    var message = req.body.message;
+    var message = req.query.message;
     var email = req.query.email;
     var type = req.query.type;
     var messageToSend = null;
 
     if (type == 0) {
-        messageToSend = "Richiesta di prenotazione ricevuta da: " + email + "\Message: " + message;
+        messageToSend = "Richiesta di prenotazione ricevuta da: " + email + "\nMessage: " + message;
     } else {
         var name = req.query.name;
         var subject = req.query.subject;
