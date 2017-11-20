@@ -3,250 +3,250 @@
     "id": 1,
     "name": "Riccardo",
     "surname": "Agosta",
-    "email": "r.agosta@balsami.ca",
+    "email": "r.agosta@clinicabalsami.ga",
     "phonenumber": "02 20399188",
     "office": 11,
     "location": 1,
-    "image": "dottori/r.agosta.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 2,
     "name": "Cristina",
     "surname": "D'ampezzo",
-    "email": "c.dampezzo@balsami.ca",
+    "email": "c.dampezzo@clinicabalsami.ga",
     "phonenumber": "02 20310288",
     "office": 1,
     "location": 2,
-    "image": "dottori/c.dampezzo.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 3,
     "name": "Gianmaria",
     "surname": "Barmbilla",
-    "email": "g.brambilla@balsami.ca",
+    "email": "g.brambilla@clinicabalsami.ga",
     "phonenumber": "02 72273989",
     "office": 23,
     "location": 2,
-    "image": "dottori/g.brambilla.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 4,
     "name": "Cristoforo",
     "surname": "Monferro",
-    "email": "c.monferro@balsami.ca",
+    "email": "c.monferro@clinicabalsami.ga",
     "phonenumber": "02 28282829",
     "office": 3,
     "location": 4,
-    "image": "dottori/c.monferro.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 5,
     "name": "Hul",
     "surname": "Sign",
-    "email": "h.sign@balsami.ca",
+    "email": "h.sign@clinicabalsami.ga",
     "phonenumber": "02 101019296",
     "office": 9,
     "location": 3,
-    "image": "dottori/h.sign.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 6,
     "name": "Sara",
     "surname": "Domenica",
-    "email": "s.domenica@balsami.ca",
+    "email": "s.domenica@clinicabalsami.ga",
     "phonenumber": "02 1920384790",
     "office": 2,
     "location": 1,
-    "image": "dottori/s.domenica.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 7,
     "name": "Gaetano",
     "surname": "Salvo",
-    "email": "g.salvo@balsami.ca",
+    "email": "g.salvo@clinicabalsami.ga",
     "phonenumber": "02 102983746",
     "office": 5,
     "location": 4,
-    "image": "dottori/g.salvo.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 8,
     "name": "Matilde",
     "surname": "Zampieri",
-    "email": "m.zampieri@balsami.ca",
+    "email": "m.zampieri@clinicabalsami.ga",
     "phonenumber": "02 28364509",
     "office": 5,
     "location": 3,
-    "image": "dottori/m.zampieri.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 9,
     "name": "Margherita",
     "surname": "Saru",
-    "email": "m.saru@balsami.ca",
+    "email": "m.saru@clinicabalsami.ga",
     "phonenumber": "02 1209356",
     "office": 7,
     "location": 2,
-    "image": "dottori/m.saru.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 10,
     "name": "Benedetto",
     "surname": "Nespoli",
-    "email": "b.nespoli@balsami.ca",
+    "email": "b.nespoli@clinicabalsami.ga",
     "phonenumber": "02 51029387",
     "office": 19,
     "location": 1,
-    "image": "dottori/b.nespoli.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 11,
     "name": "Filippo",
     "surname": "Calzavara",
-    "email": "f.calzavara@balsami.ca",
+    "email": "f.calzavara@clinicabalsami.ga",
     "phonenumber": "02 20938716",
     "office": 6,
     "location": 2,
-    "image": "dottori/f.calzavara.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 12,
     "name": "Giovanni",
     "surname": "Filaferro",
-    "email": "g.filaferro@balsami.ca",
+    "email": "g.filaferro@clinicabalsami.ga",
     "phonenumber": "02 456782923",
     "office": 12,
     "location": 3,
-    "image": "dottori/g.filaferro.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 13,
     "name": "Mauro",
     "surname": "Mosca",
-    "email": "m.mosca@balsami.ca",
+    "email": "m.mosca@clinicabalsami.ga",
     "phonenumber": "02 162728392",
     "office": 23,
     "location": 4,
-    "image": "dottori/m.mosca.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 14,
     "name": "Alessandra",
     "surname": "Genovesi",
-    "email": "a.genovesi@balsami.ca",
+    "email": "a.genovesi@clinicabalsami.ga",
     "phonenumber": "02 1267893818",
     "office": 16,
     "location": 2,
-    "image": "dottori/a.genovesi.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 15,
     "name": "Mario",
     "surname": "Apicella",
-    "email": "m.apicella@balsami.ca",
+    "email": "m.apicella@clinicabalsami.ga",
     "phonenumber": "02 398368449",
     "office": 21,
     "location": 1,
-    "image": "dottori/m.apicella.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 16,
     "name": "Michele",
     "surname": "Buonasera",
-    "email": "m.buonasera@balsami.ca",
+    "email": "m.buonasera@clinicabalsami.ga",
     "phonenumber": "02 5647829309",
     "office": 12,
     "location": 4,
-    "image": "dottori/m.buonasera.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 17,
     "name": "Filippo",
     "surname": "Fratellanza",
-    "email": "f.fratellanza@balsami.ca",
+    "email": "f.fratellanza@clinicabalsami.ga",
     "phonenumber": "02 648293843",
     "office": 16,
     "location": 3,
-    "image": "dottori/f.fratellanza.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 18,
     "name": "Fernando",
     "surname": "Aleandro",
-    "email": "f.aleandro@balsami.ca",
+    "email": "f.aleandro@clinicabalsami.ga",
     "phonenumber": "02 23455432",
     "office": 7,
     "location": 3,
-    "image": "dottori/f.aleandro.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 19,
     "name": "Sarafino",
     "surname": "Glugluglu",
-    "email": "s.glugluglu@balsami.ca",
+    "email": "s.glugluglu@clinicabalsami.ga",
     "phonenumber": "02 91827372",
     "office": 8,
     "location": 1,
-    "image": "dottori/s.glugluglu.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 20,
     "name": "Guido",
     "surname": "Lamoto",
-    "email": "g.lamoto@balsami.ca",
+    "email": "g.lamoto@clinicabalsami.ga",
     "phonenumber": "02 546372883",
     "office": 5,
     "location": 2,
-    "image": "dottori/g.lamoto.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 21,
     "name": "Salvo",
     "surname": "Pistolo",
-    "email": "s.pistolo@balsami.ca",
+    "email": "s.pistolo@clinicabalsami.ga",
     "phonenumber": "02 29039832",
     "office": 13,
     "location": 1,
-    "image": "dottori/s.pistolo.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 22,
     "name": "Domenica",
     "surname": "Sera",
-    "email": "d.sera@balsami.ca",
+    "email": "d.sera@clinicabalsami.ga",
     "phonenumber": "02 234543245",
     "office": 27,
     "location": 4,
-    "image": "dottori/d.sera.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 23,
     "name": "Primo",
     "surname": "Sale",
-    "email": "p.sale@balsami.ca",
+    "email": "p.sale@clinicabalsami.ga",
     "phonenumber": "02 2356271873",
     "office": 2,
     "location": 1,
-    "image": "dottori/p.sale.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 24,
     "name": "Francesca",
     "surname": "Alicante",
-    "email": "f.alicante@balsami.ca",
+    "email": "f.alicante@clinicabalsami.ga",
     "phonenumber": "02 37283932",
     "office": 29,
     "location": 2,
-    "image": "dottori/f.alicante.jpg"
+    "image": "dottori/person.jpg"
   },
     {
     "id": 25,
     "name": "Dario",
     "surname": "Lampa",
-    "email": "d.lampa@balsami.ca",
+    "email": "d.lampa@clinicabalsami.ga",
     "phonenumber": "02 267382912",
     "office": 4,
     "location": 3,
-    "image": "dottori/d.lampa.jpg"
+    "image": "dottori/person.jpg"
   }
 ]

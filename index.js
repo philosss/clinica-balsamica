@@ -28,8 +28,8 @@ const transporter = nodemailer.createTransport({ // Setup Account
     port: 465,
     secure: true,
     auth: {
-        user: 'clinicabalsamica@gmail.com',
-        pass: 'MaCheBellaClinica001'
+        user: '',
+        pass: ''
     }
 });
 
