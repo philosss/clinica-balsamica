@@ -1,8 +1,10 @@
 # Clinica Balsamica
 [http://clinicabalsami.ga](http://clinicabalsami.ga)
+
 Politecnico di Milano (Polytechnic University of Milan)
 
 Project of Hypermedia Application aa. 2016/2017 - Professor Franca Grazotto
+
 Evaluated full marks with honours
 
 Authors: [@fila95](https://github.com/fila95)  [@philosss](https://github.com/philosss) [@bennesp](https://github.com/bennesp)
